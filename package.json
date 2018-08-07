@@ -4,6 +4,7 @@
   "description": "pinterest for bingeworthy things!",
   "main": "index.js",
   "directories": {
+    "lib": "lib",
     "test": "test"
   },
   "private": true,
@@ -14,7 +15,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "postinstall": "webpack",
-    "webpack": "webpack --watch"
+    "watch": "webpack --watch"
   },
   "repository": {
     "type": "git",
@@ -43,5 +44,6 @@
     "redux-thunk": "^2.2.0",
     "webpack": "^3.4.1",
     "webpack-cli": "^3.1.0"
-  }
+  },
+  "devDependencies": {}
 }
