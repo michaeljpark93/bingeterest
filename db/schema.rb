@@ -10,10 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180807002741) do
+ActiveRecord::Schema.define(version: 20180807210835) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "binges", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.string "url", null: false
+    t.string "link_url", null: false
+    t.integer "author_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["author_id"], name: "index_binges_on_author_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "username", null: false
