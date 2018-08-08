@@ -7,7 +7,6 @@ import SignupFormContainer from './session/signup_form_container';
 
 const App = () => (
   <div>
-    <h1>Bingeterest</h1>
     <Switch>
       <Route exact path="/" component={NavBarContainer} />
       <Route path="/login" component={LoginFormContainer} />
