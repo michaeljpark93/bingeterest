@@ -37,7 +37,9 @@ class LoginForm extends React.Component {
   render() {
     return (
       <div>
-        <div>PINTEREST LOGO PLACEHOLDER</div>
+        <div>
+          <img src="../images/logo.png"/>
+        </div>
 
         <div>
           <h3>Log in to see more</h3>
