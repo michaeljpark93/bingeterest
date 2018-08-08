@@ -1,10 +1,22 @@
-$lightest-gray: #f7f7f5;
+$lightest-gray: #efefef;
 $light-gray: #e2e2e2;
-$gray: #999;
-$dark-gray: #6f6f6f;
+$gray: #8e8e8e;
+$dark-gray: #717171;
+$darkest-gray: #333;
 
-$lightest-blue: #f0f8fc;
-$light-blue: #6288a5;
-$blue: #326891;
-$dark-blue: #4d7b9f;
-$darkest-blue: #265e8b;
+$white: #fff;
+
+$light-red: #bd081d;
+$red: #ad081b;
+$dark-red: #a3081a;
+
+$yellow: #ffff00;
+$orange: #fab904;
+$olive: #808000;
+$dark-olive: #364a4c;
+
+$blue: #0084ff;
+
+$shadow: rgb(0, 132, 255);
+$alpha: .5;
+$shadow-alpha: rgba($shadow, $alpha);
