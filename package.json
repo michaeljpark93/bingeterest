@@ -34,6 +34,8 @@
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
     "lodash": "^4.17.4",
+    "node": "^10.8.0",
+    "npm": "^6.3.0",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-redux": "^5.0.5",
