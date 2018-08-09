@@ -1,8 +1,10 @@
 $lightest-gray: #efefef;
+$lighter-gray: #dedede;
 $light-gray: #e2e2e2;
 $gray: #8e8e8e;
 $dark-gray: #717171;
 $darkest-gray: #333;
+$black: #333333;
 
 $white: #fff;
 
@@ -18,5 +20,8 @@ $dark-olive: #364a4c;
 $blue: #0084ff;
 
 $shadow: rgb(0, 132, 255);
-$alpha: .5;
+$bshadow: rgb(0, 0, 0);
+$alpha: 0.5;
+$balpha: 0.45;
 $shadow-alpha: rgba($shadow, $alpha);
+$bshadow-alpha: rgba($bshadow, $balpha);

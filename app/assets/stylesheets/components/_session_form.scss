@@ -1,0 +1,156 @@
+body {
+  background-color: $lightest-gray;
+  font-family: $sans-serif;
+}
+
+.session {
+  background-color: $white;
+  border-radius: 8px;
+  position: relative;
+  text-align: center;
+  width: 440px;
+  min-height: 520px;
+  box-shadow: $bshadow-alpha 0 2px 10px;
+  margin: 100px auto;
+
+  .session-box {
+    padding: 20px 10px;
+    margin: 0 auto;
+
+    .logo {
+      display: block;
+      height: 45px;
+      margin: 5px auto;
+      width: 45px;
+
+      img {
+        height: 38px;
+        width: 38px;
+      }
+    }
+
+    .title {
+      width: 270px;
+      margin: 0px auto 25px;
+
+      h3 {
+        font-size: 32px;
+        color: $black;
+        font-weight: bold;
+        letter-spacing: -1.2px;
+      }
+    }
+
+    .intro {
+      font-size: 16px;
+      font-weight: normal;
+      width: 270px;
+      margin: 0px auto 25px;
+      width: 270px;
+
+      h3 {
+        margin: -15px 0px 20px;
+        color: $black;
+      }
+    }
+
+    .input-form {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      justify-content: center;
+      margin: 0 auto;
+      width: 300px;
+
+      form {
+        width: 268px;
+        height: 192px;
+        margin: 0 auto;
+
+        .field {
+          box-sizing: border-box;
+          position: relative;
+          height: 40px;
+          width: 100%;
+          margin-bottom: 7px;
+          border-radius: 8px;
+          border: 1px solid black;
+          cursor: text;
+
+          input {
+            width: 238px;
+            height: 22px;
+            border: none;
+            font-size: 16px;
+            padding: 8px 14px;
+            color: $gray
+          }
+
+          .field:focus {
+            border: 2px solid $blue;
+          }
+        }
+
+        .submit {
+          margin-top: 10px;
+          height: 36px;
+          width: 100%;
+          display: inline-block;
+          border-radius: 4px;
+          padding: 0 18px;
+          font-size: 15px;
+          font-weight: bold;
+          color: white;
+          text-align: center;
+          cursor: pointer;
+          vertical-align: middle;
+          background-color: $light-red;
+        }
+        .submit:hover {
+          background-color: $light-red;
+        }
+      }
+
+      p {
+        margin: 12px 0 3px 0;
+        text-align: center;
+        color: $black;
+        font-weight: bold;
+        font-size: 12px;
+      }
+
+      .demo {
+        padding: 10px 0 4px 0;
+        button {
+          height: 40px;
+          width: 268px;
+          background-color: $blue;
+          font-size: 15px;
+          font-weight: bold;
+          color: white;
+        }
+      }
+
+      .footer {
+        margin: 15px 0 0 0;
+
+        h3 {
+          color: $dark-gray;
+          font-size: 12px;
+        }
+      }
+    }
+
+    .line {
+      border-bottom: 1px solid $lighter-gray;
+      margin: 10px auto;
+      width: 110px;
+    }
+
+    .session-choice {
+      font-size: 12px;
+      font-weight: bold;
+      color: $dark-gray;
+    }
+  }
+}
