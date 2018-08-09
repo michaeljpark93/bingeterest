@@ -25,3 +25,9 @@ bundle.js.map
 .byebug_history
 .DS_Store
 npm-debug.log
+credentials.yml.enc
+secrets.yml
+
+
+# Ignore master key for decrypting credentials and more.
+/config/master.key

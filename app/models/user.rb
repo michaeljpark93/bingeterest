@@ -9,7 +9,9 @@ class User < ApplicationRecord
 
   has_many :binges,
     foreign_key: :author_id,
-    class_name: :Binges
+    class_name: :Binge
+
+  has_one_attached :photo
 
   attr_reader :password
 
