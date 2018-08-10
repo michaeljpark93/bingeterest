@@ -9,9 +9,8 @@ const mapStateToProps = ({ errors }) => ({
   errors: errors.session,
   fields: ['username', 'password', 'age'],
   fieldType: {username: 'text', password: 'password', age: 'integer'},
-  formText: ['Sign up to see more', 'Continue', 'By continuing, you agree to Pinterest\'s Terms of Service, Privacy Policy'],
+  formText: ['Sign up to see more', 'Continue', 'By continuing, you agree to Bingeterest\'s Terms of Service, Privacy Policy'],
   linkTo: <Link to="/login">Already on Pinterest? Log in</Link>,
-  demoUser: {username: 'Guest', password: 'password'}
 });
 
 const mapDispatchToProps = dispatch => ({

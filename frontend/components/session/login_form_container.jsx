@@ -11,7 +11,6 @@ const mapStateToProps = ({ errors }) => ({
   fieldType: {username: 'Text', password: 'Password'},
   formText: ['Log in to see more', 'Log in', 'Forgot your password?'],
   linkTo: <Link to="/signup">Sign up for an account</Link>,
-  demoUser: {username: 'Guest', password: 'password'}
 });
 
 const mapDispatchToProps = dispatch => ({

@@ -4,7 +4,7 @@ import { withRouter } from 'react-router-dom';
 class SessionForm extends React.Component {
   constructor(props) {
     super(props);
-    this.props = props;
+
     this.state = {
       username: '',
       password: '',
@@ -26,9 +26,8 @@ class SessionForm extends React.Component {
     this.props.actionType(this.state);
   }
 
-  demoLogin(e) {
-    e.preventDefault();
-    this.props.demo(this.props.demoUser);
+  demoLogin() {
+    this.props.demo({username: 'Guest', password: 'password'});
   }
 
   renderErrors() {
@@ -42,23 +41,24 @@ class SessionForm extends React.Component {
   }
 
   render() {
-    const { errors, fields, fieldType, formText, linkTo} = this.props;
+    const { errors, fields, fieldType, formText, linkTo } = this.props;
     const forms = fields.map((field, idx) => {
       return (
-        <div className="field">
+        <div className="field" key={idx}>
             <input
-              key={idx}
               type={fieldType[field]}
               value={this.state[field]}
               onChange={this.handleInput(field)}
               placeholder={field.charAt(0).toUpperCase() + field.slice(1)} />
         </div>
-      )
+      );
     });
 
     return (
       <div className="session">
+
         <div className="session-box">
+
           <div className="logo">
             <img src={window.images.logo} />
           </div>
@@ -82,7 +82,7 @@ class SessionForm extends React.Component {
             <p>OR</p>
 
             <div className="demo">
-              <button onClick={this.demoLogin}>Demo Login</button>
+              <button onClick={() => this.demoLogin()}>Demo Login</button>
             </div>
 
             <div className="footer">
@@ -95,7 +95,9 @@ class SessionForm extends React.Component {
           <div className="session-choice">
             <h3>{linkTo}</h3>
           </div>
+
         </div>
+
       </div>
     );
   }
