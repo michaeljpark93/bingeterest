@@ -3,12 +3,10 @@ class Api::BingesControllerController < ApplicationController
 
   def index
     @binges = Binge.all
-    render "api/binges/index"
   end
 
   def show
-    @binge = Binge.find(params[id])
-    render "api/binges/show"
+    @binge = Binge.find_by_id(params[id])
   end
 
   def create
@@ -23,9 +21,9 @@ class Api::BingesControllerController < ApplicationController
   end
 
   def update
-    @binge = current_user.binges.find(params[:id])
+    @binge = Binge.find_by_id(params[:id])
 
-    if @binge
+    if @binge.author_id == current_user.id
       if @binge.update_attributes(binge_params)
         render "api/binges/show"
       else
@@ -37,17 +35,14 @@ class Api::BingesControllerController < ApplicationController
   end
 
   def destroy
-    @binge = current_user.binges.find(params[id])
+    @binge = Binge.find_by_id(params[:id])
 
-    if @binge
-      if @binge.destroy
-        render "api/binges/show"
-      else
-        render json: ["Could not delete this binge"], status: 404
-      end
+    if @binge.author_id == current_user.id
+      @binge.destroy
+      render "api/binges/show"
     else
       render json: ["You do not have permission to delete this binge."], status: 403
-    end 
+    end
   end
 
   private
