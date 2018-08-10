@@ -38,7 +38,7 @@ class SessionForm extends React.Component {
 
     const forms = fields.map((field, idx) => {
       return (
-        <div className="field" key={idx}>
+        <div className="l-field" key={idx}>
             <input
               type={fieldType[field]}
               value={this.state[field]}
@@ -49,42 +49,42 @@ class SessionForm extends React.Component {
     });
 
     return (
-      <div className="session">
+      <div className="l-session">
 
-        <div className="session-box">
+        <div className="l-session-box">
 
-          <div className="logo">
+          <div className="l-logo">
             <img src={window.images.logo} />
           </div>
-          <div className="title">
+          <div className="l-title">
             <h3>Log in to see more</h3>
           </div>
-          <div className="intro">
+          <div className="l-intro">
             <h3>Access Bingeterest's best ideas with a demo account</h3>
           </div>
 
-          <div className="input-form">
+          <div className="l-input-form">
             <form onSubmit={this.handleSubmit}>
               { forms }
-              <div className="error-list">
+              <div className="l-error-list">
                 <ErrorsList errors={errors}/>
               </div>
-              <input className="submit" type="submit" value="Log in"/>
+              <input className="l-submit" type="submit" value="Log in"/>
             </form>
 
             <p>OR</p>
 
-            <div className="demo">
+            <div className="l-demo">
               <button onClick={() => this.demoLogin()}>Demo Login</button>
             </div>
-            <div className="footer">
+            <div className="l-footer">
               <h3>By continuing, you agree to Bingeterest's Terms of Service, Privacy Policy</h3>
             </div>
           </div>
 
-          <div className="line" />
+          <div className="l-line" />
 
-          <div className="session-choice">
+          <div className="l-session-choice">
             <h3>{linkTo}</h3>
           </div>
 

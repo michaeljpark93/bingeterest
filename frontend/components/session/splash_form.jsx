@@ -39,14 +39,14 @@ class SplashForm extends React.Component {
 
     const linkTags = ['About Bingeterest', 'Blog', 'Business', 'Terms of Service', 'Private Policy', 'Help', 'iPhone App', 'Android App', 'Users', 'Collections', 'Explore', 'International']
     const tags = linkTags.map((tag, idx) => (
-      <div className="tag" key={idx}>
+      <div className="s-tag" key={idx}>
         <div>{tag}</div>
       </div>
     ));
 
     const forms = fields.map((field, idx) => {
       return (
-        <div className="field" key={idx}>
+        <div className="s-field" key={idx}>
             <input
               type={fieldType[field]}
               value={this.state[field]}
@@ -57,49 +57,52 @@ class SplashForm extends React.Component {
     });
 
     return (
-      <div className="session">
+      <div className="s-infinite">
 
-        <Link className="login-button" to="/login">
+        <Link className="s-login-button" to="/login">
           <button type="button">
             <h3>Log in</h3>
           </button>
         </Link>
 
-        <div className="session-box">
+        <div className="s-session">
+          <div className="s-session-box">
 
-          <div className="logo">
-            <img src={window.images.logo} />
-          </div>
-          <div className="title">
-            <h3>Welcome to Bingeterest</h3>
-          </div>
-          <div className="intro">
-            <h3>Find new ideas to try</h3>
-          </div>
+            <div className="s-logo">
+              <img src={window.images.logo} />
+            </div>
+            <div className="s-title">
+              <h3>Welcome to Bingeterest</h3>
+            </div>
+            <div className="s-intro">
+              <h3>Find new ideas to try</h3>
+            </div>
 
-          <div className="input-form">
-            <form onSubmit={this.handleSubmit}>
-              { forms }
-              <div className="error-list">
-                <ErrorsList errors={errors}/>
+            <div className="s-input-form">
+              <form onSubmit={this.handleSubmit}>
+                { forms }
+                <div className="s-error-list">
+                  <ErrorsList errors={errors}/>
+                </div>
+                <input className="s-submit" type="submit" value="Continue"/>
+              </form>
+
+              <p>OR</p>
+
+              <div className="s-demo">
+                <button onClick={() => this.demoLogin()}>Demo Login</button>
               </div>
-              <input className="submit" type="submit" value="Continue"/>
-            </form>
-
-            <p>OR</p>
-
-            <div className="demo">
-              <button onClick={() => this.demoLogin()}>Demo Login</button>
+              <div className="s-footer">
+                <h3>By continuing, you agree to Bingeterest's Terms of Service, Privacy Policy</h3>
+              </div>
             </div>
-            <div className="footer">
-              <h3>By continuing, you agree to Bingeterest's Terms of Service, Privacy Policy</h3>
-            </div>
+
           </div>
 
         </div>
 
-        <div className="tags">
-          <div className="tag-holder">
+        <div className="s-tags">
+          <div className="s-tag-holder">
             {tags}
           </div>
         </div>

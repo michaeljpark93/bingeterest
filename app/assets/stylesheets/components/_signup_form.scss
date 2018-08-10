@@ -3,7 +3,7 @@ body {
   font-family: $sans-serif;
 }
 
-.l-session {
+.u-session {
   background-color: $white;
   border-radius: 8px;
   position: relative;
@@ -13,14 +13,14 @@ body {
   box-shadow: $bshadow-alpha 0 2px 10px;
   margin: 100px auto;
 
-  .l-session-box {
+  .u-session-box {
     padding: 20px 10px;
     margin: 0 auto;
 
-    .l-logo {
+    .u-logo {
       display: block;
       height: 45px;
-      margin: 10px auto;
+      margin: 5px auto;
       width: 45px;
 
       img {
@@ -29,9 +29,9 @@ body {
       }
     }
 
-    .l-title h3 {
+    .u-title h3 {
         width: 380px;
-        margin: 0px auto;
+        margin: 0px auto 25px;
         font-size: 32px;
         color: $black;
         font-weight: bold;
@@ -39,7 +39,7 @@ body {
         text-align: center;
     }
 
-    .l-intro {
+    .u-intro {
       font-size: 16px;
       font-weight: normal;
       width: 270px;
@@ -52,7 +52,7 @@ body {
       }
     }
 
-    .l-input-form {
+    .u-input-form {
       display: flex;
       align-items: center;
       flex-direction: column;
@@ -65,12 +65,12 @@ body {
         height: auto;
         margin: 0 auto;
 
-        .l-field {
+        .u-field {
           box-sizing: border-box;
           position: relative;
           height: 40px;
           width: 100%;
-          margin-bottom: 8px;
+          margin-bottom: 7px;
           border-radius: 4px;
           border: 1px solid black;
           cursor: text;
@@ -85,12 +85,12 @@ body {
             -webkit-font-smoothing: antialiased;
           }
 
-          .l-field:focus {
+          .u-field:focus {
             border: 2px solid $blue;
           }
         }
 
-        .l-submit {
+        .u-submit {
           margin-top: 10px;
           height: 36px;
           width: 100%;
@@ -105,7 +105,7 @@ body {
           vertical-align: middle;
           background-color: $light-red;
         }
-        .l-submit:hover {
+        .u-submit:hover {
           background-color: $light-red;
         }
       }
@@ -118,7 +118,7 @@ body {
         font-size: 12px;
       }
 
-      .l-demo {
+      .u-demo {
         padding: 10px 0 4px 0;
         button {
           height: 40px;
@@ -131,8 +131,8 @@ body {
         }
       }
 
-      .l-footer {
-        margin: 15px 0 0 0;
+      .u-footer {
+        margin: 20px auto 10px;
 
         h3 {
           -webkit-font-smoothing: antialiased;
@@ -143,21 +143,18 @@ body {
       }
     }
 
-    .l-line {
-      border-bottom: 1px solid $lighter-gray;
-      margin: 15px auto;
-      width: 110px;
+    .u-line {
+      border-bottom: 1px solid $lightest-gray;
+      margin: 10px auto;
+      width: 404px;
     }
 
-    .l-session-choice:hover {
-      color: $gray;
-      text-decoration: underline;
-    }
-
-    .l-session-choice {
+    .u-session-choice {
+      margin: 20px auto 10px;
       font-size: 12px;
       font-weight: bold;
       color: $dark-gray;
     }
+
   }
 }

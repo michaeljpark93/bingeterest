@@ -9,7 +9,7 @@ const mapStateToProps = ({ errors }) => ({
   errors: errors.session,
   fields: ['username', 'password', 'age'],
   fieldType: {username: 'text', password: 'password', age: 'integer'},
-  linkTo: <Link to="/login">Already on Pinterest? Log in</Link>,
+  linkTo: <Link to="/login">Already on member? Sweet! Log in</Link>,
 });
 
 const mapDispatchToProps = dispatch => ({

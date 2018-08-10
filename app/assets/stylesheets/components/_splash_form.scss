@@ -3,152 +3,162 @@ body {
   font-family: $sans-serif;
 }
 
-.background {
-  position: fixed;
-  width: 100%;
+// Disclaimer: Background image is a screenshot from Pinterest!
+
+@keyframes bgscroll {
+  from { background-position: 0 0; }
+  to { background-position: 0px -10000px; }
+}
+
+.s-infinite {
   height: 100%;
-  background: image_url('one.png'), image_url('two.png');
-  -webkit-animation:100s scroll infinite linear;
-  -moz-animation:100s scroll infinite linear;
-  -o-animation:100s scroll infinite linear;
-  -ms-animation:100s scroll infinite linear;
-  animation:100s scroll infinite linear;
+  width: 100%;
+  z-index: -2;
+  position: fixed;
+  background-image: url('four.png');
+  background-repeat: repeat;
+  background-size: cover;
+  animation: bgscroll 600s linear infinite;
+}
 
-  .infinite {
-    width: 100%;
-    height: 100%;
-  }
+.s-login-button {
+  position: absolute;
+  right: 24px;
+  top: 48px;
 
-  .login-button button:hover {
-    background-color: $light-gray;
-    cursor: pointer;
-  }
+  button {
+    padding: 8px 14px;
+    vertical-align: middle;
+    border: none;
+    border-radius: 4px;
 
-  .login-button {
-    position: fixed;
-    top: 48px;
-    right: 24px;
-
-    button {
-      border: none;
-      background-color: inherit;
-      background-color: $lightest-gray;
-      border: none;
-      box-sizing: content-box;
-      border-radius: 4px;
+    h3 {
       width: 102px;
-      padding: 8px 14px;
       height: 20px;
-
-      h3 {
-        font-size: 14px;
-        color: $black;
-        font-weight: bold;
-        font-family: $sans-serif;
-      }
-    }
-  }
-
-  .tags {
-    position: fixed;
-    bottom: 10px;
-    width: 100%;
-
-    .tag-holder {
-      display: flex;
-      flex-flow: row wrap;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .tag {
-      margin-bottom: 6px;
-      padding: 4px 7px;
-      font-size: 11px;
-      color: $white;
-      font-weight: normal;
+      font-size: 14px;
+      text-align: center;
+      vertical-align: middle;
+      font-weight: 700;
+      line-height: 1.2;
+      letter-spacing: -.4px;
+      color: $black;
     }
   }
 }
 
+.s-tags {
+  position: absolute;
+  bottom: 10px;
+  width: 100%;
 
-.session {
-  background-color: $white;
-  border-radius: 8px;
-  text-align: center;
-  width: 400px;
-  min-height: 500px;
-  box-shadow: $bshadow-alpha 0 2px 10px;
+  .s-tag-holder{
+    margin: 0 auto;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    text-align: center;
+    margin-bottom: 6px;
 
-  .session-box {
+    .s-tag {
+      font-size: 11px;
+      color: $white;
+      padding: 4px 7px;
+    }
+  }
+}
+
+.s-session {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: -1;
+  background: rgba(0, 0, 0, 0.5);
+
+  .s-session-box {
+    background-color: $white;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: $bshadow-alpha 0 2px 10px;
+    margin: 100px auto;
+    width: 400px;
+    min-height: 450px;
     padding: 20px 10px;
     margin: 0 auto;
 
-    .logo {
+    .s-logo {
       display: block;
-      height: 55px;
-      width: 55px;
-      margin: 14px auto 0px;
+      height: 45px;
+      margin: 5px auto;
+      width: 45px;
 
       img {
-        height: 40px;
-        width: 40px;
-        margin: 0 auto;
+        height: 38px;
+        width: 38px;
       }
     }
 
-    .title h3 {
-        margin: 0 auto 5px;
+    .s-title h3 {
+        width: 380px;
+        margin: 5px auto;
         font-size: 28px;
         color: $black;
         font-weight: bold;
+        letter-spacing: -1.2px;
         text-align: center;
     }
 
-    .intro h3 {
-      font-size: 18px;
-      font-weight: bold;
-      margin: 5px auto 5px;
-      color: $lightish-gray;
+    .s-intro {
+      margin: 10px auto 25px;
+
+      h3 {
+        font-weight: bold;
+        font-size: 18px;
+        color: $lightish-gray;
+      }
     }
 
-    .input-form {
+    .s-input-form {
       display: flex;
       align-items: center;
       flex-direction: column;
       justify-content: center;
       margin: 0 auto;
-      width: 268px;
+      width: 300px;
 
       form {
-        height: 192px;
+        width: 268px;
+        height: auto;
         margin: 0 auto;
 
-        .field {
+        .s-field {
+          box-sizing: border-box;
+          position: relative;
           height: 40px;
-          width: 268px;
+          width: 100%;
           margin-bottom: 7px;
           border-radius: 4px;
           border: 1px solid black;
           cursor: text;
 
-          .field:focus {
-            border: 2px solid $blue;
-          }
-
-          .field-input {
+          input {
             width: 238px;
             height: 22px;
-            border: 1px none;
+            border: none;
             font-size: 16px;
             padding: 8px 14px;
             color: $gray;
-            letter-spacing: -.4px;
             -webkit-font-smoothing: antialiased;
+          }
+
+          .s-field:focus {
+            border: 2px solid $blue;
           }
         }
 
-        .submit {
+        .s-submit {
           margin-top: 10px;
           height: 36px;
           width: 100%;
@@ -163,52 +173,41 @@ body {
           vertical-align: middle;
           background-color: $light-red;
         }
-        .submit:hover {
+        .s-submit:hover {
           background-color: $light-red;
         }
       }
-
-      p {
-        margin: 12px 0 3px 0;
-        text-align: center;
-        color: $black;
-        font-weight: bold;
-        font-size: 12px;
-      }
-
-      .demo {
-        padding: 10px 0 4px 0;
-        button {
-          height: 40px;
-          width: 268px;
-          background-color: $blue;
-          font-size: 15px;
-          font-weight: bold;
-          border-radius: 4px;
-          color: white;
-        }
-      }
-
-      .footer {
-        margin: 15px 0 0 0;
-
-        h3 {
-          color: $dark-gray;
-          font-size: 12px;
-        }
-      }
     }
 
-    .line {
-      border-bottom: 1px solid $lighter-gray;
-      margin: 10px auto;
-      width: 110px;
-    }
-
-    .session-choice {
-      font-size: 12px;
+    p {
+      margin: 12px 0 3px 0;
+      text-align: center;
+      color: $black;
       font-weight: bold;
-      color: $dark-gray;
+      font-size: 12px;
+    }
+
+    .s-demo {
+      padding: 10px 0 4px 0;
+      button {
+        height: 40px;
+        width: 268px;
+        background-color: $blue;
+        font-size: 15px;
+        font-weight: bold;
+        border-radius: 4px;
+        color: white;
+      }
+    }
+
+    .s-footer {
+      margin: 10px auto;
+      font-size: 11px;
+      font-weight: bold;
+      -webkit-font-smoothing: antialiased;
+      text-align: center;
+      color: $gray;
+      width: 224px;
     }
   }
 }
