@@ -2,7 +2,7 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 import ErrorsList from '../errors/error_list';
 
-class SessionForm extends React.Component {
+class SignupForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -95,4 +95,4 @@ class SessionForm extends React.Component {
   }
 }
 
-export default withRouter(SessionForm);
+export default withRouter(SignupForm);

@@ -9,8 +9,7 @@ const mapStateToProps = ({ errors }) => ({
   errors: errors.session,
   fields: ['username', 'password'],
   fieldType: {username: 'Text', password: 'Password'},
-  formText: ['Log in to see more', 'Log in', 'Forgot your password?'],
-  linkTo: <Link to="/signup">Sign up for an account</Link>,
+  linkTo: <Link to="/signup">Sign up for an account</Link>
 });
 
 const mapDispatchToProps = dispatch => ({

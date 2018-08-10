@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default class ErrorsList extends React.Component {
+class ErrorsList extends React.Component {
   render() {
     return (
       <ul className="errors">
@@ -9,3 +9,5 @@ export default class ErrorsList extends React.Component {
     );
   }
 };
+
+export default ErrorsList;
