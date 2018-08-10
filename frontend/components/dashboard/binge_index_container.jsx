@@ -1,11 +1,10 @@
 import { connect } from 'react-redux';
-
 import BingeIndex from './binge_index';
 import { fetchBinges } from '../../actions/binge_actions';
 
-const msp = (state, ownProps) => {
+const msp = (state) => {
   return {
-    binges: state.binges
+    binges: Object.values(state.entities.binges)
   };
 };
 
@@ -15,4 +14,4 @@ const mdp = dispatch => {
   };
 };
 
-export default connect(msp, mdp)(BingeIndex)
+export default connect(msp, mdp)(BingeIndex);

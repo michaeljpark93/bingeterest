@@ -11,7 +11,7 @@ const bingesReducer = (state = {}, action) => {
 
   switch (action.type) {
     case RECEIVE_BINGES:
-      return merge({}, action.binges);
+      return action.binges;
     case RECEIVE_BINGE:
       return merge({}, state, {[action.binge.id]: action.binge});
     case REMOVE_BINGE:

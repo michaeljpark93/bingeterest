@@ -27,10 +27,11 @@ class SignupForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.actionType(this.state);
+    this.props.login(this.state);
   }
 
-  demoLogin() {
+  demoLogin(e) {
+    e.preventDefault();
     this.props.login({username: 'Guest', password: 'password'});
   }
 
@@ -76,7 +77,7 @@ class SignupForm extends React.Component {
             <p>OR</p>
 
             <div className="u-demo">
-              <button onClick={() => this.demoLogin()}>Demo Login</button>
+              <button onClick={this.demoLogin}>Demo Login</button>
             </div>
             <div className="u-footer">
               <h3>By continuing, you agree to Bingeterest's Terms of Service, Privacy Policy</h3>

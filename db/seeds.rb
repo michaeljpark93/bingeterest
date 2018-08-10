@@ -13,3 +13,10 @@ demo_user = User.create(
   password: 'password',
   age: 100
 )
+
+demo_binge = Binge.create(
+  id: 1,
+  url: 'https://s.pinimg.com/webapp/style/images/bg_multi_case_grid_no_text-adb7650b.jpg',
+  link_url: 'hi@hi.com2',
+  author_id: 1
+)

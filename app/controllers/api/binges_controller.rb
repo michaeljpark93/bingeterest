@@ -1,4 +1,4 @@
-class Api::BingesControllerController < ApplicationController
+class Api::BingesController < ApplicationController
   before_action :require_logged_in
 
   def index
