@@ -11,13 +11,13 @@ const bingesReducer = (state = {}, action) => {
 
   switch (action.type) {
     case RECEIVE_BINGES:
-      return merge({}, state, action.binges);
+      return merge({}, action.binges);
     case RECEIVE_BINGE:
       return merge({}, state, {[action.binge.id]: action.binge});
     case REMOVE_BINGE:
-    const newState = merge({}, state);
-    delete newState[action.bingeId];
-    return newState;
+      const newState = merge({}, state);
+      delete newState[action.binge.id];
+      return newState;
     default:
       return state;
   }

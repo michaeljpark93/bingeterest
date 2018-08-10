@@ -4,13 +4,12 @@ import { withRouter } from 'react-router-dom';
 class SessionForm extends React.Component {
   constructor(props) {
     super(props);
-
     this.state = {
       username: '',
       password: '',
       age: ''
     };
-
+    this.handleInput = this.handleInput.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.demoLogin = this.demoLogin.bind(this);
   }
@@ -28,16 +27,6 @@ class SessionForm extends React.Component {
 
   demoLogin() {
     this.props.demo({username: 'Guest', password: 'password'});
-  }
-
-  renderErrors() {
-    return(
-      <ul>
-        {this.props.errors.map((error, idx) => {
-          return <li key={idx}>{error}</li>
-        })}
-      </ul>
-    );
   }
 
   render() {
@@ -74,7 +63,9 @@ class SessionForm extends React.Component {
           <div className="input-form">
             <form onSubmit={this.handleSubmit}>
               { forms }
-              <div className="errors">{this.renderErrors()}</div>
+              <div className="error-list">
+                <ErrorsList errors={errors}/>
+              </div>
 
               <input className="submit" type="submit" value={formText[1]} />
             </form>
