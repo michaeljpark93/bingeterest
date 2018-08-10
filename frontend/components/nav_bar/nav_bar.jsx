@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
 
-class NavBar extends React.Component {
+class navBar extends React.Component {
   constructor(props) {
     super(props);
     this.state ={
@@ -49,11 +49,10 @@ class NavBar extends React.Component {
             </ul>
           </Link>
 
-          <button onClick={() => {logout}}>Logout</button>
         </div>
       </navBar>
     );
   }
 }
 
-export default withRouter(NavBar);
+export default withRouter(navBar);
