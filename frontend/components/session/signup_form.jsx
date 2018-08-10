@@ -15,6 +15,10 @@ class SignupForm extends React.Component {
     this.demoLogin = this.demoLogin.bind(this);
   }
 
+  componentWillUnmount() {
+    this.props.removeErrors();
+  }
+
   handleInput(field) {
     return (e) => {
       this.setState({ [field]: e.currentTarget.value });
@@ -27,11 +31,12 @@ class SignupForm extends React.Component {
   }
 
   demoLogin() {
-    this.props.demo({username: 'Guest', password: 'password'});
+    this.props.login({username: 'Guest', password: 'password'});
   }
 
   render() {
-    const { errors, fields, fieldType, formText, linkTo } = this.props;
+    const { errors, fields, fieldType, linkTo } = this.props;
+
     const forms = fields.map((field, idx) => {
       return (
         <div className="field" key={idx}>
@@ -52,11 +57,9 @@ class SignupForm extends React.Component {
           <div className="logo">
             <img src={window.images.logo} />
           </div>
-
           <div className="title">
-            <h3>{ formText[0] }</h3>
+            <h3>Sign up to see more</h3>
           </div>
-
           <div className="intro">
             <h3>Access Bingeterest's best ideas with a demo account</h3>
           </div>
@@ -67,8 +70,7 @@ class SignupForm extends React.Component {
               <div className="error-list">
                 <ErrorsList errors={errors}/>
               </div>
-
-              <input className="submit" type="submit" value={formText[1]} />
+              <input className="submit" type="submit" value="Continue"/>
             </form>
 
             <p>OR</p>
@@ -76,9 +78,8 @@ class SignupForm extends React.Component {
             <div className="demo">
               <button onClick={() => this.demoLogin()}>Demo Login</button>
             </div>
-
             <div className="footer">
-              <h3>{formText[2]}</h3>
+              <h3>By continuing, you agree to Bingeterest's Terms of Service, Privacy Policy</h3>
             </div>
           </div>
 

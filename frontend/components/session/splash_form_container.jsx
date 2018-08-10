@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { signup, login } from '../../actions/session_actions';
-import { resetErrors } from '../../actions/error_actions';
+import { removeErrors } from '../../actions/error_actions';
 import SplashForm from './splash_form';
 
 const mapStateToProps = ({ errors }) => ({
@@ -13,7 +13,7 @@ const mapStateToProps = ({ errors }) => ({
 const mapDispatchToProps = dispatch => ({
   signup: formUser => (dispatch(signup(formUser))),
   login: demoUser => (dispatch(login(demoUser))),
-  resetErrors: () => dispatch(resetErrors())
+  removeErrors: () => dispatch(removeErrors())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(SplashForm);

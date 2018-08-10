@@ -16,7 +16,7 @@ class SplashForm extends React.Component {
   }
 
   componentWillUnmount() {
-    this.props.resetErrors();
+    this.props.removeErrors();
   }
 
   handleInput(field) {
@@ -103,7 +103,7 @@ class SplashForm extends React.Component {
             {tags}
           </div>
         </div>
-        
+
       </div>
     );
   }
