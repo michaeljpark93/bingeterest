@@ -7,12 +7,15 @@ class SessionForm extends React.Component {
     super(props);
     this.state = {
       username: '',
-      password: '',
-      age: ''
+      password: ''
     };
     this.handleInput = this.handleInput.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.demoLogin = this.demoLogin.bind(this);
+  }
+
+  componentWillUnmount() {
+    this.props.resetErrors();
   }
 
   handleInput(field) {
@@ -23,15 +26,16 @@ class SessionForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.actionType(this.state);
+    this.props.login(this.state);
   }
 
   demoLogin() {
-    this.props.demo({username: 'Guest', password: 'password'});
+    this.props.login({username: 'Guest', password: 'password'});
   }
 
   render() {
-    const { errors, fields, fieldType, formText, linkTo } = this.props;
+    const { errors, fields, fieldType, linkTo } = this.props;
+
     const forms = fields.map((field, idx) => {
       return (
         <div className="field" key={idx}>
@@ -52,11 +56,9 @@ class SessionForm extends React.Component {
           <div className="logo">
             <img src={window.images.logo} />
           </div>
-
           <div className="title">
-            <h3>{ formText[0] }</h3>
+            <h3>Log in to see more</h3>
           </div>
-
           <div className="intro">
             <h3>Access Bingeterest's best ideas with a demo account</h3>
           </div>
@@ -67,8 +69,7 @@ class SessionForm extends React.Component {
               <div className="error-list">
                 <ErrorsList errors={errors}/>
               </div>
-
-              <input className="submit" type="submit" value={formText[1]} />
+              <input className="submit" type="submit" value="Log in"/>
             </form>
 
             <p>OR</p>
@@ -76,9 +77,8 @@ class SessionForm extends React.Component {
             <div className="demo">
               <button onClick={() => this.demoLogin()}>Demo Login</button>
             </div>
-
             <div className="footer">
-              <h3>{formText[2]}</h3>
+              <h3>By continuing, you agree to Bingeterest's Terms of Service, Privacy Policy</h3>
             </div>
           </div>
 
