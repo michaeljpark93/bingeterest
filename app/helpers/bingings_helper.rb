@@ -1,0 +1,2 @@
+module BingingsHelper
+end
