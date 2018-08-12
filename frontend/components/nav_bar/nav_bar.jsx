@@ -25,31 +25,41 @@ class navBar extends React.Component {
 
     return (
       <navBar>
-        <div>
+        <nav className="nav-bar">
           <div className="n-logo">
-            <img src={window.images.logo} />
+            <Link to="/binge">
+              <img className="n-logo" src={window.images.logo} />
+            </Link>
           </div>
-          <input type="text" onChange={this.handleInput} placeholder="Search" />
-          <Link to="/">HOME</Link>
-          <Link to="/">FOLLOWING</Link>
-          <Link to="/">EXPLORE</Link>
-          <Link to="/">
-            <div>{currentUser.username[0]}</div>
-            <div>{currentUser.username}</div>
-          </Link>
 
-          <Link to="/">...
-            <ul>
-              <li>Edit settings</li>
-              <li>Get help</li>
-              <li>See terms and privacy</li>
-              <li>
-                <input type="submit" onClick={this.handleLogout} value="Log out" />
-              </li>
-            </ul>
-          </Link>
+          <div className="search-bar">
+            <input type="text" onChange={this.handleInput} placeholder="Search" />
+          </div>
 
-        </div>
+          <div className="right-nav">
+            <Link to="/">HOME</Link>
+            <Link to="/">FOLLOWING</Link>
+            <Link to="/">EXPLORE</Link>
+
+            <Link to={`/users/${currentUser.id}`}>
+              <div>{currentUser.username[0]}</div>
+              <div>{currentUser.username}</div>
+            </Link>
+
+            <div>...
+              <ul className="dropdown">
+                <li>Edit settings</li>
+                <li>Get help</li>
+                <li>See terms and privacy</li>
+                <li>
+                  <input type="submit" onClick={this.handleLogout} value="Log out" />
+                </li>
+              </ul>
+            </div>
+          </div>
+
+
+        </nav>
       </navBar>
     );
   }

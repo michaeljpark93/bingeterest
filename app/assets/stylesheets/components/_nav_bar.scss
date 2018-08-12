@@ -1,6 +1,47 @@
+body {
+  background-color: $white;
+}
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  flex-flow: row nowrap;
+  align-items: flex-start;
+}
+
+.search-bar {
+  input {
+    min-width: 407px;
+    width: 630px;
+    height: 40px;
+    padding: 0 16px;
+    background-color: $light-gray;
+    font-size: 12px;
+  }
+}
+
 .n-logo {
-  display: block;
   height: 45px;
-  margin: 10px auto;
   width: 45px;
+
+  img {
+    display: block;
+    height: 28px;
+    width: 28px;
+    margin: 10px auto;
+  }
+}
+
+.right-nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+
+  .dropdown {
+    // display: none;
+    position: absolute;
+  }
+
+  .dropdown:hover {
+    display: block;
+  }
 }
