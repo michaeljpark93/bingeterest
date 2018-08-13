@@ -8,17 +8,17 @@ export const REMOVE_BINGE = 'REMOVE_BINGE';
 export const receiveBinges = binges => ({
   type: RECEIVE_BINGES,
   binges
-})
+});
 
 export const receiveBinge = binge => ({
   type: RECEIVE_BINGE,
   binge
-})
+});
 
 export const removeBinge = binge => ({
   type: REMOVE_BINGE,
   binge
-})
+});
 
 export const fetchBinges = () => dispatch => (
   BingeAPIUtil.fetchBinges().then(binges => (
