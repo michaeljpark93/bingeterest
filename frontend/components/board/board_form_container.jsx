@@ -1,23 +1,23 @@
 import { connect } from 'react-redux';
-import { createBinge } from '../../actions/binge_actions';
+import { createBoard } from '../../actions/board_actions';
 import { openModal, closeModal } from '../../actions/modal_actions';
 import { removeErrors } from '../../actions/error_actions';
-import BingeCreateForm from './binge_create_form';
+import BoardCreateForm from './board_create_form';
 
 const mapStateToProps = ({ errors, session, entities: { users } }) => ({
   currentUser: users[session.id],
-  errors: errors.binges,
+  errors: errors.boards
 });
 
 const mapDispatchToProps = dispatch => ({
-  processForm: binge => dispatch(createBinge(binge)),
+  processForm: board => dispatch(createBoard(board)),
   otherForm: (
-    <button onClick={() => dispatch(openModal('Binge'))}>
-      Create Pin
+    <button onClick={() => dispatch(openModal('Board'))}>
+      Create board
     </button>
   ),
   closeModal: () => dispatch(closeModal()),
   removeErrors: () => dispatch(removeErrors())
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(BingeCreateForm);
+export default connect(mapStateToProps, mapDispatchToProps)(BoardCreateForm);

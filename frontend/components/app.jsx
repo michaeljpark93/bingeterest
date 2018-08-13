@@ -8,6 +8,7 @@ import LoginFormContainer from './session/login_form_container';
 import SignupFormContainer from './session/signup_form_container';
 import SplashFormContainer from './session/splash_form_container';
 import BingeIndexContainer from './dashboard/binge_index_container';
+import UserShowContainer from './profile/user_show_container';
 
 const App = () => (
   <div>
@@ -15,6 +16,7 @@ const App = () => (
       <AuthRoute exact path="/" component={SplashFormContainer} />
       <AuthRoute exact path="/login" component={LoginFormContainer} />
       <AuthRoute exact path="/signup" component={SignupFormContainer} />
+      <ProtectedRoute path="/users/:userId" component={UserShowContainer} />
       <ProtectedRoute path="/binge" component={BingeIndexContainer} />
     </Switch>
   </div>

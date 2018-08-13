@@ -65,7 +65,7 @@ class NavBar extends React.Component {
               </div>
             </Link>
 
-            <div tabindex="0" className="nav-menu">...
+            <div tabIndex="0" className="nav-menu">...
               <ul className="dropdown">
                 <li>Edit settings</li>
                 <li>Get help</li>

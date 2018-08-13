@@ -1,11 +1,11 @@
 .nav-bar {
   display: flex;
-  position: fixed;
+  position: sticky;
   justify-content: space-between;
   flex-flow: row nowrap;
   padding: 4px 16px;
   height: 56px;
-  width: 1233px;
+  width: 100%;
   margin: 0 auto;
   align-items: center;
   background-color: $white;

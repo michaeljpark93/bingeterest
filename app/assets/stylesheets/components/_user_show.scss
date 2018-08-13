@@ -1,0 +1,31 @@
+.username {
+  color: $black;
+  line-height: 1.2;
+  letter-spacing: -0.4px;
+  -webkit-font-smoothing: antialiased;
+  font-size: 36px;
+  font-weight: bold;
+}
+
+.tab-header {
+  display: flex;
+  flex-direction: row;
+
+  li {
+    color: $gray;
+    padding: 8px 16px;
+  }
+
+  li:hover {
+    text-decoration: underline;
+    color: $black;
+    font-weight: bold;
+  }
+
+  .active {
+    border-radius: 999px;
+    color: $black;
+    background-color: $lightest-gray;
+    font-weight: bold;
+  }
+}

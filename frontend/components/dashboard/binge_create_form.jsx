@@ -85,9 +85,11 @@ class BingesCreateForm extends React.Component {
         </form>
 
         <div className="u-error-list">
-          <ErrorsList errors={errors}/>
+          <ErrorsList errors={this.props.errors}/>
         </div>
       </div>
     );
   }
 }
+
+export default withRouter(BingesCreateForm);

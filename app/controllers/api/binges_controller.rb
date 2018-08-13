@@ -13,6 +13,7 @@ class Api::BingesController < ApplicationController
   def create
     @binge = Binge.new(binge_params)
     @binge.user_id = current_user.id
+    @binge.photo.attach(params[:binge][:photo])
 
     if @binge.save
       render "api/binges/show"
@@ -49,6 +50,6 @@ class Api::BingesController < ApplicationController
   private
 
   def binge_params
-    params.require(:binge).permit(:title, :description, :url, :link_url, :author_id)
+    params.require(:binge).permit(:title, :description, :url, :link_url, :author_id, :photo)
   end
 end
