@@ -20,21 +20,21 @@ export const removeBoard = board => ({
   board
 });
 
-export const requestAllBoards = userId => dispatch => (
+export const requestBoards = userId => dispatch => (
   BoardAPIUtil.fetchBoards(userId).then(boards => (
     dispatch(receiveBoards(boards))
   ), err => (
     dispatch(receiveErrors(err.responseJSON))
   ))
-};
+);
 
-export const requestSingleBoard = id => dispatch => (
+export const requestBoard = id => dispatch => (
   BoardAPIUtil.fetchBoard(id).then(board => (
     dispatch(receiveBoard(board))
   ), err => (
     dispatch(receiveErrors(err.responseJSON))
   ))
-};
+);
 
 export const createBoard = board => dispatch => (
   BoardAPIUtil.createBoard(board).then(board => (
@@ -42,7 +42,7 @@ export const createBoard = board => dispatch => (
   ), err => (
     dispatch(receiveErrors(err.responseJSON))
   ))
-};
+);
 
 export const updateBoard = board => dispatch => (
   BoardAPIUtil.updateBoard(board).then(board => (
@@ -50,7 +50,7 @@ export const updateBoard = board => dispatch => (
   ), err => (
     dispatch(receiveErrors(err.responseJSON))
   ))
-};
+);
 
 export const deleteBoard = board => dispatch => (
   BoardAPIUtil.deleteBoard(board).then(board => (
@@ -58,4 +58,4 @@ export const deleteBoard = board => dispatch => (
   ), err => (
     dispatch(receiveErrors(err.responseJSON))
   ))
-};
+);

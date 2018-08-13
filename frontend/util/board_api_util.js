@@ -17,7 +17,7 @@ export const createBoard = board => {
   return $.ajax({
     method: 'POST',
     url: 'api/boards',
-    data: board
+    data: { board } 
   });
 };
 
@@ -25,7 +25,7 @@ export const updateBoard = (board, id) => {
   return $.ajax({
     method: 'PUT',
     url: `api/boards/${id}`,
-    data: board
+    data: { board }
   });
 };
 

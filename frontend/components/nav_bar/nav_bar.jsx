@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
 
-class navBar extends React.Component {
+class NavBar extends React.Component {
   constructor(props) {
     super(props);
     this.state ={
@@ -24,7 +24,7 @@ class navBar extends React.Component {
     const { currentUser, logout } = this.props;
 
     return (
-      <navBar>
+      <header>
         <nav className="nav-bar">
           <div className="n-logo">
             <Link to="/binge">
@@ -33,20 +33,39 @@ class navBar extends React.Component {
           </div>
 
           <div className="search-bar">
+            <div className="search">
+              <img src={window.images.mg}/>
+            </div>
             <input type="text" onChange={this.handleInput} placeholder="Search" />
           </div>
 
           <div className="right-nav">
-            <Link to="/">HOME</Link>
-            <Link to="/">FOLLOWING</Link>
-            <Link to="/">EXPLORE</Link>
+
+            <div className="home">
+              <Link to="/">Home</Link>
+            </div>
+
+            <div className="following">
+              <Link to="/">Following</Link>
+            </div>
+
+            <div className="explore">
+              <Link to="/">Explore</Link>
+            </div>
+
 
             <Link to={`/users/${currentUser.id}`}>
-              <div>{currentUser.username[0]}</div>
-              <div>{currentUser.username}</div>
+              <div className="name-holder">
+                <div className="name-tag">
+                  {currentUser.username[0]}
+                </div>
+                <div className="name">
+                  {currentUser.username}
+                </div>
+              </div>
             </Link>
 
-            <div>...
+            <div tabindex="0" className="nav-menu">...
               <ul className="dropdown">
                 <li>Edit settings</li>
                 <li>Get help</li>
@@ -60,9 +79,9 @@ class navBar extends React.Component {
 
 
         </nav>
-      </navBar>
+      </header>
     );
   }
 }
 
-export default withRouter(navBar);
+export default withRouter(NavBar);
