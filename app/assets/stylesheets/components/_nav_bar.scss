@@ -34,11 +34,13 @@
   input {
     font-size: 16px;
     font-weight: 600;
+    width: 100%;
+    outline: none;
     border: none;
     background-color: $lightest-gray;
     align-items: center;
     vertical-align: middle;
-    line-height: 40px;
+    line-height: 38px;
   }
 }
 

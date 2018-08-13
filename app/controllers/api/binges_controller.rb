@@ -7,6 +7,7 @@ class Api::BingesController < ApplicationController
 
   def show
     @binge = Binge.find_by_id(params[id])
+    render "api/binges/show"
   end
 
   def create
