@@ -50,64 +50,94 @@ user33 = User.create!(username: 'Moon Jae-in', description: "FUD", password: 'pa
 
 Binge.delete_all
 
-binge1 = Binge.create!(
+binge1 = Binge.new(
   url: 'unsplash.com',
   link_url: 'https://unsplash.com/photos/Fq54FqucgCE',
   author_id: rand(1...34))
+file = EzDownload.open('https://s3-us-west-1.amazonaws.com/bingeterest-dev/Binges/binge1.jpg')
+binge1.photo.attach(io: file, filename: 'binge1.jpg')
+binge1.save!
 
-binge2 = Binge.create!(
+binge2 = Binge.new(
   description: 'i scream for ice cream',
   url: 'unsplash.com',
   link_url: 'https://unsplash.com/photos/TLD6iCOlyb0',
   author_id: rand(1...34))
+file = EzDownload.open('https://s3-us-west-1.amazonaws.com/bingeterest-dev/Binges/binge2.jpg')
+binge2.photo.attach(io: file, filename: 'binge2.jpg')
+binge2.save!
 
-binge3 = Binge.create!(
+binge3 = Binge.new(
   description: 'bingey',
   url: 'unsplash.com',
   link_url: 'https://unsplash.com/photos/uL73uBFjz7o',
   author_id: rand(1...34))
+file = EzDownload.open('https://s3-us-west-1.amazonaws.com/bingeterest-dev/Binges/binge3.jpg')
+binge3.photo.attach(io: file, filename: 'binge3.jpg')
+binge3.save!
 
-binge4 = Binge.create!(
+binge4 = Binge.new(
   description: 'weekend vibes',
   url: 'unsplash.com',
   link_url: 'https://unsplash.com/photos/t7wg7BJU2-s',
   author_id: rand(1...34))
+file = EzDownload.open('https://s3-us-west-1.amazonaws.com/bingeterest-dev/Binges/binge4.jpg')
+binge4.photo.attach(io: file, filename: 'binge4.jpg')
+binge4.save!
 
-binge5 = Binge.create!(
+binge5 = Binge.new(
   description: 'fud',
   url: 'unsplash.com',
-  link_url: '',
+  link_url: 'https://unsplash.com/photos/cff_w0ADWIA',
   author_id: rand(1...34))
+file = EzDownload.open('https://s3-us-west-1.amazonaws.com/bingeterest-dev/Binges/binge5.jpg')
+binge5.photo.attach(io: file, filename: 'binge5.jpg')
+binge5.save!
 
-binge6 = Binge.create!(
+binge6 = Binge.new(
   description: "fries that\'ll cross your eyes",
-  url: 'tubmlr.com',
-  link_url: 'http://foodpoorn.tumblr.com/post/171888122221',
+  url: 'parhlo.com',
+  link_url: 'https://www.parhlo.com/wp-content/uploads/2017/06/maxresdefault-2.jpg',
   author_id: rand(1...34))
+file = EzDownload.open('https://s3-us-west-1.amazonaws.com/bingeterest-dev/Binges/binge6.jpg')
+binge6.photo.attach(io: file, filename: 'binge6.jpg')
+binge6.save!
 
-binge7 = Binge.create!(
+binge7 = Binge.new(
   description: 'healthy binge',
   url: 'unsplash.com',
   link_url: 'https://unsplash.com/photos/MXovqM130UI',
   author_id: rand(1...34))
+file = EzDownload.open('https://s3-us-west-1.amazonaws.com/bingeterest-dev/Binges/binge7.jpg')
+binge7.photo.attach(io: file, filename: 'binge7.jpg')
+binge7.save!
 
-binge8 = Binge.create!(
+binge8 = Binge.new(
   description: 'chocolate drizzleeee',
   url: 'unsplash.com',
   link_url: 'https://unsplash.com/photos/X2gM-SIufpU',
   author_id: rand(1...34))
+file = EzDownload.open('https://s3-us-west-1.amazonaws.com/bingeterest-dev/Binges/binge8.jpg')
+binge8.photo.attach(io: file, filename: 'binge8.jpg')
+binge8.save!
 
-binge9 = Binge.create!(
+binge9 = Binge.new(
   description: 'after work binge',
   url: 'unsplash.com',
   link_url: 'https://unsplash.com/photos/dmkmrNptMpw',
   author_id: rand(1...34))
+file = EzDownload.open('https://s3-us-west-1.amazonaws.com/bingeterest-dev/Binges/binge9.jpg')
+binge9.photo.attach(io: file, filename: 'binge9.jpg')
+binge9.save!
 
-binge10 = Binge.create!(
+binge10 = Binge.new(
   description: 'donut you want one?',
   url: 'unsplash.com',
   link_url: 'https://unsplash.com/photos/j5DeBxBUwHw',
   author_id: rand(1...34))
+file = EzDownload.open('https://s3-us-west-1.amazonaws.com/bingeterest-dev/Binges/binge10.jpg')
+binge10.photo.attach(io: file, filename: 'binge10.jpg')
+binge10.save!
 
 Board.delete_all
 

@@ -31,6 +31,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'jquery-rails'
 
 gem "aws-sdk-s3"
+gem 'ez_download', git: 'https://github.com/OscarAlvarez8830/EZDownload.git'
 
 group :production do
   gem 'rails_12factor'
