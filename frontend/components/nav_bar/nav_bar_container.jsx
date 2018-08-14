@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-
+import { fetchUsers } from '../../actions/user_actions';
 import { logout } from '../../actions/session_actions';
 import NavBar from './nav_bar';
 
