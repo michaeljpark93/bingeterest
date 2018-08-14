@@ -1,3 +1,3 @@
-json.extract! binge, :id, :title, :description, :url, :link_url, :author_id
+json.extract! binge, :id, :description, :url, :link_url, :author_id
 
 json.author binge.author, :id, :username

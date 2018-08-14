@@ -6,7 +6,6 @@ class BingesCreateForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      title: '',
       description: '',
       link_url: '',
       photoFile: null
@@ -35,7 +34,7 @@ class BingesCreateForm extends React.Component {
     e.preventDefault();
 
     const formData = new FormData();
-    const baseURL = toBaseURL(this.state.link_url)
+    const baseURL = this.toBaseURL(this.state.link_url)
     formData.append('binge[link_url]', this.state.link_url);
     formData.append('binge[url]', baseURL);
     formData.append('binge[description]', this.state.description);
@@ -45,10 +44,13 @@ class BingesCreateForm extends React.Component {
     $.ajax({
       method: 'POST',
       url: '/api/binges',
-      data: { formData },
+      data: formData,
       contentType: false,
       processData: false
-    });
+    }).then(
+      (response) => console.log(response.message),
+      (response) => console.log(response.responseJSON)
+    );
 
     this.props.cancel();
   }
@@ -58,7 +60,6 @@ class BingesCreateForm extends React.Component {
   }
 
   render() {
-    console.log(this.state)
     return (
       <div className="create-binge">
         <div className="binge-title">
