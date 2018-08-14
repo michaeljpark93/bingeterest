@@ -2,10 +2,9 @@ import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
 
 const BingeIndexItem = (props) => {
-  //temporary show page
   return (
-    <li>
-      <img src={window.images.one} />
+    <li className="binge">
+      <img src={this.props.photoUrl} />
     </li>
   );
 };
