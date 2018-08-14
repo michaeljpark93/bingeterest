@@ -26,54 +26,56 @@ class NavBar extends React.Component {
     return (
       <header>
         <nav className="nav-bar">
-          <div className="n-logo">
-            <Link to="/binge">
-              <img className="n-logo" src={window.images.logo} />
-            </Link>
-          </div>
-
-          <div className="search-bar">
-            <div className="search">
-              <img src={window.images.mg}/>
-            </div>
-            <input type="text" onChange={this.handleInput} placeholder="Search" />
-          </div>
-
-          <div className="right-nav">
-
-            <div className="home">
-              <Link to="/">Home</Link>
+          <div className="nav-bar-box">
+            <div className="n-logo">
+              <Link to="/discover">
+                <img className="n-logo" src={window.images.logo} />
+              </Link>
             </div>
 
-            <div className="following">
-              <Link to="/">Following</Link>
-            </div>
-
-            <div className="explore">
-              <Link to="/">Explore</Link>
-            </div>
-
-
-            <Link to={`/users/${currentUser.id}`}>
-              <div className="name-holder">
-                <div className="name-tag">
-                  {currentUser.username[0]}
-                </div>
-                <div className="name">
-                  {currentUser.username}
-                </div>
+            <div className="search-bar">
+              <div className="search">
+                <img src={window.images.mg}/>
               </div>
-            </Link>
+              <input type="text" onChange={this.handleInput} placeholder="Search" />
+            </div>
 
-            <div tabIndex="0" className="nav-menu">...
-              <ul className="dropdown">
-                <li>Edit settings</li>
-                <li>Get help</li>
-                <li>See terms and privacy</li>
-                <li>
-                  <input type="submit" onClick={this.handleLogout} value="Log out" />
-                </li>
-              </ul>
+            <div className="right-nav">
+
+              <div className="home">
+                <Link to="/discover">Home</Link>
+              </div>
+
+              <div className="following">
+                <Link to="/">Following</Link>
+              </div>
+
+              <div className="explore">
+                <Link to="/">Explore</Link>
+              </div>
+
+
+              <Link to={`/users/${currentUser.id}`}>
+                <div className="name-holder">
+                  <div className="name-tag">
+                    {currentUser.username[0]}
+                  </div>
+                  <div className="name">
+                    {currentUser.username}
+                  </div>
+                </div>
+              </Link>
+
+              <div tabIndex="0" className="nav-menu">...
+                <ul className="dropdown">
+                  <li>Edit settings</li>
+                  <li>Get help</li>
+                  <li>See terms and privacy</li>
+                  <li>
+                    <input type="submit" onClick={this.handleLogout} value="Log out" />
+                  </li>
+                </ul>
+              </div>
             </div>
           </div>
 

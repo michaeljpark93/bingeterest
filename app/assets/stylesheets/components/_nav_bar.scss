@@ -1,15 +1,21 @@
 .nav-bar {
+  height: 56px;
+  width: 100%;
+  background-color: $white;
+  border-bottom: 1px solid $light-gray;
+}
+
+.nav-bar-box {
   display: flex;
   position: sticky;
   justify-content: space-between;
   flex-flow: row nowrap;
+  box-sizing: border-box;
   padding: 4px 16px;
   height: 56px;
   width: 100%;
-  margin: 0 auto;
   align-items: center;
-  background-color: $white;
-  border-bottom: 1px solid $light-gray;
+  margin: 0 auto;
 }
 
 .search-bar {
