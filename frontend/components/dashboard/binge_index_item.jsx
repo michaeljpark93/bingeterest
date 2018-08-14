@@ -1,12 +1,11 @@
 import React from 'react';
-import { Link, withRouter } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
-const BingeIndexItem = (props) => {
-  return (
-    <li className="binge">
-      <img src={this.props.photoUrl} />
-    </li>
-  );
-};
+const BingeIndexItem = (props) => (
+  <li className="binge">
+    <img src={props.binge.photoUrl} />
+    <button className="binge-link">{props.binge.url}</button>
+  </li>
+);
 
-export default withRouter(BingeIndexItem);
+export default BingeIndexItem;
