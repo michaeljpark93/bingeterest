@@ -52,6 +52,9 @@ class UserShow extends React.Component {
 
   render() {
     const pane = this.props.panes[this.state.selectedPane];
+    const selectedPane = pane.title.slice(0, -1);
+
+    let pf_picture = "https://s.pinimg.com/images/user/default_280.png"
 
     return (
       <div>
@@ -59,25 +62,64 @@ class UserShow extends React.Component {
         <NavBarContainer />
 
         <div className="profile">
-          <div>
-            <div className="username">
-              <h2>{this.props.currentUser.username}</h2>
+          <div className="user-info">
+            <div className="user-info-box">
+              <div className="username">
+                <h2>{this.props.currentUser.username}</h2>
+
+                <div className="follow-box">
+                  <h2>followers</h2>
+                  <h2>followers</h2>
+                  <h2>following</h2>
+                </div>
+              </div>
+
+              <div className="pf-picture">
+                <img src={pf_picture}></img>
+              </div>
             </div>
           </div>
 
           <div className="tabs">
-            <Headers
-              selectedPane={this.state.selectedPane}
-              onTabChosen={this.selectTab}
-              panes={this.props.panes} />
-
-            <div className="tab-content">
-              {pane.content}
+            <div className="tabs-box">
+              <Headers
+                selectedPane={this.state.selectedPane}
+                onTabChosen={this.selectTab}
+                panes={this.props.panes} />
             </div>
           </div>
 
-          <Modal />
-          <button className="modal-toggle" onClick={this.handleModal(pane)}>Create</button>
+          <div className="user-profile-content">
+            <div className="public-content">
+              {pane.content}
+              <Modal />
+
+              <div className="modal-toggle" onClick={this.handleModal(pane)}>
+                <div className="modal-box">
+                  <h3>+</h3>
+                </div>
+                <h3 className="modal-title">Create {selectedPane}</h3>
+              </div>
+            </div>
+
+            <div className="private-content">
+              <div className="secret-content">
+                <h3>Secret {selectedPane}</h3>
+                <h3>Only you and people you invite can see these boards.</h3>
+              </div>
+
+              {pane.content}
+              <Modal />
+
+              <div className="modal-toggle" onClick={this.handleModal(pane)}>
+                <div className="modal-box">
+                  <h3>+</h3>
+                </div>
+                <h3 className="modal-title">Create secret {selectedPane}</h3>
+              </div>
+            </div>
+          </div>
+
         </div>
 
       </div>
