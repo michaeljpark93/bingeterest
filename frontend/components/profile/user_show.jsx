@@ -36,10 +36,18 @@ class UserShow extends React.Component {
       selectedPane: 0
     };
     this.selectTab = this.selectTab.bind(this);
+    this.handleModal = this.handleModal.bind(this);
   }
 
   selectTab(num) {
     this.setState({selectedPane: num})
+  }
+
+  handleModal(pane) {
+    return e => {
+      e.preventDefault();
+      this.props.otherForm([pane.title]);
+    }
   }
 
   render() {
@@ -50,22 +58,26 @@ class UserShow extends React.Component {
 
         <NavBarContainer />
 
-        <div>
-          <div className="username">
-            <h2>{this.props.currentUser.username}</h2>
+        <div className="profile">
+          <div>
+            <div className="username">
+              <h2>{this.props.currentUser.username}</h2>
+            </div>
           </div>
-        </div>
 
-        <div className="tabs">
-          <Headers
-            selectedPane={this.state.selectedPane}
-            onTabChosen={this.selectTab}
-            panes={this.props.panes} />
+          <div className="tabs">
+            <Headers
+              selectedPane={this.state.selectedPane}
+              onTabChosen={this.selectTab}
+              panes={this.props.panes} />
 
-          <div className="tab-content">
-            {pane.content}
-            <Modal />
+            <div className="tab-content">
+              {pane.content}
+            </div>
           </div>
+
+          <Modal />
+          <button className="modal-toggle" onClick={this.handleModal(pane)}>Create</button>
         </div>
 
       </div>

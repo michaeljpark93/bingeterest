@@ -28,29 +28,45 @@ class BoardCreateForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     this.setState({ user_id: this.props.currentUser.id })
-    this.props.createBoard(this.state);
+    this.props.processForm(this.state);
   }
 
   render() {
     return (
-      <div>
+      <div className="create-board">
         <form onSubmit={this.handleSubmit}>
+          <div className="board-title">
+            <h2>Create board</h2>
+            <div onClick={this.props.cancel}>X</div>
+          </div>
 
-          <label>Name
+          <div className="board-name">
+            <h2>Name</h2>
+
             <input
               type="text"
               value={this.state.link_url}
               placeholder="Like &quot;Places to Go&quot; or &quot;Recipes to Make&quot;"
               onChange={this.handleInput('name')} />
-          </label>
+          </div>
 
-          <label className="switch">Secret
-            <h3>Learn more</h3>
-            <input type="checkbox" />
-            <span className="slider"></span>
-          </label>
+          <div className="board-secret">
+            <div className="bs-text">
+              <h3>Secret</h3>
+              <h3>Learn more</h3>
+            </div>
+            
+            <label className="switch">
+              <input type="checkbox" />
+              <span className="slider"></span>
+            </label>
+          </div>
 
-          <input className="b-submit" type="submit" value="Create"/>
+
+          <div className="board-buttons">
+            <button onClick={this.props.cancel}>Cancel</button>
+            <input className="b-submit" type="submit" value="Create"/>
+          </div>
         </form>
 
         <div className="u-error-list">

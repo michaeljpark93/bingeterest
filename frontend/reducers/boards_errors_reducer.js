@@ -1,3 +1,4 @@
+import merge from 'lodash/merge';
 import { RECEIVE_ERRORS, REMOVE_ERRORS } from '../actions/error_actions';
 
 const BoardsErrorsReducer = (state = [], action) => {
@@ -5,7 +6,7 @@ const BoardsErrorsReducer = (state = [], action) => {
 
   switch (action.type) {
     case RECEIVE_ERRORS:
-      return action.errors;
+      return merge([], action.errors);
     case REMOVE_ERRORS:
       return [];
     default:

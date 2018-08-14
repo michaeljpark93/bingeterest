@@ -9,12 +9,12 @@ function Modal({modal, closeModal}) {
     return null;
   }
   let component;
-  switch (modal) {
-    case 'Board':
-      component = <BoardFormContainer />;
+  switch (modal[0]) {
+    case 'Boards':
+      component = <BoardFormContainer cancel={closeModal}/>;
       break;
-    case 'Binge':
-      component = <BingeFormContainer />;
+    case 'Binges':
+      component = <BingeFormContainer cancel={closeModal}/>;
       break;
     default:
       return null;

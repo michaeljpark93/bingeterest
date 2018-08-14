@@ -6,17 +6,11 @@ import BingeCreateForm from './binge_create_form';
 
 const mapStateToProps = ({ errors, session, entities: { users } }) => ({
   currentUser: users[session.id],
-  errors: errors.binges,
+  errors: errors.binges
 });
 
 const mapDispatchToProps = dispatch => ({
   processForm: binge => dispatch(createBinge(binge)),
-  otherForm: (
-    <button onClick={() => dispatch(openModal('Binge'))}>
-      Create Pin
-    </button>
-  ),
-  closeModal: () => dispatch(closeModal()),
   removeErrors: () => dispatch(removeErrors())
 });
 

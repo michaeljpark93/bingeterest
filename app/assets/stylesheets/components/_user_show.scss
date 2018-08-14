@@ -1,3 +1,9 @@
+.profile {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
 .username {
   color: $black;
   line-height: 1.2;
@@ -28,4 +34,11 @@
     background-color: $lightest-gray;
     font-weight: bold;
   }
+}
+
+.modal-toggle {
+  background-color: $red;
+  width: 200px;
+  height: 100px;
+  margin: 0 auto;
 }

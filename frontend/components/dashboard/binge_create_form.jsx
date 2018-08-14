@@ -58,6 +58,8 @@ class BingesCreateForm extends React.Component {
   render() {
     return (
       <div>
+        <h2>Create Binge</h2>
+        <div onClick={this.props.cancel}>X</div>
         <form onSubmit={this.handleSubmit}>
           <input
             style={{display: 'none'}}
@@ -70,7 +72,7 @@ class BingesCreateForm extends React.Component {
             <input
               type="text"
               value={this.state.link_url}
-              placeholder="Add the URL this Pin links to"
+              placeholder="Add the URL this Binge links to"
               onChange={this.handleInput('link_url')} />
           </label>
 
