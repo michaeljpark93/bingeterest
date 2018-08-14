@@ -10,7 +10,6 @@ const mapStateToProps = ({ entities, session }) => ({
   panes: [
     {title: 'Boards'},
     {title: 'Binges'},
-    {title: 'Tries'},
     {title: 'Topics'}
   ],
 });

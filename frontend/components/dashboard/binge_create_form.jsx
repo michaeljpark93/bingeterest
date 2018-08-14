@@ -14,7 +14,7 @@ class BingesCreateForm extends React.Component {
     this.handleInput = this.handleInput.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.toBaseURL = this.toBaseURL.bind(this);
-    this.fileSelectedHandler = this.fileSelectedHandler.bind(this);
+    this.handleFile = this.handleFile.bind(this);
   }
 
   componentWillUnmount() {
@@ -53,11 +53,12 @@ class BingesCreateForm extends React.Component {
     this.props.cancel();
   }
 
-  fileSelectedHandler(e) {
-    this.setState({ photoFile: e.currentTarget.files[0] })
+  handleFile(e) {
+    this.setState({ photoFile: e.currentTarget.files[0] });
   }
 
   render() {
+    console.log(this.state)
     return (
       <div className="create-binge">
         <div className="binge-title">
@@ -67,12 +68,12 @@ class BingesCreateForm extends React.Component {
 
         <form className="binge-form" onSubmit={this.handleSubmit}>
           <div className="binge-form-box">
-            <input
-              style={{display: 'none'}}
-              type="file"
-              onChange={this.fileSelectedHandler}
-              ref={fileInput => this.fileInput = fileInput} />
-            <button className="binge-img" onClick={() => this.fileInput.click()}>Click to upload</button>
+            <div className="binge-img">
+              <input
+                type="file"
+                onChange={this.handleFile} />
+              <h3>Click to upload</h3>
+            </div>
 
             <div className="binge-input">
               <div className="binge-website">

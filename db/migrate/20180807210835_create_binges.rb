@@ -1,7 +1,6 @@
 class CreateBinges < ActiveRecord::Migration[5.1]
   def change
     create_table :binges do |t|
-      t.string :title
       t.text :description
       t.string :url, null: false
       t.string :link_url, null: false
