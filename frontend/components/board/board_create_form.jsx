@@ -29,6 +29,7 @@ class BoardCreateForm extends React.Component {
     e.preventDefault();
     this.setState({ user_id: this.props.currentUser.id })
     this.props.processForm(this.state);
+    this.props.cancel();
   }
 
   render() {
@@ -55,7 +56,7 @@ class BoardCreateForm extends React.Component {
               <h3>Secret</h3>
               <h3>Learn more</h3>
             </div>
-            
+
             <label className="switch">
               <input type="checkbox" />
               <span className="slider"></span>

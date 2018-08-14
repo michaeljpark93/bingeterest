@@ -49,6 +49,8 @@ class BingesCreateForm extends React.Component {
       contentType: false,
       processData: false
     });
+
+    this.props.cancel();
   }
 
   fileSelectedHandler(e) {
@@ -57,33 +59,44 @@ class BingesCreateForm extends React.Component {
 
   render() {
     return (
-      <div>
-        <h2>Create Binge</h2>
-        <div onClick={this.props.cancel}>X</div>
-        <form onSubmit={this.handleSubmit}>
-          <input
-            style={{display: 'none'}}
-            type="file"
-            onChange={this.fileSelectedHandler}
-            ref={fileInput => this.fileInput = fileInput} />
-          <button onClick={() => this.fileInput.click()}>Click to upload</button>
+      <div className="create-binge">
+        <div className="binge-title">
+          <h2>Create Binge</h2>
+          <div onClick={this.props.cancel}>X</div>
+        </div>
 
-          <label>Website
+        <form className="binge-form" onSubmit={this.handleSubmit}>
+          <div className="binge-form-box">
             <input
-              type="text"
-              value={this.state.link_url}
-              placeholder="Add the URL this Binge links to"
-              onChange={this.handleInput('link_url')} />
-          </label>
+              style={{display: 'none'}}
+              type="file"
+              onChange={this.fileSelectedHandler}
+              ref={fileInput => this.fileInput = fileInput} />
+            <button className="binge-img" onClick={() => this.fileInput.click()}>Click to upload</button>
 
-          <label>Description
-            <textarea
-              value={this.state.description}
-              placeholder="Say more about this binge"
-              onChange={this.handleInput('description')} />
-          </label>
+            <div className="binge-input">
+              <div className="binge-website">
+                <h2>Website</h2>
+                <input
+                  type="text"
+                  value={this.state.link_url}
+                  placeholder="Add the URL this Binge links to"
+                  onChange={this.handleInput('link_url')} />
+              </div>
 
-          <input className="b-submit" type="submit" value="Done"/>
+              <div className="binge-description">
+                <h2>Description</h2>
+                <textarea
+                  value={this.state.description}
+                  placeholder="Say more about this binge"
+                  onChange={this.handleInput('description')} />
+              </div>
+            </div>
+          </div>
+
+          <div className="binge-buttons">
+            <input className="binge-submit" type="submit" value="Done"/>
+          </div>
         </form>
 
         <div className="u-error-list">

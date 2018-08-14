@@ -1,0 +1,157 @@
+.create-binge {
+  background-color: $white;
+  width: 804px;
+  border-radius: 8px;
+
+  .binge-title {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid $lightest-gray;
+
+    h2 {
+      color: $black;
+      font-size: 24px;
+      font-weight: bold;
+      letter-spacing: -0.4px;
+      line-height: 28.8px;
+      width: 704px;
+      text-align: center;
+      padding: 20px 50px;
+    }
+
+    div {
+      color: $gray;
+      font-size: 24px;
+      font-weight: bold;
+      text-align: center;
+      vertical-align: middle;
+      position: absolute;
+      right: 0px;
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+      padding: 8px;
+      margin: 10px 10px;
+    }
+  }
+
+  .binge-form {
+
+    .binge-img {
+      border-radius: 8px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 2px dashed $gray;
+      width: 232px;
+      height: 367px;
+      margin-left: 75px;
+      margin-right: 24px;
+      color: $black;
+      font-size: 16px;
+      font-weight: bold;
+      letter-spacing: -0.4px;
+      line-height: 19.2px;
+    }
+
+    .binge-input{
+      width: 360px;
+      height: 371px;
+      margin-right: 24px;
+
+      .binge-website {
+        width: 360px;
+        height: 63px;
+        margin-bottom: 28px;
+
+        h2 {
+          color: $black;
+          font-size: 16px;
+          font-weight: 400;
+          letter-spacing: -0.4px;
+          text-align: left;
+          line-height: 19.2px;
+        }
+
+        input {
+          width: 360px;
+          height: 40px;
+          margin-top: 4px;
+          border: 1px solid $gray;
+          box-sizing: border-box;
+          border-radius: 4px;
+          font-size: 16px;
+          font-weight: 400;
+          color: $black;
+          padding: 8px 14px;
+          letter-spacing: -0.4px;
+          text-align: left;
+        }
+      }
+
+      .binge-description {
+        width: 360px;
+        height: 189px;
+        margin-right: 75px;
+
+        h2 {
+          color: $black;
+          font-size: 16px;
+          font-weight: 400;
+          letter-spacing: -0.4px;
+          text-align: left;
+          line-height: 19.2px;
+        }
+
+        textarea {
+          width: 360px;
+          height: 166px;
+          margin-top: 4px;
+          border: 1px solid $gray;
+          box-sizing: border-box;
+          border-radius: 4px;
+          font-size: 16px;
+          font-weight: 400;
+          color: $black;
+          padding: 8px 14px;
+          letter-spacing: -0.4px;
+          text-align: left;
+        }
+      }
+    }
+
+    .binge-buttons {
+      display: flex;
+      justify-content: flex-end;
+      align-content: center;
+      width: 772px;
+      height: 40px;
+      padding: 16px 16px;
+
+      .binge-submit {
+        border: none;
+        background-color: $lightest-gray;
+        font-size: 16px;
+        text-align: center;
+        font-weight: bold;
+        width: 64.7px;
+        height: 40px;
+        padding: 10px 14px;
+        border-radius: 4px;
+      }
+    }
+  }
+}
+
+.binge-form-box {
+  width: 804px;
+  height: 459px;
+  border-bottom: 1px solid $lightest-gray;
+  flex: 1 1 auto;
+  min-height: 0;
+  min-width: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column wrap;
+}
