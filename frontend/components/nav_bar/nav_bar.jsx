@@ -68,12 +68,9 @@ class NavBar extends React.Component {
 
               <div tabIndex="0" className="nav-menu">...
                 <ul className="dropdown">
-                  <li>Edit settings</li>
-                  <li>Get help</li>
-                  <li>See terms and privacy</li>
-                  <li>
-                    <input type="submit" onClick={this.handleLogout} value="Log out" />
-                  </li>
+                  <li>Linkedin</li>
+                  <li>GitHub</li>
+                  <li onClick={this.handleLogout}>Log out</li>
                 </ul>
               </div>
             </div>

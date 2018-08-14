@@ -1,5 +1,6 @@
 .nav-bar {
   height: 56px;
+  position: fixed;
   width: 100%;
   background-color: $white;
   border-bottom: 1px solid $light-gray;
@@ -7,7 +8,6 @@
 
 .nav-bar-box {
   display: flex;
-  position: sticky;
   justify-content: space-between;
   flex-flow: row nowrap;
   box-sizing: border-box;
@@ -21,19 +21,21 @@
 .search-bar {
   display: flex;
   justify-content: flex-start;
+  box-sizing: content-box;
   align-items: center;
   flex-direction: row;
   border-radius: 4px;
   width: 630px;
   height: 40px;
   background-color: $lightest-gray;
-  padding: 0 16px;
+  padding: 0 40px 0 16px;
 
   .search {
     margin: 0 5px;
     width: 20px;
     height: 20px;
     color: $light-gray;
+    background-color: transparent;
   }
 
   input {
@@ -42,10 +44,11 @@
     width: 100%;
     outline: none;
     border: none;
-    background-color: $lightest-gray;
+    background-color: transparent;
     align-items: center;
     vertical-align: middle;
     line-height: 38px;
+    margin: 0 5px;
   }
 }
 
@@ -67,7 +70,10 @@
 .right-nav {
   display: flex;
   flex-direction: row;
+  align-items: center;
+  box-sizing: content-box;
   justify-content: flex-end;
+  margin-right: 10px;
 
   .home {
     border-radius: 999px;
@@ -173,8 +179,8 @@
     visibility: hidden;
     transition: visibility 0.5s;
     right: 0px;
-    bottom: -190px;
-    width: 320px;
+    top: 47px;
+    width: 300px;
     background-color: $white;
     border-radius: 8px;
   }
