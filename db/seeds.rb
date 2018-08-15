@@ -144,8 +144,17 @@ binge10.save!
 Board.delete_all
 puts 'creating boards'
 
-board1 = Board.create!(
+demoBoard = Board.create!(
   name: 'Desserts',
+  description: "Sweet binge treats",
+  category: "Dessert",
+  user_id: 1
+)
+
+board1 = Board.create!(
+  name: 'Drinks',
+  description: "Binge drinking",
+  category: "Drink",
   user_id: rand(1...34)
 )
 
@@ -156,11 +165,15 @@ board2 = Board.create!(
 
 board3 = Board.create!(
   name: 'Savory',
+  description: 'Savory',
+  category: 'Savory',
   user_id: rand(1...34)
 )
 
 board4 = Board.create!(
   name: 'Misc',
+  description: 'Misc',
+  category: 'Misc',
   user_id: rand(1...34)
 )
 

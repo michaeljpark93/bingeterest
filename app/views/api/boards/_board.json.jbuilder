@@ -1,5 +1,5 @@
 json.set! :owner_username, board.user.username
-json.extract! board, :id, :name, :user_id, :secret
+json.extract! board, :id, :name, :description, :category, :user_id, :secret
 
 json.binges do
   board.binges.each do |pin|

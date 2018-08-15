@@ -57,6 +57,8 @@ ActiveRecord::Schema.define(version: 2018_08_12_214008) do
 
   create_table "boards", force: :cascade do |t|
     t.string "name", null: false
+    t.text "description"
+    t.text "category"
     t.boolean "secret", default: false, null: false
     t.integer "user_id", null: false
     t.datetime "created_at", null: false
