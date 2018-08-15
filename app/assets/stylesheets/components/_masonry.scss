@@ -17,24 +17,6 @@
   line-height: 0;
 }
 
-.binge:hover {
-  background-color: $transparent;
-  border-radius: 8px;
-}
-
-.binge {
-  background-color: none;
-  display: inline-block;
-  width: 100%;
-  padding: 0.5em 0.5em 1.5em 0.5em;
-  height: auto;
-
-  img {
-    border-radius: 8px;
-    border: none;
-  }
-}
-
 @media only screen and (min-width: 2560px) {
   .masonry {
     column-count: 9;

@@ -40,7 +40,7 @@ class BingesCreateForm extends React.Component {
     formData.append('binge[description]', this.state.description);
     formData.append('binge[author_id]', this.props.currentUser.id);
     formData.append('binge[photo]', this.state.photoFile);
-
+    console.log(formData);
     $.ajax({
       method: 'POST',
       url: '/api/binges',

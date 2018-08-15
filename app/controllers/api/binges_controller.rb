@@ -13,7 +13,7 @@ class Api::BingesController < ApplicationController
   def create
     @binge = Binge.new(binge_params)
     @binge.photo.attach(params[:binge][:photo])
-    debugger
+
     if @binge.save
       render "api/binges/show"
     else

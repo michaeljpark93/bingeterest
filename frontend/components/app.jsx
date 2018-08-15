@@ -13,11 +13,11 @@ import UserShowContainer from './profile/user_show_container';
 const App = () => (
   <div>
     <Switch>
-      <AuthRoute exact path="/" component={SplashFormContainer} />
       <AuthRoute exact path="/login" component={LoginFormContainer} />
       <AuthRoute exact path="/signup" component={SignupFormContainer} />
       <ProtectedRoute path="/users/:userId" component={UserShowContainer} />
       <ProtectedRoute exact path="/discover" component={BingeIndexContainer} />
+      <AuthRoute path="/" component={SplashFormContainer} />
     </Switch>
   </div>
 );
