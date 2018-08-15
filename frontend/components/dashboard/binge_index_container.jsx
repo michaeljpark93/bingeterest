@@ -1,7 +1,6 @@
 import { connect } from 'react-redux';
 import BingeIndex from './binge_index';
 import { fetchBinges } from '../../actions/binge_actions';
-import { logout } from '../../actions/session_actions';
 
 const mapStateToProps = (state) => {
   return {

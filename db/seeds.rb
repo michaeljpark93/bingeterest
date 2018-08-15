@@ -55,7 +55,7 @@ puts 'creating binges'
 binge1 = Binge.new(
   url: 'unsplash.com',
   link_url: 'https://unsplash.com/photos/Fq54FqucgCE',
-  author_id: rand(1...34))
+  author_id: 1)
 file = EzDownload.open('https://s3-us-west-1.amazonaws.com/bingeterest-dev/binges/binge1.jpg')
 binge1.photo.attach(io: file, filename: 'binge1.jpg')
 binge1.save!
@@ -146,54 +146,45 @@ puts 'creating boards'
 
 board1 = Board.create!(
   name: 'Desserts',
-  description: 'Sweet binge treats',
   user_id: rand(1...34)
 )
 
 board2 = Board.create!(
   name: 'Drinks',
-  description: 'Binge drinking',
   user_id: rand(1...34)
 )
 
 board3 = Board.create!(
   name: 'Savory',
-  description: 'Binge eating',
   user_id: rand(1...34)
 )
 
 board4 = Board.create!(
   name: 'Misc',
-  description: 'Binge stuff',
   user_id: rand(1...34)
 )
 
 board5 = Board.create!(
   name: 'Dessert',
-  description: 'Sweet binge treats',
   user_id: rand(1...34)
 )
 
 board6 = Board.create!(
   name: 'Dessert',
-  description: 'Sweet binge treats',
   user_id: rand(1...34)
 )
 
 board7 = Board.create!(
   name: 'Dessert',
-  description: 'Sweet binge treats',
   user_id: rand(1...34)
 )
 
 board8 = Board.create!(
   name: 'Dessert',
-  description: 'Sweet binge treats',
   user_id: rand(1...34)
 )
 
 board9 = Board.create!(
   name: 'Dessert',
-  description: 'Sweet binge treats',
   user_id: rand(1...34)
 )

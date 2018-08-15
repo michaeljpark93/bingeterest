@@ -2,6 +2,7 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 import ErrorsList from '../errors/error_list';
 import NavBarContainer from '../nav_bar/nav_bar_container';
+import UserBoardsContainer from '../board/user_boards_container';
 import Modal from '../modal/modal';
 
 class Headers extends React.Component {
@@ -33,14 +34,17 @@ class UserShow extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedPane: 0
+      selectedPane: 0,
+      paneContent: <UserBoardsContainer />
     };
     this.selectTab = this.selectTab.bind(this);
+    this.selectPaneContent = this.selectPaneContent.bind(this);
     this.handleModal = this.handleModal.bind(this);
   }
 
   selectTab(num) {
-    this.setState({selectedPane: num})
+    this.setState({selectedPane: num});
+    this.selectPaneContent(this.state.selectedPane)
   }
 
   handleModal(pane) {
@@ -50,10 +54,23 @@ class UserShow extends React.Component {
     }
   }
 
+  selectPaneContent(num) {
+
+    switch (num) {
+      case 0:
+        return this.setState({paneContent: <UserBoardsContainer />});
+      case 1:
+        return this.setState({paneContent: <UserBoardsContainer />});
+      case 2:
+        return this.setState({paneContent: <UserBoardsContainer />});
+      default:
+        return this.setState({paneContent: <UserBoardsContainer />});
+    }
+  }
+
   render() {
     const pane = this.props.panes[this.state.selectedPane];
     const selectedPane = pane.title.slice(0, -1);
-
     let pf_picture = "https://s.pinimg.com/images/user/default_280.png"
 
     return (
@@ -91,15 +108,20 @@ class UserShow extends React.Component {
 
           <div className="user-profile-content">
             <div className="public-content">
-              {pane.content}
-              <Modal />
 
-              <div className="modal-toggle" onClick={this.handleModal(pane)}>
-                <div className="modal-box">
-                  <h3>+</h3>
+              <div className="public-content-box">
+                <Modal />
+
+                <div className="modal-toggle" onClick={this.handleModal(pane)}>
+                  <div className="modal-box">
+                    <h3>+</h3>
+                  </div>
+                  <h3 className="title">Create {selectedPane}</h3>
                 </div>
-                <h3 className="modal-title">Create {selectedPane}</h3>
+
+                {this.state.paneContent}
               </div>
+
             </div>
 
             <div className="private-content">
@@ -108,16 +130,16 @@ class UserShow extends React.Component {
                 <h3>Only you and people you invite can see these boards.</h3>
               </div>
 
-              {pane.content}
               <Modal />
 
-              <div className="modal-toggle" onClick={this.handleModal(pane)}>
+              <div className="modal-toggle" onClick={this.handleModal('Boards')}>
                 <div className="modal-box">
                   <h3>+</h3>
                 </div>
-                <h3 className="modal-title">Create secret {selectedPane}</h3>
+                <h3 className="title">Create secret Board</h3>
               </div>
             </div>
+
           </div>
 
         </div>

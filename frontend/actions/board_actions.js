@@ -20,7 +20,7 @@ export const removeBoard = board => ({
   board
 });
 
-export const requestBoards = userId => dispatch => (
+export const fetchBoards = userId => dispatch => (
   BoardAPIUtil.fetchBoards(userId).then(boards => (
     dispatch(receiveBoards(boards))
   ), err => (
@@ -28,7 +28,7 @@ export const requestBoards = userId => dispatch => (
   ))
 );
 
-export const requestBoard = id => dispatch => (
+export const fetchBoard = id => dispatch => (
   BoardAPIUtil.fetchBoard(id).then(board => (
     dispatch(receiveBoard(board))
   ), err => (
