@@ -1,7 +1,7 @@
-.user-boards-box {
+.user-boards {
   display: flex;
   flex-flow: row;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: flex-start;
 }
 
@@ -13,9 +13,13 @@
   background-color: $lighter-gray;
 }
 
+.user-board:hover .board-text {
+  width: 240px;
+}
+
 .user-board {
   width: 300px;
-  height: 245px;
+  height: 265px;
   padding: 20px 12px;
   border-radius: 8px;
 
@@ -29,34 +33,65 @@
     border-radius: 8px;
   }
 
-  .board-text {
+  .board-content {
     display: flex;
-    flex-flow: column;
-    justify-content: flex-start;
-    justify-content: center;
+    justify-content: space-between;
+    align-items: center;
+    width: 300px;
 
-    .title {
-      height: 21px;
-      width: 284px;
-      padding: 12px 8px 4px 8px;
-      color: $black;
-      font-size: 18px;
-      font-weight: bold;
-      letter-spacing: -0.4px;
-      line-height: 21.6px;
-      text-align: left;
+    .board-text {
+      display: flex;
+      flex-flow: column;
+      justify-content: flex-start;
+      justify-content: center;
+      padding: 12px 0 12px 8px;
+      width: 260px;
+
+      .title {
+        height: 21px;
+        color: $black;
+        font-size: 21px;
+        font-weight: bold;
+        letter-spacing: -0.4px;
+        line-height: 1.2;
+        text-align: left;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      .board-pins {
+        height: 16px;
+        color: $black;
+        padding-top: 4px;
+        font-size: 14px;
+        font-weight: 400;
+        letter-spacing: -0.4px;
+        -webkit-font-smoothing: antialiased;
+        text-align: left;
+      }
     }
 
-    .board-pins {
-      height: 16px;
-      width: 284px;
-      color: $black;
-      padding: 0 8px;
-      font-size: 14px;
-      font-weight: 400;
-      letter-spacing: -0.4px;
-      -webkit-font-smoothing: antialiased;
-      text-align: left;
+    .icon-box {
+      display: none;
+      margin-right: 10px;
+      z-index: 10;
+
+      .edit-icon {
+        height: 23px;
+        width: 23px;
+        box-sizing: content-box;
+        padding: 10px;
+      }
     }
   }
+}
+
+.user-board:hover .icon-box {
+  display: block;
+}
+
+.icon-box:hover  {
+  border-radius: 50%;
+  text-align: center;
+  vertical-align: middle;
+  background-color: $lighter-gray;
 }

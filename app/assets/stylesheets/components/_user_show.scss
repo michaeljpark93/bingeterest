@@ -118,89 +118,29 @@
 
 .user-profile-content {
   width: 100%;
-  height: 738px;
-}
 
-.public-content {
-  width: 100%;
-  height: 409px;
-  margin-top: 24px;
-
-  .public-content-box {
-    display: flex;
-    justify-content: center;
-    flex-flow: row wrap;
-    align-items: flex-start;
+  .public-content {
+    width: 100%;
+    margin: 24px 12px 24px 12px;
   }
 }
 
-.private-content {
-  width: 100%;
-  height: 305px;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  background-color: $lightestest-gray;
-
-  .secret-content {
-    color: $black;
-    font-size: 14px;
-    font-weight: 700;
-    letter-spacing: -0.4px;
-    line-height: 1.2;
-    text-align: left;
-    word-wrap: break-word;
-    -webkit-font-smoothing: antialiased;
-  }
-}
-
-.modal-toggle:hover {
-  background-color: $lightest-gray;
-}
-
-.modal-toggle:hover .modal-box {
-  background-color: $lighter-gray;
-}
-
-.modal-toggle {
-  width: 300px;
-  height: 245px;
-  padding: 20px 12px;
-  border-radius: 8px;
-
-  .modal-box {
-    width: 300px;
-    height: 200px;
-    background-color: $lightest-gray;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 8px;
-
-    h3 {
-      color: $white;
-      background-color: $red;
-      border-radius: 50%;
-      font-size: 40px;
-      font-weight: normal;
-      height: 40px;
-      width: 40px;
-      text-align: center;
-      vertical-align: middle;
-      line-height: 36px;
-      -webkit-font-smoothing: antialiased;
-    }
-  }
-
-  .title {
-    height: 21px;
-    width: 284px;
-    padding: 12px 8px;
-    color: $gray;
-    font-size: 18px;
-    font-weight: bold;
-    letter-spacing: -0.4px;
-    line-height: 21.6px;
-    text-align: left;
-  }
-}
+// .private-content {
+//   width: 100%;
+//   height: 305px;
+//   display: flex;
+//   justify-content: center;
+//   align-items: flex-start;
+//   background-color: $lightestest-gray;
+//
+//   .secret-content {
+//     color: $black;
+//     font-size: 14px;
+//     font-weight: 700;
+//     letter-spacing: -0.4px;
+//     line-height: 1.2;
+//     text-align: left;
+//     word-wrap: break-word;
+//     -webkit-font-smoothing: antialiased;
+//   }
+// }

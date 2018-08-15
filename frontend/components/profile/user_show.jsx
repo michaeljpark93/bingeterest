@@ -3,7 +3,7 @@ import { withRouter } from 'react-router-dom';
 import ErrorsList from '../errors/error_list';
 import NavBarContainer from '../nav_bar/nav_bar_container';
 import UserBoardsContainer from '../board/user_boards_container';
-import Modal from '../modal/modal';
+import UserBingesContainer from '../dashboard/user_binges_container';
 
 class Headers extends React.Component {
   render() {
@@ -39,31 +39,19 @@ class UserShow extends React.Component {
     };
     this.selectTab = this.selectTab.bind(this);
     this.selectPaneContent = this.selectPaneContent.bind(this);
-    this.handleModal = this.handleModal.bind(this);
   }
 
   selectTab(num) {
-    this.setState({selectedPane: num});
-    this.selectPaneContent(this.state.selectedPane)
-  }
-
-  handleModal(pane) {
-    return e => {
-      e.preventDefault();
-      this.props.otherForm([pane.title]);
-    }
+    this.setState({selectedPane: num}, () => this.selectPaneContent(num));
   }
 
   selectPaneContent(num) {
-
     switch (num) {
       case 0:
         return this.setState({paneContent: <UserBoardsContainer />});
       case 1:
-        return this.setState({paneContent: <UserBoardsContainer />});
+        return this.setState({paneContent: <UserBingesContainer />});
       case 2:
-        return this.setState({paneContent: <UserBoardsContainer />});
-      default:
         return this.setState({paneContent: <UserBoardsContainer />});
     }
   }
@@ -108,38 +96,8 @@ class UserShow extends React.Component {
 
           <div className="user-profile-content">
             <div className="public-content">
-
-              <div className="public-content-box">
-                <Modal />
-
-                <div className="modal-toggle" onClick={this.handleModal(pane)}>
-                  <div className="modal-box">
-                    <h3>+</h3>
-                  </div>
-                  <h3 className="title">Create {selectedPane}</h3>
-                </div>
-
-                {this.state.paneContent}
-              </div>
-
+              {this.state.paneContent}
             </div>
-
-            <div className="private-content">
-              <div className="secret-content">
-                <h3>Secret {selectedPane}</h3>
-                <h3>Only you and people you invite can see these boards.</h3>
-              </div>
-
-              <Modal />
-
-              <div className="modal-toggle" onClick={this.handleModal('Boards')}>
-                <div className="modal-box">
-                  <h3>+</h3>
-                </div>
-                <h3 className="title">Create secret Board</h3>
-              </div>
-            </div>
-
           </div>
 
         </div>

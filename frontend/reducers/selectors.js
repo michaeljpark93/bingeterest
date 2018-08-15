@@ -3,5 +3,5 @@ export const selectUserBoards = ({ entities }, userId) => (
 );
 
 export const selectUserBinges = ({ entities }, userId) => (
-  Object.values(entities.binges).filter(binge => binge.user_id === userId)
+  Object.values(entities.binges).filter(binge => binge.author_id === userId)
 );

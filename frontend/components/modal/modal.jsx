@@ -9,8 +9,11 @@ function Modal({modal, closeModal}) {
     return null;
   }
   let component;
-  switch (modal[0]) {
-    case 'Boards':
+  switch (modal) {
+    case 'createBoard':
+      component = <BoardFormContainer cancel={closeModal}/>;
+      break;
+    case 'editBoard':
       component = <BoardFormContainer cancel={closeModal}/>;
       break;
     case 'Binges':
