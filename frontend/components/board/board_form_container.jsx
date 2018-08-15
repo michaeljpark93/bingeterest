@@ -3,10 +3,9 @@ import { createBoard } from '../../actions/board_actions';
 import { removeErrors } from '../../actions/error_actions';
 import BoardCreateForm from './board_create_form';
 
-const mapStateToProps = ({ errors, session, entities: { users } }, ownProps) => ({
+const mapStateToProps = ({ errors, session, entities: { users } }) => ({
   currentUser: users[session.id],
-  errors: errors.boards,
-  ownProps
+  errors: errors.boards
 });
 
 const mapDispatchToProps = dispatch => ({

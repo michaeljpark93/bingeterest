@@ -8,6 +8,7 @@ class BoardCreateForm extends React.Component {
     this.state = {
       name: '',
       description: '',
+      category: '',
       secret: false,
       user_id: ''
     };

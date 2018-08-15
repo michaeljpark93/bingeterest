@@ -1,6 +1,7 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import ErrorsList from '../errors/error_list';
+import Dropzone from 'react-dropzone';
 
 class BingesCreateForm extends React.Component {
   constructor(props) {
@@ -8,12 +9,13 @@ class BingesCreateForm extends React.Component {
     this.state = {
       description: '',
       link_url: '',
-      photoFile: null
+      photoFile: null,
+      photoUrl: null
     };
     this.handleInput = this.handleInput.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.toBaseURL = this.toBaseURL.bind(this);
-    this.handleFile = this.handleFile.bind(this);
+    this.handleDrop = this.handleDrop.bind(this);
   }
 
   componentWillUnmount() {
@@ -32,15 +34,17 @@ class BingesCreateForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-
+    debugger
     const formData = new FormData();
     const baseURL = this.toBaseURL(this.state.link_url)
     formData.append('binge[link_url]', this.state.link_url);
     formData.append('binge[url]', baseURL);
     formData.append('binge[description]', this.state.description);
     formData.append('binge[author_id]', this.props.currentUser.id);
-    formData.append('binge[photo]', this.state.photoFile);
-    console.log(formData);
+    if (this.state.photoFile) {
+      formData.append('binge[photo]', this.state.photoFile);
+    }
+
     $.ajax({
       method: 'POST',
       url: '/api/binges',
@@ -55,11 +59,24 @@ class BingesCreateForm extends React.Component {
     this.props.cancel();
   }
 
-  handleFile(e) {
-    this.setState({ photoFile: e.currentTarget.files[0] });
+  handleDrop(files) {
+    console.log(files)
+    const file = files[0]
+    const fileReader = new FileReader();
+    fileReader.onloadend = () => {
+      debugger
+      this.setState({ photoFile: file, photoUrl: fileReader.result });
+    };
+    debugger
+    if (file) {
+      fileReader.readAsDataURL(file);
+    }
   }
 
   render() {
+    const preview = this.state.photoUrl ? <img className="binge-image" src={this.state.photoUrl} /> : <div className="upload-box"><img className="pic" src={window.images.camera} />
+    <h3>Drag and drop or click to upload</h3></div>;
+
     return (
       <div className="create-binge">
         <div className="binge-title">
@@ -69,11 +86,16 @@ class BingesCreateForm extends React.Component {
 
         <form className="binge-form" onSubmit={this.handleSubmit}>
           <div className="binge-form-box">
-            <div className="binge-img">
-              <input
-                type="file"
-                onChange={this.handleFile} />
-              <h3>Click to upload</h3>
+            <div class="binge-upload-box">
+              <Dropzone
+                className="binge-img"
+                onDrop={ this.handleDrop }
+                accept="image/jpeg,image/jpg,image/tiff,image/gif, image/png"
+                multiple={ false } >
+
+                {preview}
+              </Dropzone>
+
             </div>
 
             <div className="binge-input">

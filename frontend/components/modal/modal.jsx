@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { closeModal } from '../../actions/modal_actions';
 import BoardFormContainer from '../board/board_form_container';
-import BingeFormContainer from '../dashboard/binge_form_container';
+import BingeFormContainer from '../binge/binge_form_container';
 
 function Modal({modal, closeModal}) {
   if (!modal) {
@@ -16,7 +16,7 @@ function Modal({modal, closeModal}) {
     case 'editBoard':
       component = <BoardFormContainer cancel={closeModal}/>;
       break;
-    case 'Binges':
+    case 'createBinge':
       component = <BingeFormContainer cancel={closeModal}/>;
       break;
     default:

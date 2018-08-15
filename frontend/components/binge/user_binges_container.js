@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { selectUserBinges } from '../../reducers/selectors';
-import { fetchBinges } from '../../actions/binge_actions';
+import { fetchUserBinges } from '../../actions/binge_actions';
 import { openModal, closeModal } from '../../actions/modal_actions';
 import UserBinges from './user_binges';
 
@@ -13,8 +13,8 @@ const mapStateToProps = ({ entities, session }) => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchBinges: (userId) => dispatch(fetchBinges(userId)),
-    otherForm: (type) => dispatch(openModal(type)),
+    fetchBinges: (userId) => dispatch(fetchUserBinges(userId)),
+    openModal: (type) => dispatch(openModal(type)),
     closeModal: () => dispatch(closeModal())
   };
 };

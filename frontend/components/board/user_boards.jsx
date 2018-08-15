@@ -21,7 +21,6 @@ class UserBoards extends React.Component {
   }
 
   render() {
-
     return(
       <div>
         <Modal />
@@ -38,7 +37,7 @@ class UserBoards extends React.Component {
             return <UserBoardItem
               board={board}
               key={board.id}
-              edit={() => this.props.openModal("editBoard")} />
+              edit={this.props.openModal} />
           })}
         </div>
       </div>

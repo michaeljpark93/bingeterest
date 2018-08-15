@@ -5,13 +5,14 @@
 
 .binge:hover .binge-link {
   display: flex;
+  margin-bottom: -45px;
 }
 
 .binge {
   background-color: none;
   display: inline-block;
   width: 100%;
-  padding: 0.5em 0.5em .5em 0.5em;
+  padding: 0.5em 0.5em 0.75em 0.5em;
   height: auto;
 
   img {
@@ -25,7 +26,6 @@
     border-radius: 4px;
     position: relative;
     bottom: 50px;
-    margin-bottom: -30px;
     left: 10px;
     overflow: hidden;
     height: 40px;

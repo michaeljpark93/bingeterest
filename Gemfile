@@ -30,7 +30,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'bcrypt', '~> 3.1.7'
 gem 'jquery-rails'
 
-gem "aws-sdk-s3"
+gem "aws-sdk-s3", require: false
 gem 'ez_download', git: 'https://github.com/OscarAlvarez8830/EZDownload.git'
 
 group :production do

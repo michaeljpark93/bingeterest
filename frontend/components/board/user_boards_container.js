@@ -1,4 +1,3 @@
-import React from 'react';
 import { connect } from 'react-redux';
 import { selectUserBoards } from '../../reducers/selectors';
 import { fetchBoards } from '../../actions/board_actions';

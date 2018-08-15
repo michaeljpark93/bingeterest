@@ -28,6 +28,14 @@ export const fetchBinges = () => dispatch => (
   ))
 );
 
+export const fetchUserBinges = (userId) => dispatch => (
+  BingeAPIUtil.fetchBinges(userId).then(binges => (
+    dispatch(receiveBinges(binges))
+  ), err => (
+    dispatch(receiveErrors(err.responseJSON))
+  ))
+);
+
 export const fetchBinge = id => dispatch => (
   BingeAPIUtil.fetchBinge(id).then(binge => (
     dispatch(receiveBinge(binge))

@@ -3,7 +3,7 @@ import { withRouter } from 'react-router-dom';
 import ErrorsList from '../errors/error_list';
 import NavBarContainer from '../nav_bar/nav_bar_container';
 import UserBoardsContainer from '../board/user_boards_container';
-import UserBingesContainer from '../dashboard/user_binges_container';
+import UserBingesContainer from '../binge/user_binges_container';
 
 class Headers extends React.Component {
   render() {
