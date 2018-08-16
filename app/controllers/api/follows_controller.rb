@@ -1,23 +1,23 @@
 class Api::FollowsController < ApplicationController
   def create
     @follow = Follow.new(follow_params)
-    @user = User.find(@follow.user_id)
+    @follow.user_id = current_user.id
 
     if @follow.save
-      render 'api/users/show.json.jbuilder'
+      render 'api/follows/create'
     else
       render json: @follow.errors.full_messages, status: 400
     end
   end
 
   def destroy
-    @follow = Follow.where(user_id: params[:follow][:user_id], follower_id: params[:follow][:follower_id]).first
-    @user = User.find(@follow.user_id)
+    @follow = Follow.find_by_id(params[:id])
 
-    if @follow.destroy
-      render 'api/users/show.json.jbuilder'
+    if @follow.user_id == current_user.id
+      @follow.destroy
+      render 'api/follows/create'
     else
-      render json: @follow.errors.full_messages, status: 422
+      render json: ["You cannot unfollow this user"], status: 422
     end
   end
 
