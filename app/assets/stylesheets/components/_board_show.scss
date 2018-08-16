@@ -1,0 +1,78 @@
+.board-show {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-flow: row;
+  width: 70%;
+  margin: 100px auto;
+
+  .bs-left {
+    display: flex;
+    justify-content: flex-start;
+    align-content: center;
+    flex-flow: column;
+
+    .board-name {
+      display: flex;
+      justify-content: space-between;
+      align-content: center;
+      flex-flow: row;
+      width: 250px;
+      height: 60px;
+
+      h2 {
+        color: $black;
+        font-weight: bold;
+        font-size: 50px;
+        letter-spacing: -0.4px;
+        line-height: 1.2;
+      }
+
+      .edit-icon-box:hover {
+        background-color: $lightest-gray;
+        border-radius: 50%
+      }
+
+      .edit-icon-box {
+        background-color: none;
+        width: 60px;
+        height: 60px;
+        box-sizing: content-box;
+        margin-left: 15px;
+
+        .edit-icon {
+          width: 40px;
+          height: 40px;
+          padding: 10px;
+          box-sizing: content-box;
+          margin: auto;
+        }
+      }
+    }
+
+    .follow-box {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      flex-flow: row;
+      width: 150px;
+      height: 20px;
+      padding: 4px 0;
+
+      h2 {
+        font-size: 16px;
+        color: $gray;
+        font-weight: normal;
+        line-height: 1.2;
+        letter-spacing: -0.4px;
+        -webkit-font-smoothing: antialiased;
+        margin-right: 5px;
+      }
+    }
+  }
+
+  .pf-pic {
+    width: 100px;
+    height: 100px;
+  }
+}

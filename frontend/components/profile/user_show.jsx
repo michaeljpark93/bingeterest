@@ -59,7 +59,6 @@ class UserShow extends React.Component {
   render() {
     const pane = this.props.panes[this.state.selectedPane];
     const selectedPane = pane.title.slice(0, -1);
-    let pf_picture = "https://s.pinimg.com/images/user/default_280.png"
 
     return (
       <div>
@@ -80,7 +79,7 @@ class UserShow extends React.Component {
               </div>
 
               <div className="pf-picture">
-                <img src={pf_picture}></img>
+                <img src={window.images.profpic} />
               </div>
             </div>
           </div>
