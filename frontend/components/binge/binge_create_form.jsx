@@ -34,7 +34,6 @@ class BingesCreateForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    debugger
     const formData = new FormData();
     const baseURL = this.toBaseURL(this.state.link_url)
     formData.append('binge[link_url]', this.state.link_url);
@@ -60,14 +59,11 @@ class BingesCreateForm extends React.Component {
   }
 
   handleDrop(files) {
-    console.log(files)
     const file = files[0]
     const fileReader = new FileReader();
     fileReader.onloadend = () => {
-      debugger
       this.setState({ photoFile: file, photoUrl: fileReader.result });
     };
-    debugger
     if (file) {
       fileReader.readAsDataURL(file);
     }
@@ -86,7 +82,7 @@ class BingesCreateForm extends React.Component {
 
         <form className="binge-form" onSubmit={this.handleSubmit}>
           <div className="binge-form-box">
-            <div class="binge-upload-box">
+            <div className="binge-upload-box">
               <Dropzone
                 className="binge-img"
                 onDrop={ this.handleDrop }

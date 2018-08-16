@@ -12,7 +12,7 @@ class Api::BoardsController < ApplicationController
     @board.user_id = current_user.id
 
     if @board.save
-      render 'api/boards/show'
+      render :show
     else
       render json: @board.errors.full_messages, status: 422
     end
@@ -23,7 +23,7 @@ class Api::BoardsController < ApplicationController
 
     if @board.user_id == current_user.id
       if @board.update_attributes(board_params)
-        render 'api/boards/show'
+        render :show
       else
         render json: @board.errors.full_messages, status: 422
       end
@@ -37,7 +37,7 @@ class Api::BoardsController < ApplicationController
 
     if @board.user_id == current_user.id
       @board.destroy
-      render 'api/boards/show'
+      render :index
     else
       render json: ["You do not have permission to delete this board."], status: 403
     end

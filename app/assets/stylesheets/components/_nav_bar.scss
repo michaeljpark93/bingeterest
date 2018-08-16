@@ -173,6 +173,7 @@
     pointer-events: auto;
   }
 
+
   .dropdown {
     position: absolute;
     z-index: 1;
@@ -185,6 +186,11 @@
     background-color: $white;
     border-radius: 8px;
     box-shadow: $bshadow-alpha 0 2px 10px;
+    cursor: pointer;
+  }
+
+  li:hover {
+    background-color: $lightest-gray;
   }
 
   .dropdown li {

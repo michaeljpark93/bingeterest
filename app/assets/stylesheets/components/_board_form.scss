@@ -1,7 +1,10 @@
+::placeholder {
+  color: $gray;
+}
+
 .create-board {
   background-color: $white;
   width: 600px;
-  height: 309px;
   border-radius: 8px;
 
   .board-title {
@@ -42,7 +45,7 @@
 
     h2{
       color: $black;
-      font-size: 14px;
+      font-size: 16px;
       line-height: 1.2;
       letter-spacing: -.4px;
       font-weight: 400;
@@ -55,7 +58,7 @@
       padding: 8px 14px;
       font-size: 16px;
       font-weight: normal;
-      color: $gray;
+      color: $black;
       letter-spacing: -0.4px;
       border-color: $gray;
       border-width: 1px;
@@ -69,7 +72,7 @@
       padding: 8px 14px;
       font-size: 16px;
       font-weight: normal;
-      color: $gray;
+      color: $black;
       letter-spacing: -0.4px;
       border-color: $gray;
       border-width: 1px;
@@ -161,6 +164,27 @@
     }
   }
 
+  .board-edit-buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-flow: row;
+
+    button {
+      border: none;
+      background-color: $lightest-gray;
+      font-size: 16px;
+      text-align: center;
+      font-weight: bold;
+      box-sizing: border-box;
+      width: 80px;
+      height: 40px;
+      padding: 0 8px;
+      margin: 8px 0 0 10px;
+      border-radius: 4px;
+    }
+  }
+
   .board-buttons {
     display: flex;
     justify-content: flex-end;
@@ -175,10 +199,12 @@
       font-size: 16px;
       text-align: center;
       font-weight: bold;
-      width: 79px;
+      box-sizing: border-box;
+      width: 80px;
       height: 40px;
       padding: 0 8px;
       margin: 8px 8px 0 0;
+      border-radius: 4px;
     }
 
     input {
@@ -187,10 +213,12 @@
       font-size: 16px;
       text-align: center;
       font-weight: bold;
-      width: 79px;
+      box-sizing: border-box;
+      width: 80px;
       height: 40px;
-      padding: 0 8px;
-      margin: 8px 0 8px 0;
+      padding: 0 10px;
+      margin: 8px 0 10px 0;
+      border-radius: 4px;
     }
   }
 }

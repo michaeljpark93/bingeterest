@@ -17,14 +17,14 @@ export const createBoard = board => {
   return $.ajax({
     method: 'POST',
     url: 'api/boards',
-    data: { board } 
+    data: { board }
   });
 };
 
-export const updateBoard = (board, id) => {
+export const updateBoard = (board) => {
   return $.ajax({
     method: 'PUT',
-    url: `api/boards/${id}`,
+    url: `api/boards/${board.id}`,
     data: { board }
   });
 };

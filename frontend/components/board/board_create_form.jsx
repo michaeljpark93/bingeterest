@@ -58,19 +58,8 @@ class BoardCreateForm extends React.Component {
             <textarea
               className="board-description"
               value={this.state.description}
-              placeholder="What\'s your board about?"
+              placeholder="What's your board about?"
               onChange={this.handleInput('description')} />
-          </div>
-
-          <div className="board-name">
-            <h2>Category</h2>
-
-            <select className="categories">
-              <option value="placeholder">PLACEHOLDER</option>
-              <option value="placeholder">PLACEHOLDER</option>
-              <option value="placeholder">PLACEHOLDER</option>
-              <option value="placeholder">PLACEHOLDER</option>
-            </select>
           </div>
 
           <div className="board-buttons">

@@ -9,7 +9,7 @@ import followedReducer from './followed_reducer';
 const entitiesReducer = combineReducers({
   users: usersReducer,
   binges: bingesReducer,
-  boards: boardsReducer
+  boards: boardsReducer,
   following: followingReducer,
   followed: followedReducer,
 });
