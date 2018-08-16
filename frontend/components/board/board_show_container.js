@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import { fetchBoard, updateBoard, deleteBoard } from '../../actions/board_actions';
+import { openModal, closeModal } from '../../actions/modal_actions';
 import BoardShow from './board_show';
 
 const mapStateToProps = ({ entities, session, errors }, ownProps) => ({

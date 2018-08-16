@@ -61,6 +61,33 @@
       border-width: 1px;
       -webkit-font-smoothing: antialiased;
     }
+
+    .board-description {
+      width: 396px;
+      height: 50px;
+      border-radius: 4px;
+      padding: 8px 14px;
+      font-size: 16px;
+      font-weight: normal;
+      color: $gray;
+      letter-spacing: -0.4px;
+      border-color: $gray;
+      border-width: 1px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .categories {
+      width: 426px;
+      height: 30px;
+      border-radius: 4px;
+      font-size: 16px;
+      font-weight: normal;
+      color: $gray;
+      letter-spacing: -0.4px;
+      border-color: $gray;
+      border-width: 1px;
+      -webkit-font-smoothing: antialiased;
+    }
   }
 
   .board-secret {

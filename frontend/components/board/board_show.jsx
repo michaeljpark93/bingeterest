@@ -2,6 +2,7 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 import ErrorsList from '../errors/error_list';
 import NavBarContainer from '../nav_bar/nav_bar_container';
+import Modal from '../modal/modal';
 
 class BoardShow extends React.Component {
   constructor(props) {
@@ -14,7 +15,7 @@ class BoardShow extends React.Component {
     this.props.fetchBoard(this.props.board.id);
   }
 
-  this.handleModal(e) {
+  handleModal(e) {
     e.preventDefault();
     this.props.openModal("editBoard");
   }
@@ -24,6 +25,7 @@ class BoardShow extends React.Component {
     return(
       <div>
         <NavBarContainer />
+        <Modal board={board}/>
 
         <div className="board-show">
 

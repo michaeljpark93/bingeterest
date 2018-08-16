@@ -2,16 +2,10 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 import ErrorsList from '../errors/error_list';
 
-class BoardCreateForm extends React.Component {
+class BoardUpdateForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      name: '',
-      description: '',
-      category: '',
-      secret: false,
-      user_id: ''
-    };
+    this.state = this.props.board;
     this.handleInput = this.handleInput.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -20,25 +14,35 @@ class BoardCreateForm extends React.Component {
     this.props.removeErrors();
   }
 
+  componentDidMount() {
+    this.props.fetchBoard(this.props.board.id);
+  }
+
   handleInput(field) {
     return (e) => {
       this.setState({ [field]: e.currentTarget.value });
     };
   }
 
+  handleDelete(e) {
+    e.preventDefault();
+    this.props.deleteBoard(this.state);
+  }
+
   handleSubmit(e) {
     e.preventDefault();
     this.setState({ user_id: this.props.currentUser.id })
-    this.props.processForm(this.state);
+    this.props.updateBoard(this.state);
     this.props.cancel();
   }
 
   render() {
     return (
       <div className="create-board">
+
         <form onSubmit={this.handleSubmit}>
           <div className="board-title">
-            <h2>Create board</h2>
+            <h2>Edit your board</h2>
             <div onClick={this.props.cancel}>X</div>
           </div>
 
@@ -52,17 +56,17 @@ class BoardCreateForm extends React.Component {
               onChange={this.handleInput('name')} />
           </div>
 
-          <div className="board-name">
+          <div className="board-description">
             <h2>Description</h2>
 
-            <textarea
-              className="board-description"
+            <input
+              type="text"
               value={this.state.description}
               placeholder="What\'s your board about?"
               onChange={this.handleInput('description')} />
           </div>
 
-          <div className="board-name">
+          <div className="board-category">
             <h2>Category</h2>
 
             <select className="categories">
@@ -74,8 +78,12 @@ class BoardCreateForm extends React.Component {
           </div>
 
           <div className="board-buttons">
-            <button onClick={this.props.cancel}>Cancel</button>
-            <input className="b-submit" type="submit" value="Create"/>
+            <button onClick={this.handleDelete}>Delete</button>
+
+            <div className="right-buttons">
+              <button onClick={this.props.cancel}>Cancel</button>
+              <input className="b-submit" type="submit" value="Save"/>
+            </div>
           </div>
         </form>
 
@@ -87,4 +95,4 @@ class BoardCreateForm extends React.Component {
   }
 }
 
-export default withRouter(BoardCreateForm);
+export default withRouter(BoardUpdateForm);

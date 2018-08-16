@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { closeModal } from '../../actions/modal_actions';
 import BoardFormContainer from '../board/board_form_container';
+import BoardUpdateContainer from '../board/board_update_container';
 import BingeFormContainer from '../binge/binge_form_container';
 
 function Modal({modal, closeModal}) {
@@ -14,7 +15,7 @@ function Modal({modal, closeModal}) {
       component = <BoardFormContainer cancel={closeModal}/>;
       break;
     case 'editBoard':
-      component = <BoardFormContainer cancel={closeModal}/>;
+      component = <BoardUpdateContainer cancel={closeModal}/>;
       break;
     case 'createBinge':
       component = <BingeFormContainer cancel={closeModal}/>;
@@ -31,7 +32,7 @@ function Modal({modal, closeModal}) {
   );
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     modal: state.ui.modal
   };
