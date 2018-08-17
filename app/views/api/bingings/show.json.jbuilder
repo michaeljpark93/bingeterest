@@ -1,6 +1,6 @@
 json.board do
-  json.set! :user_image_url, @board.user.image_url
-  json.set! :user_username, @board.user.username
+  json.set! :user_photo_url, @board.user.photoUrl
+  json.set! :username, @board.user.username
   json.extract! @board, :id, :name, :description, :category, :user_id
 
   json.binges do
@@ -13,8 +13,8 @@ json.board do
 end
 
 json.binge do
-  json.set! :author_image_url, @binge.author.image_url
-  json.set! :author_username, @binge.author.username
+  json.set! :author_photo_url, @binge.author.photoUrl
+  json.set! :username, @binge.author.username
   json.extract! @binge, :id, :description, :url, :link_url, :author_id
 
   json.bingings do

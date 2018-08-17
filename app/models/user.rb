@@ -11,6 +11,30 @@ class User < ApplicationRecord
     foreign_key: :author_id,
     class_name: :Binge
 
+  has_many :boards,
+    foreign_key: :user_id,
+    class_name: :Board
+
+  has_many :bingings,
+    through: :boards,
+    source: :binges
+
+  has_many :user_followers,
+    foreign_key: :user_id,
+    class_name: :Follow
+
+  has_many :followed_users,
+    foreign_key: :user_id,
+    class_name: :Follow
+
+  has_many :followers,
+    through: :user_followers,
+    source: :follower
+
+  has_many :following_users,
+    through: :followed_users,
+    source: :followed_user
+
   has_one_attached :photo
 
   attr_reader :password
