@@ -37,7 +37,7 @@ class Api::BoardsController < ApplicationController
 
     if @board.user_id == current_user.id
       @board.destroy
-      render :index
+      render :show
     else
       render json: ["You do not have permission to delete this board."], status: 403
     end

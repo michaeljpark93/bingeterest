@@ -28,7 +28,7 @@ class BoardUpdateForm extends React.Component {
 
   handleDelete(e) {
     e.preventDefault();
-    this.props.deleteBoard(this.state);
+    this.props.deleteBoard(this.state.id).then(this.props.history.push(`/users/${this.props.currentUser.id}`));
     this.props.cancel();
   }
 

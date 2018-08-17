@@ -3,11 +3,6 @@
   border-radius: 8px;
 }
 
-.binge:hover .binge-link {
-  display: flex;
-  margin-bottom: -45px;
-}
-
 .binge {
   background-color: none;
   display: inline-block;
@@ -19,29 +14,35 @@
     border-radius: 8px;
     border: none;
   }
+}
 
-  .binge-link {
-    display: none;
-    background-color: $lightestest-gray;
-    border-radius: 4px;
-    position: relative;
-    bottom: 50px;
-    left: 10px;
-    overflow: hidden;
-    height: 40px;
-    flex-flow: row nowrap;
+.binge-dashboard:hover .binge-link {
+  display: flex;
+  margin-bottom: -45px;
+  z-index: 100;
+}
 
-    .a-logo {
-      width: 16px;
-      height: 16px;
-      margin: 0 3px;
-    }
+.binge-link {
+  display: none;
+  background-color: $lightestest-gray;
+  border-radius: 4px;
+  position: relative;
+  bottom: 55px;
+  left: 15px;
+  overflow: hidden;
+  height: 35px;
+  flex-flow: row nowrap;
 
-    h2 {
-      font-size: 16px;
-      color: $black;
-      font-weight: bold;
-      margin: 0 3px;
-    }
+  .a-logo {
+    width: 16px;
+    height: 16px;
+    margin: 0 3px;
+  }
+
+  h2 {
+    font-size: 16px;
+    color: $black;
+    font-weight: bold;
+    margin: 0 3px;
   }
 }

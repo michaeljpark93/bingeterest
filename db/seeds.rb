@@ -9,45 +9,170 @@
 User.delete_all
 puts 'creating users'
 
-demo_user = User.create!(
-  username: 'Guest',
-  description: 'Demo Login',
-  password: 'password',
-  age: 100
-)
+demo_user = User.new(username: 'Guest', description: 'Demo Login', password: 'password', age: 100)
+file = EzDownload.open('https://s3-us-west-1.amazonaws.com/bingeterest-dev/profile/demo-user.jpg')
+demo_user.photo.attach(io: file, filename: 'demo-user.jpg')
+demo_user.save!
 
 user2 = User.create!(username: 'Michaeljpark', description: 'Binge Masta', password: 'password', age: 24)
-user3 = User.create!(username: 'Oliviaculpo', description: 'Miss Universe 2012', password: 'password', age: 26)
-user4 = User.create!(username: 'Gordon Ramsay', description: 'cooking is not for everyone', password: 'password', age: 51)
-user5 = User.create!(username: 'Eddie Huang', description: 'BASED FOB', password: 'password', age: 36)
-user6 = User.create!(username: 'Chance The Rapper', description: 'chanceraps', password: 'password', age: 25)
-user7 = User.create!(username: 'Dwayne Johnson', description: 'the rock', password: 'password', age: 46)
-user8 = User.create!(username: 'Terry Crews', description: 'My muscles have muscles', password: 'password', age: 50)
-user9 = User.create!(username: 'Kim Kardashian', description: "I have to be in a relationship in order to be intimate. I\'m not the one-night-stand kind of girl. Despite the rumors.", password: 'password', age: 37)
-user10 = User.create!(username: 'David Beckham', description: "Nothing amazes me anymore", password: 'password', age: 43)
-user11 = User.create!(username: 'Angelina Jolie', description: "Brad sucks", password: 'password', age: 43)
-user12 = User.create!(username: 'Barack Obama', description: "Good luck America", password: 'password', age: 57)
-user13 = User.create!(username: 'Justin Bieber', description: "I\'m 5\'9\"", password: 'password', age: 24)
-user14 = User.create!(username: 'Beyoncé', description: "Queen", password: 'password', age: 36)
-user15 = User.create!(username: 'Will Smith', description: "Binge on", password: 'password', age: 37)
-user16 = User.create!(username: 'Arnold Schwarzenegger', description: "I\'ll be back...to binge", password: 'password', age: 71)
-user17 = User.create!(username: 'Elon Musk', description: "I binge my problems away", password: 'password', age: 47)
-user18 = User.create!(username: 'Ariana Grande', description: "", password: 'password', age: 25)
-user19 = User.create!(username: 'Jeff Bezos', description: "World domination.", password: 'password', age: 54)
-user20 = User.create!(username: 'Cardi B', description: "BACARDIVENOM", password: 'password', age: 25)
-user21 = User.create!(username: 'Serena Williams', description: "Tennis just a game, family is forever", password: 'password', age: 36)
-user22 = User.create!(username: 'Chloe Kim', description: "Binge for GOLD", password: 'password', age: 18)
-user23 = User.create!(username: 'Daniel Caesar', description: "Golden Child", password: 'password', age: 23)
-user24 = User.create!(username: 'Jimmy Kimmel', description: "", password: 'password', age: 50)
-user25 = User.create!(username: 'Kanye West', description: "Yeezy yeezy yeezy", password: 'password', age: 41)
-user26 = User.create!(username: 'Wolfgang Puck', description: "Good food must be binged", password: 'password', age: 69)
-user27 = User.create!(username: 'Masaharu Morimoto', description: "Master chef amateur binger", password: 'password', age: 63)
-user28 = User.create!(username: 'Prince Harry', description: "I love Meghan", password: 'password', age: 33)
-user29 = User.create!(username: 'Meghan Markle', description: "I love binging... I mean Harry", password: 'password', age: 37)
-user30 = User.create!(username: 'Stephen Curry', description: 'GOAT', password: 'password', age: 30)
-user31 = User.create!(username: 'JJ Watt', description: "Binge lyfe", password: 'password', age: 29)
-user32 = User.create!(username: 'Kim Jong Un', description: "FUD", password: 'password', age: 100)
-user33 = User.create!(username: 'Moon Jae-in', description: "FUD", password: 'password', age: 65)
+file = EzDownload.open('https://s3-us-west-1.amazonaws.com/bingeterest-dev/profile/michaeljpark.jpg')
+user2.photo.attach(io: file, filename: 'michaeljpark.jpg')
+user2.save!
+
+user3 = User.new(username: 'Olivia Culpo', description: 'Miss Universe 2012', password: 'password', age: 26)
+file = EzDownload.open('https://s3-us-west-1.amazonaws.com/bingeterest-dev/profile/olivia-culpo.jpg')
+user3.photo.attach(io: file, filename: 'olivia-culpo.jpg')
+user3.save!
+
+user4 = User.new(username: 'Gordon Ramsay', description: 'cooking is not for everyone', password: 'password', age: 51)
+file = EzDownload.open('https://s3-us-west-1.amazonaws.com/bingeterest-dev/profile/Gordon-Ramsay.jpg')
+user4.photo.attach(io: file, filename: 'gordon-ramsay.jpg')
+user4.save!
+
+user5 = User.new(username: 'Eddie Huang', description: 'BASED FOB', password: 'password', age: 36)
+file = EzDownload.open('https://s3-us-west-1.amazonaws.com/bingeterest-dev/profile/eddie-huang.jpg')
+user5.photo.attach(io: file, filename: 'eddie-huang.jpg')
+user5.save!
+
+user6 = User.new(username: 'Chance The Rapper', description: 'chanceraps', password: 'password', age: 25)
+file = EzDownload.open('https://s3-us-west-1.amazonaws.com/bingeterest-dev/profile/chance-the-rapper.jpg')
+user6.photo.attach(io: file, filename: 'chance-the-rapper.jpg')
+user6.save!
+
+user7 = User.new(username: 'Dwayne Johnson', description: 'the rock', password: 'password', age: 46)
+file = EzDownload.open('https://s3-us-west-1.amazonaws.com/bingeterest-dev/profile/dwyane-johnson.jpg')
+user7.photo.attach(io: file, filename: 'dwanye-johnson.jpg')
+user7.save!
+
+user8 = User.new(username: 'Terry Crews', description: 'My muscles have muscles', password: 'password', age: 50)
+file = EzDownload.open('https://s3-us-west-1.amazonaws.com/bingeterest-dev/profile/terry-crews.jpeg')
+user8.photo.attach(io: file, filename: 'terry-crews.jpg')
+user8.save!
+
+user9 = User.new(username: 'Kim Kardashian', description: "I have to be in a relationship in order to be intimate. I\'m not the one-night-stand kind of girl. Despite the rumors.", password: 'password', age: 37)
+file = EzDownload.open('https://s3-us-west-1.amazonaws.com/bingeterest-dev/profile/kim-kardashian.jpg')
+user9.photo.attach(io: file, filename: 'kim-kardashian.jpg')
+user9.save!
+
+user10 = User.new(username: 'David Beckham', description: "Nothing amazes me anymore", password: 'password', age: 43)
+file = EzDownload.open('https://s3-us-west-1.amazonaws.com/bingeterest-dev/profile/david-beckham.jpg')
+user10.photo.attach(io: file, filename: 'david-beckham.jpg')
+user10.save!
+
+user11 = User.new(username: 'Angelina Jolie', description: "Brad sucks", password: 'password', age: 43)
+file = EzDownload.open('https://s3-us-west-1.amazonaws.com/bingeterest-dev/profile/angelina-jolie.jpg')
+user11.photo.attach(io: file, filename: 'angelina-jolie.jpg')
+user11.save!
+
+user12 = User.new(username: 'Barack Obama', description: "Good luck America", password: 'password', age: 57)
+file = EzDownload.open('https://s3-us-west-1.amazonaws.com/bingeterest-dev/profile/barack-obama.jpg')
+user12.photo.attach(io: file, filename: 'barack-obama.jpg')
+user12.save!
+
+user13 = User.new(username: 'Justin Bieber', description: "I\'m 5\'9\"", password: 'password', age: 24)
+file = EzDownload.open('https://s3-us-west-1.amazonaws.com/bingeterest-dev/profile/justin-bieber.jpg')
+user13.photo.attach(io: file, filename: 'justin-bieber.jpg')
+user13.save!
+
+user14 = User.new(username: 'Beyoncé', description: "Queen", password: 'password', age: 36)
+file = EzDownload.open('https://s3-us-west-1.amazonaws.com/bingeterest-dev/profile/beyonce1.jpg')
+user14.photo.attach(io: file, filename: 'beyonce.jpg')
+user14.save!
+
+user15 = User.new(username: 'Will Smith', description: "Binge on", password: 'password', age: 37)
+file = EzDownload.open('https://s3-us-west-1.amazonaws.com/bingeterest-dev/profile/will-smith.jpg')
+user15.photo.attach(io: file, filename: 'will-smith.jpg')
+user15.save!
+
+user16 = User.new(username: 'Arnold Schwarzenegger', description: "I\'ll be back...to binge", password: 'password', age: 71)
+file = EzDownload.open('https://s3-us-west-1.amazonaws.com/bingeterest-dev/profile/arnold-schwarz.jpeg')
+user16.photo.attach(io: file, filename: 'arnold-schwarz.jpg')
+user16.save!
+
+user17 = User.new(username: 'Elon Musk', description: "I binge my problems away", password: 'password', age: 47)
+file = EzDownload.open('https://s3-us-west-1.amazonaws.com/bingeterest-dev/profile/elon-musk.jpg')
+user17.photo.attach(io: file, filename: 'justin-bieber.jpg')
+user17.save!
+
+user18 = User.new(username: 'Ariana Grande', description: "", password: 'password', age: 25)
+file = EzDownload.open('https://s3-us-west-1.amazonaws.com/bingeterest-dev/profile/ariana-grande.jpg')
+user18.photo.attach(io: file, filename: 'ariana-grande.jpg')
+user18.save!
+
+user19 = User.new(username: 'Jeff Bezos', description: "World domination.", password: 'password', age: 54)
+file = EzDownload.open('https://s3-us-west-1.amazonaws.com/bingeterest-dev/profile/jeff-bezos.jpg')
+user19.photo.attach(io: file, filename: 'jeff-bezos.jpg')
+user19.save!
+
+user20 = User.new(username: 'Cardi B', description: "BACARDIVENOM", password: 'password', age: 25)
+file = EzDownload.open('https://s3-us-west-1.amazonaws.com/bingeterest-dev/profile/cardi-b.jpg')
+user20.photo.attach(io: file, filename: 'cardi-b.jpg')
+user20.save!
+
+user21 = User.new(username: 'Serena Williams', description: "Tennis just a game, family is forever", password: 'password', age: 36)
+file = EzDownload.open('https://s3-us-west-1.amazonaws.com/bingeterest-dev/profile/serena-williams.jpg')
+user21.photo.attach(io: file, filename: 'justin-serena-williams.jpg')
+user21.save!
+
+user22 = User.new(username: 'Chloe Kim', description: "Binge for GOLD", password: 'password', age: 18)
+file = EzDownload.open('https://s3-us-west-1.amazonaws.com/bingeterest-dev/profile/Chloe-Kim.jpg')
+user22.photo.attach(io: file, filename: 'chloe-kim.jpg')
+user22.save!
+
+user23 = User.new(username: 'Daniel Caesar', description: "Golden Child", password: 'password', age: 23)
+file = EzDownload.open('https://s3-us-west-1.amazonaws.com/bingeterest-dev/profile/Daniel-Caesar.jpg')
+user23.photo.attach(io: file, filename: 'daniel-caesar.jpg')
+user23.save!
+
+user24 = User.new(username: 'Jimmy Kimmel', description: "", password: 'password', age: 50)
+file = EzDownload.open('https://s3-us-west-1.amazonaws.com/bingeterest-dev/profile/jimmy-kimmel.jpeg')
+user24.photo.attach(io: file, filename: 'jimmy-kimmel.jpg')
+user24.save!
+
+user25 = User.new(username: 'Kanye West', description: "Yeezy yeezy yeezy", password: 'password', age: 41)
+file = EzDownload.open('https://s3-us-west-1.amazonaws.com/bingeterest-dev/profile/kanye-west.jpg')
+user25.photo.attach(io: file, filename: 'kanye-west.jpg')
+user25.save!
+
+user26 = User.new(username: 'Wolfgang Puck', description: "Good food must be binged", password: 'password', age: 69)
+file = EzDownload.open('https://s3-us-west-1.amazonaws.com/bingeterest-dev/profile/wolfgang-puck.jpg')
+user26.photo.attach(io: file, filename: 'wolfgang-puck.jpg')
+user26.save!
+
+user27 = User.new(username: 'Masaharu Morimoto', description: "Master chef amateur binger", password: 'password', age: 63)
+file = EzDownload.open('https://s3-us-west-1.amazonaws.com/bingeterest-dev/profile/morimoto.jpeg')
+user27.photo.attach(io: file, filename: 'morimoto.jpg')
+user27.save!
+
+# user28 = User.new(username: 'Prince Harry', description: "I love Meghan", password: 'password', age: 33)
+# file = EzDownload.open('https://s3-us-west-1.amazonaws.com/bingeterest-dev/profile/justin-bieber.jpg')
+# user28.photo.attach(io: file, filename: 'justin-bieber.jpg')
+# user28.save!
+
+user29 = User.new(username: 'Meghan Markle', description: "I love binging... I mean Harry", password: 'password', age: 37)
+file = EzDownload.open('https://s3-us-west-1.amazonaws.com/bingeterest-dev/profile/meghan-markle.jpg')
+user29.photo.attach(io: file, filename: 'meghan-markle.jpg')
+user29.save!
+
+user30 = User.new(username: 'Stephen Curry', description: 'GOAT', password: 'password', age: 30)
+file = EzDownload.open('https://s3-us-west-1.amazonaws.com/bingeterest-dev/profile/steph-curry.jpeg')
+user30.photo.attach(io: file, filename: 'steph-curry.jpg')
+user30.save!
+
+user31 = User.new(username: 'JJ Watt', description: "Binge lyfe", password: 'password', age: 29)
+file = EzDownload.open('https://s3-us-west-1.amazonaws.com/bingeterest-dev/profile/jj-watt.jpg')
+user31.photo.attach(io: file, filename: 'jj-watt.jpg')
+user31.save!
+
+user32 = User.new(username: 'Kim Jong Un', description: "FUD", password: 'password', age: 100)
+file = EzDownload.open('https://s3-us-west-1.amazonaws.com/bingeterest-dev/profile/kim-jung-un.jpg')
+user32.photo.attach(io: file, filename: 'kim-jung-un.jpg')
+user32.save!
+
+user33 = User.new(username: 'Moon Jae-in', description: "FUD", password: 'password', age: 65)
+file = EzDownload.open('https://s3-us-west-1.amazonaws.com/bingeterest-dev/profile/moon-jae-in.jpg')
+user33.photo.attach(io: file, filename: 'moon-jae-in.jpg')
+user33.save!
 
 Binge.delete_all
 puts 'creating binges'
@@ -159,7 +284,9 @@ board1 = Board.create!(
 )
 
 board2 = Board.create!(
-  name: 'Drinks',
+  name: 'Dranks',
+  description: "Binge drinking",
+  category: "Drink",
   user_id: rand(1...34)
 )
 
@@ -171,33 +298,127 @@ board3 = Board.create!(
 )
 
 board4 = Board.create!(
+  name: 'Yums',
+  description: 'Misc',
+  category: 'Sweet tooth',
+  user_id: rand(1...34)
+)
+
+board5 = Board.create!(
+  name: 'Junk food',
+  description: 'Misc',
+  category: 'Binge',
+  user_id: rand(1...34)
+)
+
+board6 = Board.create!(
+  name: 'Weekend',
+  description: 'weekend netflix n chill',
+  category: 'Media',
+  user_id: rand(1...34)
+)
+
+board7 = Board.create!(
+  name: 'Weekday',
+  description: 'my favorites',
+  category: 'Media',
+  user_id: rand(1...34)
+)
+
+board8 = Board.create!(
+  name: 'binge shows',
+  description: 'bingeworthy',
+  category: 'Media',
+  user_id: rand(1...34)
+)
+
+board9 = Board.create!(
+  name: 'Tasty',
+  description: 'mouthwatering treats',
+  category: 'Food',
+  user_id: rand(1...34)
+)
+
+board10 = Board.create!(
+  name: 'Yums',
+  description: 'ugh binging is so good',
+  category: 'Food',
+  user_id: rand(1...34)
+)
+
+board11 = Board.create!(
+  name: 'mouthwater',
+  description: 'favorite binges',
+  category: 'Food',
+  user_id: rand(1...34)
+)
+
+board12 = Board.create!(
+  name: 'Diet stoppers',
+  description: 'things I want to eat',
+  category: 'Food',
+  user_id: rand(1...34)
+)
+
+board13 = Board.create!(
+  name: 'anti-diet',
+  description: 'to eat list',
+  category: 'Food',
+  user_id: rand(1...34)
+)
+
+board14 = Board.create!(
+  name: 'wows',
+  description: 'sweetness',
+  category: 'Dessert',
+  user_id: rand(1...34)
+)
+
+board15 = Board.create!(
+  name: 'sweet tooth',
+  description: 'cravings',
+  category: 'Dessert',
+  user_id: rand(1...34)
+)
+
+board16 = Board.create!(
+  name: 'weekend binges',
+  description: 'i love food',
+  category: 'Food',
+  user_id: rand(1...34)
+)
+
+board17 = Board.create!(
+  name: 'what is moderation',
+  description: 'fat lyfe',
+  category: 'Food',
+  user_id: rand(1...34)
+)
+
+board18 = Board.create!(
+  name: 'favorites',
+  description: 'movies you have to watch',
+  category: 'Movies',
+  user_id: rand(1...34)
+)
+
+board19 = Board.create!(
+  name: 'favorites',
+  description: 'tv shows you have to watch',
+  category: 'tv shows',
+  user_id: rand(1...34)
+)
+
+board20 = Board.create!(
   name: 'Misc',
   description: 'Misc',
   category: 'Misc',
   user_id: rand(1...34)
 )
 
-board5 = Board.create!(
-  name: 'Dessert',
-  user_id: rand(1...34)
-)
-
-board6 = Board.create!(
-  name: 'Dessert',
-  user_id: rand(1...34)
-)
-
-board7 = Board.create!(
-  name: 'Dessert',
-  user_id: rand(1...34)
-)
-
-board8 = Board.create!(
-  name: 'Dessert',
-  user_id: rand(1...34)
-)
-
-board9 = Board.create!(
-  name: 'Dessert',
+board21 = Board.create!(
+  name: 'Midnight treats',
+  description: "Binge drinking",
+  category: "Drink",
   user_id: rand(1...34)
 )

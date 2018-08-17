@@ -2,8 +2,12 @@ import React from 'react';
 import { Link, Redirect } from 'react-router-dom';
 
 const BingeIndexItem = (props) => (
-  <li className="binge">
-    <img src={props.binge.photoUrl} />
+  <div className="binge-dashboard">
+    <Link to={`/binges/${props.binge.id}`}>
+      <li className="binge">
+        <img src={props.binge.photoUrl} />
+      </li>
+    </Link>
 
     <a href={props.binge.link_url}>
       <button className="binge-link">
@@ -11,7 +15,7 @@ const BingeIndexItem = (props) => (
         <h2>{props.binge.url}</h2>
       </button>
     </a>
-  </li>
+  </div>
 );
 
 export default BingeIndexItem;

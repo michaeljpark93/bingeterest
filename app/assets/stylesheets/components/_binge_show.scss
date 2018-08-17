@@ -1,0 +1,122 @@
+.binge-showpage {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-flow: column;
+  background-color: $lightest-gray;
+  width: 100vw;
+  height: 100vw;
+
+  .binge-back:hover {
+    background-color: $light-gray;
+  }
+
+  .binge-back:focus {
+    outline: none;
+  }
+
+  .binge-back {
+    height: 44px;
+    width: 89px;
+    padding: 4px;
+    border-radius: 999px;
+    background-color: $lightest-gray;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: row nowrap;
+    position: fixed;
+    top: 16px;
+    left: 16px;
+
+    img {
+      width: 25px;
+      height: 25px;
+      box-sizing: content-box;
+    }
+
+    h3 {
+      color: $black;
+      font-size: 17px;
+      font-weight: bold;
+    }
+  }
+}
+
+.binge-show-box {
+  margin: 20px auto;
+
+  .binge-edit-box {
+    background-color: $white;
+    width: 550px;
+    height: 42px;
+    padding: 16px 25px;
+    position: sticky;
+    top: 30px;
+    border-radius: 8px;
+
+    .binge-edit:hover  {
+      border-radius: 50%;
+      text-align: center;
+      vertical-align: middle;
+      background-color: $lighter-gray;
+    }
+
+    .binge-edit {
+      background-color: $white;
+      margin-right: 10px;
+      height: 50px;
+      width: 50px;
+      border-radius: 50%;
+
+      .edit-icon{
+        height: 30px;
+        width: 30px;
+        box-sizing: content-box;
+        padding: 10px;
+      }
+    }
+  }
+
+  .binge-photo {
+    background-color: $white;
+    width: 550px;
+    padding: 16px 25px 75px 25px;
+    border-radius: 8px;
+    border: none;
+    margin-top: 2px;
+
+    img {
+      width: 500px;
+      border-radius: 8px;
+      border: none;
+      margin: 10px auto;
+    }
+  }
+}
+
+.binge-show-link {
+  background-color: $lightestest-gray;
+  border-radius: 4px;
+  position: relative;
+  top: -70px;
+  left: 420px;
+  overflow: hidden;
+  height: 50px;
+  flex-flow: row nowrap;
+
+  .a-logo {
+    display: block;
+    width: 16px;
+    height: 16px;
+    margin: 0 0 0 3px;
+  }
+
+  h2 {
+    font-size: 16px;
+    color: $black;
+    font-weight: bold;
+    margin: 0 3px;
+  }
+}

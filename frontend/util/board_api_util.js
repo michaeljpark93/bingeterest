@@ -29,9 +29,9 @@ export const updateBoard = (board) => {
   });
 };
 
-export const deleteBoard = board => {
+export const deleteBoard = id => {
   return $.ajax({
     method: 'DELETE',
-    url: `api/boards/${board.id}`
+    url: `api/boards/${id}`
   });
 };

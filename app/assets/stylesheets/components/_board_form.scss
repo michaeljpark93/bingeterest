@@ -170,6 +170,10 @@
     align-items: center;
     flex-flow: row;
 
+    button:hover {
+      background-color: $lighter-gray;
+    }
+
     button {
       border: none;
       background-color: $lightest-gray;
@@ -193,6 +197,14 @@
     height: 56px;
     padding: 8px 16px;
 
+    button:hover {
+      background-color: $lighter-gray;
+    }
+
+    input:hover {
+      background-color: $dark-red;
+    }
+
     button {
       border: none;
       background-color: $lightest-gray;
@@ -209,7 +221,8 @@
 
     input {
       border: none;
-      background-color: $lightest-gray;
+      background-color: $red;
+      color: $white;
       font-size: 16px;
       text-align: center;
       font-weight: bold;

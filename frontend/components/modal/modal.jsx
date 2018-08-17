@@ -4,6 +4,7 @@ import { closeModal } from '../../actions/modal_actions';
 import BoardFormContainer from '../board/board_form_container';
 import BoardUpdateContainer from '../board/board_update_container';
 import BingeFormContainer from '../binge/binge_form_container';
+import BingeUpdateContainer from '../binge/binge_update_container';
 
 function Modal({modal, closeModal}) {
   if (!modal) {
@@ -19,6 +20,9 @@ function Modal({modal, closeModal}) {
       break;
     case 'createBinge':
       component = <BingeFormContainer cancel={closeModal}/>;
+      break;
+    case 'editBinge':
+      component = <BingeUpdateContainer cancel={closeModal}/>;
       break;
     default:
       return null;

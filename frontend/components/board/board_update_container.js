@@ -16,7 +16,7 @@ const mapDispatchToProps = dispatch => {
   return {
     fetchBoard: (userId) => dispatch(fetchBoard(userId)),
     updateBoard: (board) => dispatch(updateBoard(board)),
-    deleteBoard: (board) => dispatch(deleteBoard(board)),
+    deleteBoard: (id) => dispatch(deleteBoard(id)),
     removeErrors: () => dispatch(removeErrors())
   };
 };

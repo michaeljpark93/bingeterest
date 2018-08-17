@@ -25,7 +25,7 @@ class BoardShow extends React.Component {
     return(
       <div>
         <NavBarContainer />
-        <Modal board={board}/>
+        <Modal />
 
         <div className="board-show">
 
