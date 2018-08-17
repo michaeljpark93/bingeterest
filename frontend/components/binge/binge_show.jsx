@@ -6,22 +6,16 @@ import Modal from '../modal/modal';
 class BingeShow extends React.Component {
   constructor(props) {
     super(props);
-
-    this.handleModal = this.handleModal.bind(this);
   }
 
   componentDidMount() {
     this.props.fetchBinge(this.props.binge.id);
-  }
-
-  handleModal(e) {
-    e.preventDefault();
-    this.props.openModal("editBinge");
+    this.props.fetchBoards();
   }
 
   render() {
     const binge = this.props.binge;
-    const bingeEdit = binge.author_id === this.props.currentUser.id ? <div className="binge-edit" onClick={this.handleModal}>
+    const bingeEdit = binge.author_id === this.props.currentUser.id ? <div className="binge-edit" onClick={() => this.props.openModal("editBinge")}>
                     <img className="edit-icon" src={window.images.pen} />
                   </div> : <div></div>
 
@@ -39,6 +33,10 @@ class BingeShow extends React.Component {
 
             <div className="binge-edit-box">
               {bingeEdit}
+              <button className="save-binging" onClick={() => this.props.openModal("createBinging")}>
+                <img src={window.images.binge} />
+                <h3>Save</h3>
+              </button>
             </div>
 
             <div className="binge-photo">

@@ -1,5 +1,4 @@
 class Api::BingingsController < ApplicationController
-
   def create
     @binging = Binging.new(binging_params)
 
@@ -9,10 +8,6 @@ class Api::BingingsController < ApplicationController
     else
       render json: @binging.errors.full_messages, status: 400
     end
-  end
-
-  def index
-    @bingings = Binging.all
   end
 
   def destroy

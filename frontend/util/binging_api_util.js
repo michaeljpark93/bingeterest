@@ -1,3 +1,10 @@
+export const fetchBinging = () => {
+  return $.ajax({
+    method: 'GET',
+    url: 'api/users'
+  });
+};
+
 export const createBinging = binging => {
   return $.ajax({
     method: 'POST',
