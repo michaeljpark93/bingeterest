@@ -144,10 +144,10 @@ file = EzDownload.open('https://s3-us-west-1.amazonaws.com/bingeterest-dev/profi
 user27.photo.attach(io: file, filename: 'morimoto.jpg')
 user27.save!
 
-# user28 = User.new(username: 'Prince Harry', description: "I love Meghan", password: 'password', age: 33)
-# file = EzDownload.open('https://s3-us-west-1.amazonaws.com/bingeterest-dev/profile/justin-bieber.jpg')
-# user28.photo.attach(io: file, filename: 'justin-bieber.jpg')
-# user28.save!
+user28 = User.new(username: 'Prince Harry', description: "I love Meghan", password: 'password', age: 33)
+file = EzDownload.open('https://s3-us-west-1.amazonaws.com/bingeterest-dev/profile/prince-harry.com%252fhss%252fstorage%252fmidas%252fd4810b30af0d03c647c5192f3b756bb3%252f206524164%252fprince-harry-duke-of-sussex-visits-croke-park-home-of-irelands-the-picture-id996288038')
+user28.photo.attach(io: file, filename: 'prince-harry.jpg')
+user28.save!
 
 user29 = User.new(username: 'Meghan Markle', description: "I love binging... I mean Harry", password: 'password', age: 37)
 file = EzDownload.open('https://s3-us-west-1.amazonaws.com/bingeterest-dev/profile/meghan-markle.jpg')
@@ -178,9 +178,10 @@ Binge.delete_all
 puts 'creating binges'
 
 binge1 = Binge.new(
+  description: 'yummm',
   url: 'unsplash.com',
   link_url: 'https://unsplash.com/photos/Fq54FqucgCE',
-  author_id: 1)
+  author_id: rand(1...34))
 file = EzDownload.open('https://s3-us-west-1.amazonaws.com/bingeterest-dev/binges/binge1.jpg')
 binge1.photo.attach(io: file, filename: 'binge1.jpg')
 binge1.save!
@@ -223,8 +224,8 @@ binge5.save!
 
 binge6 = Binge.new(
   description: "fries that\'ll cross your eyes",
-  url: 'parhlo.com',
-  link_url: 'https://www.parhlo.com/wp-content/uploads/2017/06/maxresdefault-2.jpg',
+  url: 'unsplash.com',
+  link_url: 'https://unsplash.com/photos/GG1FJwV67PA',
   author_id: rand(1...34))
 file = EzDownload.open('https://s3-us-west-1.amazonaws.com/bingeterest-dev/binges/binge6.jpg')
 binge6.photo.attach(io: file, filename: 'binge6.jpg')
@@ -265,6 +266,15 @@ binge10 = Binge.new(
 file = EzDownload.open('https://s3-us-west-1.amazonaws.com/bingeterest-dev/binges/binge10.jpg')
 binge10.photo.attach(io: file, filename: 'binge10.jpg')
 binge10.save!
+
+binge13 = Binge.new(
+  description: 'pandonut',
+  url: 'tumblr.com',
+  link_url: 'http://japancandybox.tumblr.com/post/141482435688',
+  author_id: rand(1...34))
+file = EzDownload.open('https://s3-us-west-1.amazonaws.com/bingeterest-dev/binges/binge13.jpg')
+binge13.photo.attach(io: file, filename: 'binge13.jpg')
+binge13.save!
 
 Board.delete_all
 puts 'creating boards'

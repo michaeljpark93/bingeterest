@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { requestUser } from '../../actions/user_actions';
+import { fetchUser } from '../../actions/user_actions';
 import UserShow from './user_show';
 
 const mapStateToProps = ({ entities, session }) => ({
@@ -12,7 +12,7 @@ const mapStateToProps = ({ entities, session }) => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  requestUser: id => dispatch(requestUser(id))
+  fetchUser: id => dispatch(fetchUser(id))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserShow);

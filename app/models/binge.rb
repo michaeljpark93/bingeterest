@@ -5,6 +5,7 @@ class Binge < ApplicationRecord
 
   belongs_to :author,
     foreign_key: :author_id,
+    primary_key: :id,
     class_name: :User
 
   has_one_attached :photo

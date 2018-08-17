@@ -41,6 +41,10 @@ class UserShow extends React.Component {
     this.selectPaneContent = this.selectPaneContent.bind(this);
   }
 
+  componentDidMount() {
+    this.props.fetchUser(this.props.currentUser.id);
+  }
+
   selectTab(num) {
     this.setState({selectedPane: num}, () => this.selectPaneContent(num));
   }
@@ -57,8 +61,10 @@ class UserShow extends React.Component {
   }
 
   render() {
+    const currentUser = this.props.currentUser;
     const pane = this.props.panes[this.state.selectedPane];
     const selectedPane = pane.title.slice(0, -1);
+    const profilePic = currentUser.photoUrl ? <img className="user-pf" src={currentUser.photoUrl} /> : <img className="standard-pf" src={window.images.profpic} />
 
     return (
       <div>
@@ -69,7 +75,7 @@ class UserShow extends React.Component {
           <div className="user-info">
             <div className="user-info-box">
               <div className="username">
-                <h2>{this.props.currentUser.username}</h2>
+                <h2>{currentUser.username}</h2>
 
                 <div className="follow-box">
                   <h2>followers</h2>
@@ -79,7 +85,7 @@ class UserShow extends React.Component {
               </div>
 
               <div className="pf-picture">
-                <img src={window.images.profpic} />
+                {profilePic}
               </div>
             </div>
           </div>
