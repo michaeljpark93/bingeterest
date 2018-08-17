@@ -1,7 +1,7 @@
-export const fetchBinging = () => {
+export const fetchBingings = () => {
   return $.ajax({
     method: 'GET',
-    url: 'api/users'
+    url: 'api/bingings'
   });
 };
 

@@ -8,7 +8,6 @@ class UserBoardItem extends React.Component {
   }
 
   handleSubmit(e) {
-    debugger
     e.stopPropagation();
     this.props.edit("createBoard");
   }

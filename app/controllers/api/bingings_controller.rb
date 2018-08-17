@@ -1,4 +1,9 @@
 class Api::BingingsController < ApplicationController
+  def index
+    @bingings = Binging.all
+    render :index
+  end
+
   def create
     @binging = Binging.new(binging_params)
 

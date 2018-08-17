@@ -1,5 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
+import UserBingeItem from '../binge/user_binge_item';
 import ErrorsList from '../errors/error_list';
 import NavBarContainer from '../nav_bar/nav_bar_container';
 import Modal from '../modal/modal';
@@ -13,6 +14,7 @@ class BoardShow extends React.Component {
 
   componentDidMount() {
     this.props.fetchBoard(this.props.board.id);
+    this.props.fetchBinges();
   }
 
   handleModal(e) {
@@ -21,7 +23,10 @@ class BoardShow extends React.Component {
   }
 
   render() {
+    const currentUser = this.props.currentUser;
     const board = this.props.board;
+    const profilePic = currentUser.photoUrl ? <img className="user-pf" src={currentUser.photoUrl} /> : <img className="standard-pf" src={window.images.profpic} />
+  
     return(
       <div>
         <NavBarContainer />
@@ -44,9 +49,15 @@ class BoardShow extends React.Component {
             </div>
           </div>
 
-          <div className="pf-pic">
-            <img src={window.images.profpic} />
+          <div className="pf-picture">
+            {profilePic}
           </div>
+        </div>
+
+        <div className="board-binges">
+          {this.props.binges.map(binge => {
+            return <img src={binge.photoUrl} />
+          })}
         </div>
 
         <div className="board-error-list">

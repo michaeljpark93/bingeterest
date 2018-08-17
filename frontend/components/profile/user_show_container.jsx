@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import { fetchUser } from '../../actions/user_actions';
+import { fetchBingings } from '../../actions/binging_actions';
 import { selectFollows, selectFollowers } from '../../reducers/selectors';
 import { createFollow, deleteFollow, fetchFollowers } from '../../actions/follow_actions';
 import UserShow from './user_show';
@@ -21,6 +22,7 @@ const mapDispatchToProps = dispatch => ({
   createFollow: id => dispatch(createFollow(id)),
   deleteFollow: id => dispatch(deleteFollow(id)),
   fetchFollowers: id => dispatch(fetchFollowers(id)),
+  fetchBingings: () => dispatch(fetchBingings()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserShow);

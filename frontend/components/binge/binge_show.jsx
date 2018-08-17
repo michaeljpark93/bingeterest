@@ -35,7 +35,7 @@ class BingeShow extends React.Component {
               {bingeEdit}
               <button className="save-binging" onClick={() => this.props.openModal("createBinging")}>
                 <img src={window.images.binge} />
-                <h3>Save</h3>
+                <h3>Binge</h3>
               </button>
             </div>
 

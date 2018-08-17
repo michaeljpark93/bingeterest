@@ -1,0 +1,178 @@
+.binging-box {
+  background-color: $white;
+  width: 804px;
+  height: 523px;
+  border-radius: 8px;
+  border: none;
+
+  .binge-title {
+    width: 704px;
+    height: 28px;
+    padding: 20px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid $lightest-gray;
+
+    h2 {
+      color: $black;
+      font-size: 24px;
+      font-weight: bold;
+      letter-spacing: -0.4px;
+      line-height: 28.8px;
+      width: 704px;
+      text-align: center;
+      padding: 20px 50px;
+    }
+
+    div {
+      color: $gray;
+      font-size: 24px;
+      font-weight: bold;
+      text-align: center;
+      vertical-align: middle;
+      position: absolute;
+      right: 0px;
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+      padding: 8px;
+      margin: 10px 10px;
+    }
+  }
+}
+
+.binge-details-box {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-flow: row;
+  height: auto;
+  width: 804px;
+
+  .binge-details {
+    width: 400px;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .binge-image {
+      height: 324px;
+      width: 216px;
+      border-radius: 8px;
+    }
+  }
+
+  .board-details-box {
+    width: 402px;
+    height: 450px;
+    border-right: 1px solid $lightest-gray;
+    border-left: 1px solid $lightest-gray;
+
+    .all-boards {
+      width: 386px;
+      height: 42px;
+      border-bottom: 1px solid $lightest-gray;
+      padding: 12px 24px;
+      vertical-align: middle;
+      box-sizing: border-box;
+    }
+
+    h3 {
+      font-size: 16px;
+      color: $black;
+      text-align: left;
+      vertical-align: middle;
+      font-weight: 400;
+      line-height: 1.2;
+      letter-spacing: -0.4px;
+      width: 339px;
+    }
+
+    .bingings {
+      overflow: scroll;
+      height: 413px;
+      margin-top: -1px;
+      border-radius: 8px;
+
+      .binging {
+        width: 339px;
+        height: 36px;
+        padding: 8px 24px;
+        border-top: 1px solid $lightest-gray;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-flow: row nowrap;
+
+        .binging-board {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-flow: row nowrap;
+
+          .preview {
+            width: 20px;
+            height: 20px;
+            border-radius: 4px;
+            margin-right: 10px;
+            box-sizing: border-box;
+            overflow: hidden;
+          }
+
+          h2 {
+            text-align: left;
+            color: $black;
+            font-size: 16px;
+            font-weight: 700;
+            line-height: 1.2;
+            letter-spacing: -0.4px;
+            -webkit-font-smoothing: antialiased;
+            max-width: 100%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+          }
+        }
+      }
+    }
+  }
+}
+
+.saving-binging:hover {
+  background-color: $dark-red;
+}
+
+.saving-binging {
+  height: 27px;
+  width: 55px;
+  padding: 3px 10px;
+  background-color: $red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: row nowrap;
+  box-sizing: content-box;
+  border-radius: 4px;
+  border: none;
+
+  .binge-icon {
+    width: 18px;
+    height: 18px;
+    box-sizing: content-box;
+    margin-right: 5px;
+  }
+
+  #binge-icon-title {
+    text-align: left;
+    align-items: center;
+    font-size: 14px;
+    color: $white;
+    font-weight: bold;
+    line-height: 1.2;
+    letter-spacing: -0.4px;
+    -webkit-font-smoothing: antialiased;
+    margin: 0;
+  }
+}

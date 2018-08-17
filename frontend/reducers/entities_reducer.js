@@ -11,7 +11,7 @@ const entitiesReducer = combineReducers({
   users: usersReducer,
   binges: bingesReducer,
   boards: boardsReducer,
-  binging: bingingsReducer,
+  bingings: bingingsReducer,
   following: followingReducer,
   followed: followedReducer,
 });

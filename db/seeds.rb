@@ -237,8 +237,8 @@ binge5 = Binge.new(
   url: 'scotscoop.com',
   link_url: 'https://scotscoop.com/icicles-rolls-into-downtown-san-mateo/',
   author_id: rand(1...30))
-file = EzDownload.open('https://s3-us-west-1.amazonaws.com/bingeterest-dev/binges/binge5.jpg')
-binge5.photo.attach(io: file, filename: 'binge5.jpg')
+file = EzDownload.open('https://s3-us-west-1.amazonaws.com/bingeterest-dev/binges/binge5.gif')
+binge5.photo.attach(io: file, filename: 'binge5.gif')
 binge5.save!
 
 binge6 = Binge.new(
@@ -255,8 +255,8 @@ binge7 = Binge.new(
   url: 'giphy.com',
   link_url: 'https://giphy.com/gifs/politics-donald-trump-2016-elections-cBIooxvKerol2',
   author_id: rand(1...30))
-file = EzDownload.open('https://s3-us-west-1.amazonaws.com/bingeterest-dev/binges/binge7.jpg')
-binge7.photo.attach(io: file, filename: 'binge7.jpg')
+file = EzDownload.open('https://s3-us-west-1.amazonaws.com/bingeterest-dev/binges/binge7.gif')
+binge7.photo.attach(io: file, filename: 'binge7.gif')
 binge7.save!
 
 binge8 = Binge.new(
@@ -318,7 +318,7 @@ binge14 = Binge.new(
   url: 'bestofzululand.co',
   link_url: 'https://bestofzululand.co.za/whatshot/5444/5-pizza-toppings-thats-a-must/',
   author_id: rand(1...30))
-file = EzDownload.open('https://s3-us-west-1.amazonaws.com/bingeterest-dev/binges/binge14.jpg')
+file = EzDownload.open('https://s3-us-west-1.amazonaws.com/bingeterest-dev/binges/binge14.png')
 binge14.photo.attach(io: file, filename: 'binge14.jpg')
 binge14.save!
 
@@ -336,7 +336,7 @@ binge16 = Binge.new(
   url: 'unsplash.com',
   link_url: 'https://unsplash.com/photos/7sStoaxfJh0',
   author_id: rand(1...30))
-file = EzDownload.open('https://s3-us-west-1.amazonaws.com/bingeterest-dev/binges/binge16.jpg')
+file = EzDownload.open('https://s3-us-west-1.amazonaws.com/bingeterest-dev/binges/binge16.jpeg')
 binge16.photo.attach(io: file, filename: 'binge16.jpg')
 binge16.save!
 
@@ -372,8 +372,8 @@ binge20 = Binge.new(
   url: 'giphy.com',
   link_url: 'https://giphy.com/gifs/jon-hamm-white-christmas-black-mirror-10xYprgFoZBprG',
   author_id: rand(1...30))
-file = EzDownload.open('https://s3-us-west-1.amazonaws.com/bingeterest-dev/binges/binge20.jpg')
-binge20.photo.attach(io: file, filename: 'binge20.jpg')
+file = EzDownload.open('https://s3-us-west-1.amazonaws.com/bingeterest-dev/binges/binge20.gif')
+binge20.photo.attach(io: file, filename: 'binge20.gif')
 binge20.save!
 
 binge21 = Binge.new(

@@ -13,45 +13,44 @@ class BingingForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  componentWillUnmount() {
-    this.props.removeErrors();
-  }
-
   componentDidMount() {
     this.props.fetchBinge(this.props.binge.id);
     this.props.fetchBoards();
   }
 
-  handleSubmit(e) {
-    e.preventDefault();
-    let boardId = parseInt(e.currentTarget.value);
-    this.setState({ board_id: boardId});
-    this.props.createBinging(this.state);
+  handleSubmit(board) {
+    this.setState({ board_id: board.id }, () => this.props.createBinging(this.state), this.props.cancel());
   }
 
   render() {
 
     return(
-      <div>
+      <div className="binging-box">
         <div className="binge-title">
           <h2>Choose board</h2>
           <div onClick={this.props.cancel}>X</div>
         </div>
 
-        <div className="binge-details">
-          <img className="binge-image" src={this.props.binge.photoUrl} />
+        <div className="binge-details-box">
+          <div className="binge-details">
+            <img className="binge-image" src={this.props.binge.photoUrl} />
+          </div>
+
+          <div className="board-details-box">
+            <div className="all-boards">
+              <h3>All boards</h3>
+            </div>
+            <ul className="bingings">
+              {this.props.boards.map(board => {
+                return <BingingBoardItem
+                  board={board}
+                  key={board.id}
+                  handleSubmit={() => this.handleSubmit(board)} />
+              })}
+            </ul>
+          </div>
         </div>
 
-        <div>
-          <ul className="bingings">
-            {this.props.boards.map(board => {
-              return <BingingBoardItem
-                board={board}
-                key={board.id}
-                action={this.handleSubmit}/>
-            })}
-          </ul>
-        </div>
       </div>
     );
   }
