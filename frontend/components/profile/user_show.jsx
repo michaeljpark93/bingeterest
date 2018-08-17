@@ -78,9 +78,8 @@ class UserShow extends React.Component {
                 <h2>{currentUser.username}</h2>
 
                 <div className="follow-box">
-                  <h2>followers</h2>
-                  <h2>followers</h2>
-                  <h2>following</h2>
+                  <h2>{this.props.followers}</h2>
+                  <h2>{this.props.follows}</h2>
                 </div>
               </div>
 

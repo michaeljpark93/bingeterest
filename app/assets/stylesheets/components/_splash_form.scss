@@ -151,14 +151,14 @@ body {
           height: 40px;
           width: 100%;
           margin-bottom: 7px;
-          border-radius: 4px;
-          border: 1px solid black;
           cursor: text;
+          border: none;
 
           input {
+            border-radius: 4px;
+            border: 1px solid black;
             width: 238px;
             height: 22px;
-            border: none;
             font-size: 16px;
             padding: 8px 14px;
             color: $gray;

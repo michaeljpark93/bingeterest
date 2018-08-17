@@ -134,9 +134,9 @@ file = EzDownload.open('https://s3-us-west-1.amazonaws.com/bingeterest-dev/profi
 user25.photo.attach(io: file, filename: 'kanye-west.jpg')
 user25.save!
 
-user26 = User.new(username: 'Wolfgang Puck', description: "Good food must be binged", password: 'password', age: 69)
-file = EzDownload.open('https://s3-us-west-1.amazonaws.com/bingeterest-dev/profile/wolfgang-puck.jpg')
-user26.photo.attach(io: file, filename: 'wolfgang-puck.jpg')
+user26 = User.new(username: 'Kim Jong Un', description: "FUD", password: 'password', age: 100)
+file = EzDownload.open('https://s3-us-west-1.amazonaws.com/bingeterest-dev/profile/kim-jung-un.jpg')
+user26.photo.attach(io: file, filename: 'kim-jung-un.jpg')
 user26.save!
 
 user27 = User.new(username: 'Masaharu Morimoto', description: "Master chef amateur binger", password: 'password', age: 63)
@@ -159,20 +159,39 @@ file = EzDownload.open('https://s3-us-west-1.amazonaws.com/bingeterest-dev/profi
 user30.photo.attach(io: file, filename: 'steph-curry.jpg')
 user30.save!
 
-user31 = User.new(username: 'JJ Watt', description: "Binge lyfe", password: 'password', age: 29)
-file = EzDownload.open('https://s3-us-west-1.amazonaws.com/bingeterest-dev/profile/jj-watt.jpg')
-user31.photo.attach(io: file, filename: 'jj-watt.jpg')
-user31.save!
+# user31 = User.new(username: 'Wolfgang Puck', description: "Good food must be binged", password: 'password', age: 69)
+# file = EzDownload.open('https://s3-us-west-1.amazonaws.com/bingeterest-dev/profile/wolfgang-puck.jpg')
+# user31.photo.attach(io: file, filename: 'wolfgang-puck.jpg')
+# user31.save!
 
-user32 = User.new(username: 'Kim Jong Un', description: "FUD", password: 'password', age: 100)
-file = EzDownload.open('https://s3-us-west-1.amazonaws.com/bingeterest-dev/profile/kim-jung-un.jpg')
-user32.photo.attach(io: file, filename: 'kim-jung-un.jpg')
-user32.save!
+# user32 = User.new(username: 'JJ Watt', description: "Binge lyfe", password: 'password', age: 29)
+# file = EzDownload.open('https://s3-us-west-1.amazonaws.com/bingeterest-dev/profile/jj-watt.jpg')
+# user32.photo.attach(io: file, filename: 'jj-watt.jpg')
+# user32.save!
 
-user33 = User.new(username: 'Moon Jae-in', description: "FUD", password: 'password', age: 65)
-file = EzDownload.open('https://s3-us-west-1.amazonaws.com/bingeterest-dev/profile/moon-jae-in.jpg')
-user33.photo.attach(io: file, filename: 'moon-jae-in.jpg')
-user33.save!
+# user33 = User.new(username: 'Moon Jae-in', description: "FUD", password: 'password', age: 65)
+# file = EzDownload.open('https://s3-us-west-1.amazonaws.com/bingeterest-dev/profile/moon-jae-in.jpg')
+# user33.photo.attach(io: file, filename: 'moon-jae-in.jpg')
+# user33.save!
+
+Follow.delete_all
+puts 'creating follows'
+
+follow1 = Follow.create!(user_id: 1, follower_id: 26)
+follow2 = Follow.create!(user_id: 1, follower_id: rand(1...30))
+follow3 = Follow.create!(user_id: 1, follower_id: rand(1...30))
+follow4 = Follow.create!(user_id: 1, follower_id: rand(1...30))
+follow5 = Follow.create!(user_id: 1, follower_id: rand(1...30))
+follow6 = Follow.create!(user_id: 1, follower_id: rand(1...30))
+follow7 = Follow.create!(user_id: rand(1...30), follower_id: 1)
+follow8 = Follow.create!(user_id: rand(1...30), follower_id: 1)
+follow9 = Follow.create!(user_id: rand(1...30), follower_id: 1)
+follow10 = Follow.create!(user_id: rand(1...30), follower_id: 1)
+follow11 = Follow.create!(user_id: rand(1...30), follower_id: rand(1...30))
+follow12 = Follow.create!(user_id: rand(1...30), follower_id: rand(1...30))
+follow13 = Follow.create!(user_id: rand(1...30), follower_id: rand(1...30))
+follow14 = Follow.create!(user_id: rand(1...30), follower_id: rand(1...30))
+follow15 = Follow.create!(user_id: rand(1...30), follower_id: rand(1...30))
 
 Binge.delete_all
 puts 'creating binges'
@@ -181,7 +200,7 @@ binge1 = Binge.new(
   description: 'yummm',
   url: 'unsplash.com',
   link_url: 'https://unsplash.com/photos/Fq54FqucgCE',
-  author_id: rand(1...34))
+  author_id: rand(1...30))
 file = EzDownload.open('https://s3-us-west-1.amazonaws.com/bingeterest-dev/binges/binge1.jpg')
 binge1.photo.attach(io: file, filename: 'binge1.jpg')
 binge1.save!
@@ -190,7 +209,7 @@ binge2 = Binge.new(
   description: 'i scream for ice cream',
   url: 'unsplash.com',
   link_url: 'https://unsplash.com/photos/TLD6iCOlyb0',
-  author_id: rand(1...34))
+  author_id: rand(1...30))
 file = EzDownload.open('https://s3-us-west-1.amazonaws.com/bingeterest-dev/binges/binge2.jpg')
 binge2.photo.attach(io: file, filename: 'binge2.jpg')
 binge2.save!
@@ -199,7 +218,7 @@ binge3 = Binge.new(
   description: 'bingey',
   url: 'unsplash.com',
   link_url: 'https://unsplash.com/photos/uL73uBFjz7o',
-  author_id: rand(1...34))
+  author_id: 1)
 file = EzDownload.open('https://s3-us-west-1.amazonaws.com/bingeterest-dev/binges/binge3.jpg')
 binge3.photo.attach(io: file, filename: 'binge3.jpg')
 binge3.save!
@@ -208,43 +227,43 @@ binge4 = Binge.new(
   description: 'weekend vibes',
   url: 'unsplash.com',
   link_url: 'https://unsplash.com/photos/t7wg7BJU2-s',
-  author_id: rand(1...34))
+  author_id: rand(1...30))
 file = EzDownload.open('https://s3-us-west-1.amazonaws.com/bingeterest-dev/binges/binge4.jpg')
 binge4.photo.attach(io: file, filename: 'binge4.jpg')
 binge4.save!
 
 binge5 = Binge.new(
-  description: 'fud',
-  url: 'unsplash.com',
-  link_url: 'https://unsplash.com/photos/cff_w0ADWIA',
-  author_id: rand(1...34))
+  description: 'rolls on rolls on rolls',
+  url: 'scotscoop.com',
+  link_url: 'https://scotscoop.com/icicles-rolls-into-downtown-san-mateo/',
+  author_id: rand(1...30))
 file = EzDownload.open('https://s3-us-west-1.amazonaws.com/bingeterest-dev/binges/binge5.jpg')
 binge5.photo.attach(io: file, filename: 'binge5.jpg')
 binge5.save!
 
 binge6 = Binge.new(
-  description: "fries that\'ll cross your eyes",
+  description: "finger lickin good",
   url: 'unsplash.com',
   link_url: 'https://unsplash.com/photos/GG1FJwV67PA',
-  author_id: rand(1...34))
+  author_id: rand(1...30))
 file = EzDownload.open('https://s3-us-west-1.amazonaws.com/bingeterest-dev/binges/binge6.jpg')
 binge6.photo.attach(io: file, filename: 'binge6.jpg')
 binge6.save!
 
 binge7 = Binge.new(
-  description: 'healthy binge',
-  url: 'unsplash.com',
-  link_url: 'https://unsplash.com/photos/MXovqM130UI',
-  author_id: rand(1...34))
+  description: 'ohhhh snap',
+  url: 'giphy.com',
+  link_url: 'https://giphy.com/gifs/politics-donald-trump-2016-elections-cBIooxvKerol2',
+  author_id: rand(1...30))
 file = EzDownload.open('https://s3-us-west-1.amazonaws.com/bingeterest-dev/binges/binge7.jpg')
 binge7.photo.attach(io: file, filename: 'binge7.jpg')
 binge7.save!
 
 binge8 = Binge.new(
-  description: 'chocolate drizzleeee',
+  description: 'stacks',
   url: 'unsplash.com',
-  link_url: 'https://unsplash.com/photos/X2gM-SIufpU',
-  author_id: rand(1...34))
+  link_url: 'https://unsplash.com/photos/ot1luip6jbk',
+  author_id: rand(1...30))
 file = EzDownload.open('https://s3-us-west-1.amazonaws.com/bingeterest-dev/binges/binge8.jpg')
 binge8.photo.attach(io: file, filename: 'binge8.jpg')
 binge8.save!
@@ -253,7 +272,7 @@ binge9 = Binge.new(
   description: 'after work binge',
   url: 'unsplash.com',
   link_url: 'https://unsplash.com/photos/dmkmrNptMpw',
-  author_id: rand(1...34))
+  author_id: rand(1...30))
 file = EzDownload.open('https://s3-us-west-1.amazonaws.com/bingeterest-dev/binges/binge9.jpg')
 binge9.photo.attach(io: file, filename: 'binge9.jpg')
 binge9.save!
@@ -262,19 +281,145 @@ binge10 = Binge.new(
   description: 'donut you want one?',
   url: 'unsplash.com',
   link_url: 'https://unsplash.com/photos/j5DeBxBUwHw',
-  author_id: rand(1...34))
+  author_id: rand(1...30))
 file = EzDownload.open('https://s3-us-west-1.amazonaws.com/bingeterest-dev/binges/binge10.jpg')
 binge10.photo.attach(io: file, filename: 'binge10.jpg')
 binge10.save!
+
+binge11 = Binge.new(
+  description: 'b.i.n.g.e.',
+  url: 'jesspryles.com',
+  link_url: 'https://jesspryles.com/recipe/spicy-korean-fried-chicken-wings/',
+  author_id: rand(1...30))
+file = EzDownload.open('https://s3-us-west-1.amazonaws.com/bingeterest-dev/binges/binge11.jpg')
+binge11.photo.attach(io: file, filename: 'binge11.jpg')
+binge11.save!
+
+binge12 = Binge.new(
+  description: 'creamy goodness',
+  url: 'nytimes.com',
+  link_url: 'https://cooking.nytimes.com/recipes/1017355-cold-brewed-iced-coffee ',
+  author_id: rand(1...30))
+file = EzDownload.open('https://s3-us-west-1.amazonaws.com/bingeterest-dev/binges/binge12.jpg')
+binge12.photo.attach(io: file, filename: 'binge12.jpg')
+binge12.save!
 
 binge13 = Binge.new(
   description: 'pandonut',
   url: 'tumblr.com',
   link_url: 'http://japancandybox.tumblr.com/post/141482435688',
-  author_id: rand(1...34))
+  author_id: rand(1...30))
 file = EzDownload.open('https://s3-us-west-1.amazonaws.com/bingeterest-dev/binges/binge13.jpg')
 binge13.photo.attach(io: file, filename: 'binge13.jpg')
 binge13.save!
+
+binge14 = Binge.new(
+  description: 'key to my heart',
+  url: 'bestofzululand.co',
+  link_url: 'https://bestofzululand.co.za/whatshot/5444/5-pizza-toppings-thats-a-must/',
+  author_id: rand(1...30))
+file = EzDownload.open('https://s3-us-west-1.amazonaws.com/bingeterest-dev/binges/binge14.jpg')
+binge14.photo.attach(io: file, filename: 'binge14.jpg')
+binge14.save!
+
+binge15 = Binge.new(
+  description: 'not enough puff for my binging',
+  url: 'pinterest.com',
+  link_url: 'https://www.pinterest.com/pin/88101736441585869/?lp=true',
+  author_id: 1)
+file = EzDownload.open('https://s3-us-west-1.amazonaws.com/bingeterest-dev/binges/binge15.jpg')
+binge15.photo.attach(io: file, filename: 'binge15.jpg')
+binge15.save!
+
+binge16 = Binge.new(
+  description: 'notcho nachos... get your own',
+  url: 'unsplash.com',
+  link_url: 'https://unsplash.com/photos/7sStoaxfJh0',
+  author_id: rand(1...30))
+file = EzDownload.open('https://s3-us-west-1.amazonaws.com/bingeterest-dev/binges/binge16.jpg')
+binge16.photo.attach(io: file, filename: 'binge16.jpg')
+binge16.save!
+
+binge17 = Binge.new(
+  description: 'sizzzle sizzle',
+  url: 'ny.eater.com',
+  link_url: 'https://ny.eater.com/2017/6/12/15782548/cote-korean-steakhouse-menu-photos-nyc',
+  author_id: rand(1...30))
+file = EzDownload.open('https://s3-us-west-1.amazonaws.com/bingeterest-dev/binges/binge17.jpg')
+binge17.photo.attach(io: file, filename: 'binge17.jpg')
+binge17.save!
+
+binge18 = Binge.new(
+  description: 'healthy binge',
+  url: 'unsplash.com',
+  link_url: 'https://unsplash.com/photos/MXovqM130UI',
+  author_id: rand(1...30))
+file = EzDownload.open('https://s3-us-west-1.amazonaws.com/bingeterest-dev/binges/binge18.jpg')
+binge18.photo.attach(io: file, filename: 'binge18.jpg')
+binge18.save!
+
+binge19 = Binge.new(
+  description: 'rolls of love',
+  url: 'pinterest.com',
+  link_url: 'https://www.pinterest.ru/pin/749708669191852437/?lp=true',
+  author_id: rand(1...30))
+file = EzDownload.open('https://s3-us-west-1.amazonaws.com/bingeterest-dev/binges/binge19.jpg')
+binge19.photo.attach(io: file, filename: 'binge19.jpg')
+binge19.save!
+
+binge20 = Binge.new(
+  description: 'black nom nom mirror',
+  url: 'giphy.com',
+  link_url: 'https://giphy.com/gifs/jon-hamm-white-christmas-black-mirror-10xYprgFoZBprG',
+  author_id: rand(1...30))
+file = EzDownload.open('https://s3-us-west-1.amazonaws.com/bingeterest-dev/binges/binge20.jpg')
+binge20.photo.attach(io: file, filename: 'binge20.jpg')
+binge20.save!
+
+binge21 = Binge.new(
+  description: 'heaven on earth',
+  url: 'unsplash.com',
+  link_url: 'https://unsplash.com/photos/AmzKuEnr1VY',
+  author_id: rand(1...30))
+file = EzDownload.open('https://s3-us-west-1.amazonaws.com/bingeterest-dev/binges/binge21.jpg')
+binge21.photo.attach(io: file, filename: 'binge21.jpg')
+binge21.save!
+
+binge22 = Binge.new(
+  description: 'the most beautiful fish is a binging one',
+  url: 'taiyakinyc.com',
+  link_url: 'https://taiyakinyc.com/',
+  author_id: rand(1...30))
+file = EzDownload.open('https://s3-us-west-1.amazonaws.com/bingeterest-dev/binges/binge22.jpg')
+binge22.photo.attach(io: file, filename: 'binge22.jpg')
+binge22.save!
+
+binge23 = Binge.new(
+  description: 'mouth drop',
+  url: 'pinchofyum.com',
+  link_url: 'https://pinchofyum.com/the-best-chicken-tinga-tacos',
+  author_id: rand(1...30))
+file = EzDownload.open('https://s3-us-west-1.amazonaws.com/bingeterest-dev/binges/binge23.jpg')
+binge23.photo.attach(io: file, filename: 'binge23.jpg')
+binge23.save!
+
+binge24 = Binge.new(
+  description: 'chocolate drizzleeee',
+  url: 'unsplash.com',
+  link_url: 'https://unsplash.com/photos/X2gM-SIufpU',
+  author_id: rand(1...30))
+file = EzDownload.open('https://s3-us-west-1.amazonaws.com/bingeterest-dev/binges/binge24.jpg')
+binge24.photo.attach(io: file, filename: 'binge24.jpg')
+binge24.save!
+
+binge25 = Binge.new(
+  description: 'double trouble',
+  url: 'unsplash.com',
+  link_url: 'https://unsplash.com/photos/cff_w0ADWIA',
+  author_id: rand(1...30))
+file = EzDownload.open('https://s3-us-west-1.amazonaws.com/bingeterest-dev/binges/binge25.jpg')
+binge25.photo.attach(io: file, filename: 'binge25.jpg')
+binge25.save!
 
 Board.delete_all
 puts 'creating boards'
@@ -290,145 +435,145 @@ board1 = Board.create!(
   name: 'Drinks',
   description: "Binge drinking",
   category: "Drink",
-  user_id: rand(1...34)
+  user_id: rand(1...30)
 )
 
 board2 = Board.create!(
   name: 'Dranks',
   description: "Binge drinking",
   category: "Drink",
-  user_id: rand(1...34)
+  user_id: rand(1...30)
 )
 
 board3 = Board.create!(
   name: 'Savory',
   description: 'Savory',
   category: 'Savory',
-  user_id: rand(1...34)
+  user_id: rand(1...30)
 )
 
 board4 = Board.create!(
   name: 'Yums',
   description: 'Misc',
   category: 'Sweet tooth',
-  user_id: rand(1...34)
+  user_id: rand(1...30)
 )
 
 board5 = Board.create!(
   name: 'Junk food',
   description: 'Misc',
   category: 'Binge',
-  user_id: rand(1...34)
+  user_id: rand(1...30)
 )
 
 board6 = Board.create!(
   name: 'Weekend',
   description: 'weekend netflix n chill',
   category: 'Media',
-  user_id: rand(1...34)
+  user_id: rand(1...30)
 )
 
 board7 = Board.create!(
   name: 'Weekday',
   description: 'my favorites',
   category: 'Media',
-  user_id: rand(1...34)
+  user_id: rand(1...30)
 )
 
 board8 = Board.create!(
   name: 'binge shows',
   description: 'bingeworthy',
   category: 'Media',
-  user_id: rand(1...34)
+  user_id: rand(1...30)
 )
 
 board9 = Board.create!(
   name: 'Tasty',
   description: 'mouthwatering treats',
   category: 'Food',
-  user_id: rand(1...34)
+  user_id: rand(1...30)
 )
 
 board10 = Board.create!(
   name: 'Yums',
   description: 'ugh binging is so good',
   category: 'Food',
-  user_id: rand(1...34)
+  user_id: rand(1...30)
 )
 
 board11 = Board.create!(
   name: 'mouthwater',
   description: 'favorite binges',
   category: 'Food',
-  user_id: rand(1...34)
+  user_id: rand(1...30)
 )
 
 board12 = Board.create!(
   name: 'Diet stoppers',
   description: 'things I want to eat',
   category: 'Food',
-  user_id: rand(1...34)
+  user_id: rand(1...30)
 )
 
 board13 = Board.create!(
   name: 'anti-diet',
   description: 'to eat list',
   category: 'Food',
-  user_id: rand(1...34)
+  user_id: rand(1...30)
 )
 
 board14 = Board.create!(
   name: 'wows',
   description: 'sweetness',
   category: 'Dessert',
-  user_id: rand(1...34)
+  user_id: rand(1...30)
 )
 
 board15 = Board.create!(
   name: 'sweet tooth',
   description: 'cravings',
   category: 'Dessert',
-  user_id: rand(1...34)
+  user_id: rand(1...30)
 )
 
 board16 = Board.create!(
   name: 'weekend binges',
   description: 'i love food',
   category: 'Food',
-  user_id: rand(1...34)
+  user_id: rand(1...30)
 )
 
 board17 = Board.create!(
   name: 'what is moderation',
   description: 'fat lyfe',
   category: 'Food',
-  user_id: rand(1...34)
+  user_id: rand(1...30)
 )
 
 board18 = Board.create!(
   name: 'favorites',
   description: 'movies you have to watch',
   category: 'Movies',
-  user_id: rand(1...34)
+  user_id: rand(1...30)
 )
 
 board19 = Board.create!(
   name: 'favorites',
   description: 'tv shows you have to watch',
   category: 'tv shows',
-  user_id: rand(1...34)
+  user_id: rand(1...30)
 )
 
 board20 = Board.create!(
   name: 'Misc',
   description: 'Misc',
   category: 'Misc',
-  user_id: rand(1...34)
+  user_id: rand(1...30)
 )
 
 board21 = Board.create!(
   name: 'Midnight treats',
   description: "Binge drinking",
   category: "Drink",
-  user_id: rand(1...34)
+  user_id: rand(1...30)
 )
