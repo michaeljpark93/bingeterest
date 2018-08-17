@@ -1,6 +1,6 @@
 json.extract! user, :id, :username, :age
 
-json.photoUrl url_for(user.photo)
+json.photoUrl url_for(user.photo) if user.photo
 
 json.user_binges do
   user.user_binges.each do |binge|

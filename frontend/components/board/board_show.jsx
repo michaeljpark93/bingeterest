@@ -26,7 +26,7 @@ class BoardShow extends React.Component {
     const currentUser = this.props.currentUser;
     const board = this.props.board;
     const profilePic = currentUser.photoUrl ? <img className="user-pf" src={currentUser.photoUrl} /> : <img className="standard-pf" src={window.images.profpic} />
-  
+
     return(
       <div>
         <NavBarContainer />
@@ -44,7 +44,7 @@ class BoardShow extends React.Component {
             </div>
 
             <div className="follow-box">
-              <h2>pins</h2>
+              <h2>binges</h2>
               <h2>followers</h2>
             </div>
           </div>
