@@ -13,7 +13,7 @@ json.board do
 end
 
 json.binge do
-  json.set! :author_photo_url, @binge.author.photoUrl
+  json.set! :author_photo_url, @binge.author.photoUrl 
   json.set! :username, @binge.author.username
   json.extract! @binge, :id, :description, :url, :link_url, :author_id
 
