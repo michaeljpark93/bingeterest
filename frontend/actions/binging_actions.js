@@ -9,15 +9,10 @@ export const receiveBingings = bingings => ({
   type: RECEIVE_BINGINGS,
   bingings
 });
-//
-// export const receiveBinge = binging => ({
-//   type: REMOVE_BINGING,
-//   binging
-// });
 
 export const fetchBingings = () => dispatch => (
-  BingingAPIUtil.fetchBingings().then(binges => (
-    dispatch(receiveBingings(binges))
+  BingingAPIUtil.fetchBingings().then(bingings => (
+    dispatch(receiveBingings(bingings))
   ))
 )
 

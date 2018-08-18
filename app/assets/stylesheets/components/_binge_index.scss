@@ -18,8 +18,9 @@
 
 .binge-dashboard:hover .binge-link {
   display: flex;
-  margin-bottom: -45px;
   z-index: 100;
+  margin-bottom: -40px;
+  height: 40px;
 }
 
 .binge-link {
@@ -27,11 +28,12 @@
   background-color: $lightestest-gray;
   border-radius: 4px;
   position: relative;
-  bottom: 55px;
+  bottom: 60px;
   left: 15px;
   overflow: hidden;
   height: 35px;
   flex-flow: row nowrap;
+  height: 0px;
 
   .a-logo {
     width: 16px;

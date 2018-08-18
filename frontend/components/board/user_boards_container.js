@@ -7,7 +7,7 @@ import UserBoards from './user_boards';
 const mapStateToProps = ({ entities, session }) => {
   return {
     boards: selectUserBoards({entities}, session.id),
-    currentUser: entities.users[session.id]
+    currentUser: entities.users[session.id],
   };
 };
 
@@ -15,7 +15,7 @@ const mapDispatchToProps = dispatch => {
   return {
     fetchBoards: (userId) => dispatch(fetchBoards(userId)),
     openModal: (type) => dispatch(openModal(type)),
-    closeModal: () => dispatch(closeModal())
+    closeModal: () => dispatch(closeModal()),
   };
 };
 

@@ -22,7 +22,9 @@ class BingeIndex extends React.Component {
           <div className="discover-box">
             <ul className="masonry">
               {this.props.binges.map(binge => {
-                return <BingeIndexItem binge={binge} key={binge.id} />
+                return <BingeIndexItem
+                  binge={binge}
+                  key={binge.id} />
               })}
             </ul>
           </div>

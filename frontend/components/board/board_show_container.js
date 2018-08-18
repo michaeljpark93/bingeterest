@@ -15,6 +15,7 @@ const mapStateToProps = ({ entities, session, errors }, ownProps) => ({
 const mapDispatchToProps = dispatch => ({
   fetchBoard: id => dispatch(fetchBoard(id)),
   fetchBinges: () => dispatch(fetchBinges()),
+  fetchBingings: () => dispatch(fetchBingings()),
   openModal: (type) => dispatch(openModal(type)),
   closeModal: () => dispatch(closeModal())
 });

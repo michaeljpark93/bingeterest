@@ -20,7 +20,7 @@ class UserBoardItem extends React.Component {
           <div className="board-content">
             <div className="board-text">
               <h3 className="title">{this.props.board.name}</h3>
-              <h3 className="board-pins">NUM PINS PLCHD</h3>
+              <h3 className="board-pins">binges</h3>
             </div>
             <div onClick={this.handleSubmit}>
               <div className="icon-box">

@@ -7,8 +7,10 @@ export const selectUserBinges = ({ entities }, userId) => (
 );
 
 export const selectBoardBinges = ({ entities }, boardId) => {
+  const bingings = Object.values(entities.bingings).filter(binging => binging.board_id === parseInt(boardId));
+  const binges = bingings.map(binging => entities.binges[binging.binge_id])
   return (
-    Object.values(entities.bingings).filter(binging => binging.board_id === parseInt(boardId))
+    binges
   )
 };
 

@@ -45,6 +45,7 @@ class UserShow extends React.Component {
     this.props.fetchUser(this.props.currentUser.id);
     // this.props.fetchFollowers(this.props.currentUser.id);
     this.props.fetchBingings();
+    this.props.fetchBinges();
   }
 
   selectTab(num) {

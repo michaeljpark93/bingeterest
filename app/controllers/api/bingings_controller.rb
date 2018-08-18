@@ -1,7 +1,7 @@
 class Api::BingingsController < ApplicationController
   def index
     @bingings = Binging.all
-    render :index
+    render 'api/bingings/index'
   end
 
   def create
