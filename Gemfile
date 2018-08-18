@@ -31,8 +31,8 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'jquery-rails'
 
 gem "aws-sdk-s3", require: false
-gem 'ez_download'
-gem 'rails_12factor'
+# gem 'ez_download'
+# gem 'rails_12factor'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
