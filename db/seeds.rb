@@ -195,15 +195,6 @@ require 'net/http'
   Binge.delete_all
   puts 'creating binges'
 
-  binge1 = Binge.new(
-    description: 'yummm',
-    url: 'unsplash.com',
-    link_url: 'https://unsplash.com/photos/Fq54FqucgCE',
-    author_id: 1)
-  file = dustin_money('https://s3-us-west-1.amazonaws.com/bingeterest-dev/binges/binge1.jpg')
-  binge1.photo.attach(io: file, filename: 'binge1.jpg')
-  binge1.save!
-
   binge2 = Binge.new(
     description: 'i scream for ice cream',
     url: 'unsplash.com',
@@ -211,7 +202,16 @@ require 'net/http'
     author_id: 1)
   file = dustin_money('https://s3-us-west-1.amazonaws.com/bingeterest-dev/binges/binge2.jpg')
   binge2.photo.attach(io: file, filename: 'binge2.jpg')
+
   binge2.save!
+  binge1 = Binge.new(
+    description: 'yummm',
+    url: 'unsplash.com',
+    link_url: 'https://unsplash.com/photos/Fq54FqucgCE',
+    author_id: 1)
+    file = dustin_money('https://s3-us-west-1.amazonaws.com/bingeterest-dev/binges/binge1.jpg')
+    binge1.photo.attach(io: file, filename: 'binge1.jpg')
+    binge1.save!
 
   binge3 = Binge.new(
     description: 'bingey',
@@ -695,13 +695,13 @@ require 'net/http'
 
   binging2 = Binging.create!(
     board_id: 3,
-    binge_id: 27
+    binge_id: 26
   )
 
-  # binging3 = Binging.create!(
-  #   board_id: 3,
-  #   binge_id:
-  # )
+  binging3 = Binging.create!(
+    board_id: 3,
+    binge_id: 31
+  )
 
   # binging4 = Binging.create!(
   #   board_id: 3,
@@ -730,7 +730,7 @@ require 'net/http'
 
   binging9 = Binging.create!(
     board_id: 9,
-    binge_id: 33
+    binge_id: 11
   )
 
   binging10 = Binging.create!(
@@ -740,18 +740,18 @@ require 'net/http'
 
   binging11 = Binging.create!(
     board_id: 13,
-    binge_id: 1
+    binge_id: 2
   )
 
   binging12 = Binging.create!(
     board_id: 13,
-    binge_id: 31
+    binge_id: 33
   )
 
-  # binging13 = Binging.create!(
-  #   board_id: 13,
-  #   binge_id:
-  # )
+  binging13 = Binging.create!(
+    board_id: 13,
+    binge_id: 1
+  )
 
   binging14 = Binging.create!(
     board_id: 16,
