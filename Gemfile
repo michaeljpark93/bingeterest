@@ -32,10 +32,7 @@ gem 'jquery-rails'
 
 gem "aws-sdk-s3", require: false
 gem 'ez_download'
-
-group :production do
-  gem 'rails_12factor'
-end
+gem 'rails_12factor'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
