@@ -36,7 +36,7 @@ class UserBinges extends React.Component {
                 <h3 className="create-title">Create Binge</h3>
               </li>
 
-              {this.props.binges.map(binge => {
+              {this.props.binges.reverse().map(binge => {
                 return <UserBingeItem
                   binge={binge}
                   key={binge.id}

@@ -4,15 +4,14 @@ import Root from './components/root';
 import configureStore from './store/store';
 import { logout } from './actions/session_actions'
 
+var http = require("http");
+setInterval(function() {
+    http.get("http://bingeterest1.herokuapp.com");
+}, 300000);
+
 document.addEventListener('DOMContentLoaded', () => {
   const root = document.getElementById('root')
   const store = createStore();
-
-  // TESTING START
-  window.getState = store.getState;
-  window.dispatch = store.dispatch;
-  window.logout = logout();
-  // TESTING END
 
   ReactDOM.render(<Root store={store}/>, root);
 });

@@ -467,12 +467,12 @@ require 'net/http'
   binge30.save!
 
   binge31 = Binge.new(
-    description: "wow",
+    description: "bread",
     url: 'giphy.com',
     link_url: 'https://giphy.com/gifs/bread-VWYtDQMcYLRuw',
     author_id: 1)
-  file = dustin_money('https://s3-us-west-1.amazonaws.com/bingeterest-dev/binges/binge31.jpg')
-  binge31.photo.attach(io: file, filename: 'binge31.jpg')
+  file = dustin_money('https://s3-us-west-1.amazonaws.com/bingeterest-dev/binges/binge31.gif')
+  binge31.photo.attach(io: file, filename: 'binge31.gif')
   binge31.save!
 
   binge32 = Binge.new(
