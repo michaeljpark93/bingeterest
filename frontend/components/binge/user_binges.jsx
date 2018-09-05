@@ -1,7 +1,7 @@
-import React from 'react';
-import { Link, withRouter } from 'react-router-dom';
-import UserBingeItem from './user_binge_item';
-import Modal from '../modal/modal';
+import React from "react";
+import { Link, withRouter } from "react-router-dom";
+import BingeItemShow from "./binge_item_show";
+import Modal from "../modal/modal";
 
 class UserBinges extends React.Component {
   constructor(props) {
@@ -17,19 +17,21 @@ class UserBinges extends React.Component {
     return e => {
       e.preventDefault();
       this.props.openModal(type);
-    }
+    };
   }
 
   render() {
-    return(
+    return (
       <div>
         <Modal />
 
         <div className="user-binges">
-
           <div className="user-binges-box">
             <ul className="binge-masonry">
-              <li className="binge-modal-toggle" onClick={this.handleModal("createBinge")}>
+              <li
+                className="binge-modal-toggle"
+                onClick={this.handleModal("createBinge")}
+              >
                 <div className="modal-box">
                   <h3>+</h3>
                 </div>
@@ -37,15 +39,17 @@ class UserBinges extends React.Component {
               </li>
 
               {this.props.binges.reverse().map(binge => {
-                return <UserBingeItem
-                  binge={binge}
-                  key={binge.id}
-                  edit={() => this.props.openModal("editBinge")} />
+                return (
+                  <BingeItemShow
+                    binge={binge}
+                    key={binge.id}
+                    edit={() => this.props.openModal("editBinge")}
+                  />
+                );
               })}
             </ul>
           </div>
         </div>
-
       </div>
     );
   }
