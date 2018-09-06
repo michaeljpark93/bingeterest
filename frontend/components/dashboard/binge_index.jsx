@@ -10,6 +10,8 @@ class BingeIndex extends React.Component {
 
   componentDidMount() {
     this.props.fetchBinges();
+    this.props.fetchBoards();
+    this.props.fetchUsers();
   }
 
   render() {

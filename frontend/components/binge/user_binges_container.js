@@ -1,22 +1,25 @@
-import { connect } from 'react-redux';
-import { selectUserBinges } from '../../reducers/selectors';
-import { fetchUserBinges } from '../../actions/binge_actions';
-import { openModal, closeModal } from '../../actions/modal_actions';
-import UserBinges from './user_binges';
+import { connect } from "react-redux";
+import { selectUserBinges } from "../../reducers/selectors";
+import { fetchUserBinges } from "../../actions/binge_actions";
+import { openModal, closeModal } from "../../actions/modal_actions";
+import UserBinges from "./user_binges";
 
-const mapStateToProps = ({ entities, session }) => {
+const mapStateToProps = ({ entities, session }, ownProps) => {
   return {
-    binges: selectUserBinges({entities}, session.id),
-    currentUser: entities.users[session.id]
+    binges: selectUserBinges(entities, ownProps.user.id),
+    user: ownProps.user
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchBinges: (userId) => dispatch(fetchUserBinges(userId)),
-    openModal: (type) => dispatch(openModal(type)),
+    fetchBinges: userId => dispatch(fetchUserBinges(userId)),
+    openModal: type => dispatch(openModal(type)),
     closeModal: () => dispatch(closeModal())
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(UserBinges);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(UserBinges);

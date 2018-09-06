@@ -10,7 +10,7 @@ class UserBinges extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchBinges(this.props.currentUser.id);
+    this.props.fetchBinges(this.props.user.id);
   }
 
   handleModal(type) {
@@ -43,6 +43,7 @@ class UserBinges extends React.Component {
                   <BingeItemShow
                     binge={binge}
                     key={binge.id}
+                    user={this.props.user}
                     edit={() => this.props.openModal("editBinge")}
                   />
                 );
