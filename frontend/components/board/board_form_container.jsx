@@ -5,12 +5,12 @@ import BoardCreateForm from './board_create_form';
 
 const mapStateToProps = ({ errors, session, entities: { users } }) => ({
   currentUser: users[session.id],
-  errors: errors.boards
+  errors: errors.boards,
 });
 
 const mapDispatchToProps = dispatch => ({
   processForm: board => dispatch(createBoard(board)),
-  removeErrors: () => dispatch(removeErrors())
+  removeErrors: () => dispatch(removeErrors()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(BoardCreateForm);

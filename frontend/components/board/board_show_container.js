@@ -8,7 +8,7 @@ import BoardShow from './board_show';
 const mapStateToProps = ({ entities, session, errors }, ownProps) => ({
   currentUser: entities.users[session.id],
   board: entities.boards[ownProps.match.params.boardId],
-  binges: selectBoardBinges({ entities }, ownProps.match.params.boardId),
+  binges: selectBoardBinges(entities, ownProps.match.params.boardId),
   errors: errors.boards
 });
 

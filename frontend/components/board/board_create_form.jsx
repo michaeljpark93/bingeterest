@@ -10,7 +10,7 @@ class BoardCreateForm extends React.Component {
       description: '',
       category: '',
       secret: false,
-      user_id: ''
+      user_id: '',
     };
     this.handleInput = this.handleInput.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -27,10 +27,11 @@ class BoardCreateForm extends React.Component {
   }
 
   handleSubmit(e) {
+    const { currentUser, processForm, cancel } = this.props;
     e.preventDefault();
-    this.setState({ user_id: this.props.currentUser.id })
-    this.props.processForm(this.state);
-    this.props.cancel();
+    this.setState({ user_id: currentUser.id });
+    processForm(this.state);
+    cancel();
   }
 
   render() {
@@ -49,7 +50,8 @@ class BoardCreateForm extends React.Component {
               type="text"
               value={this.state.name}
               placeholder="Like &quot;Places to Go&quot; or &quot;Recipes to Make&quot;"
-              onChange={this.handleInput('name')} />
+              onChange={this.handleInput('name')}
+            />
           </div>
 
           <div className="board-name">
@@ -59,17 +61,18 @@ class BoardCreateForm extends React.Component {
               className="board-description"
               value={this.state.description}
               placeholder="What's your board about?"
-              onChange={this.handleInput('description')} />
+              onChange={this.handleInput('description')}
+            />
           </div>
 
           <div className="board-buttons">
             <button onClick={this.props.cancel}>Cancel</button>
-            <input className="b-submit" type="submit" value="Create"/>
+            <input className="b-submit" type="submit" value="Create" />
           </div>
         </form>
 
         <div className="u-error-list">
-          <ErrorsList errors={this.props.errors}/>
+          <ErrorsList errors={this.props.errors} />
         </div>
       </div>
     );

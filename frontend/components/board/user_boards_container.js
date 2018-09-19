@@ -5,7 +5,6 @@ import { openModal, closeModal } from "../../actions/modal_actions";
 import UserBoards from "./user_boards";
 
 const mapStateToProps = ({ entities, session }, ownProps) => {
-  debugger;
   return {
     boards: selectUserBoards(entities, ownProps.user.id),
     user: ownProps.user

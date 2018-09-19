@@ -1,20 +1,18 @@
-import React from "react";
-import { Link, withRouter } from "react-router-dom";
-import BingeItemShow from "../binge/binge_item_show";
-import NavBarContainer from "../nav_bar/nav_bar_container";
+import React from 'react';
+import { withRouter } from 'react-router-dom';
+import BingeItemShow from '../binge/binge_item_show';
+import NavBarContainer from '../nav_bar/nav_bar_container';
 
 class BingeIndex extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   componentDidMount() {
-    this.props.fetchBinges();
-    this.props.fetchBoards();
-    this.props.fetchUsers();
+    const { fetchBinges, fetchBoards, fetchUsers } = this.props;
+    fetchBinges();
+    fetchBoards();
+    fetchUsers();
   }
 
   render() {
+    const { binges } = this.props;
     return (
       <div>
         <NavBarContainer />
@@ -22,9 +20,7 @@ class BingeIndex extends React.Component {
         <div className="discover">
           <div className="discover-box">
             <ul className="masonry">
-              {this.props.binges.map(binge => {
-                return <BingeItemShow binge={binge} key={binge.id} />;
-              })}
+              {binges.map(binge => <BingeItemShow binge={binge} key={binge.id} />)}
             </ul>
           </div>
         </div>

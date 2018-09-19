@@ -1,7 +1,7 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-import ErrorsList from '../errors/error_list';
 import Dropzone from 'react-dropzone';
+import ErrorsList from '../errors/error_list';
 
 class BingesCreateForm extends React.Component {
   constructor(props) {
@@ -10,7 +10,7 @@ class BingesCreateForm extends React.Component {
       description: '',
       link_url: '',
       photoFile: null,
-      photoUrl: null
+      photoUrl: null,
     };
     this.handleInput = this.handleInput.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -28,14 +28,14 @@ class BingesCreateForm extends React.Component {
     };
   }
 
-  toBaseURL(fullURL){
+  toBaseURL(fullURL) {
     return fullURL.replace(/(http(s)?:\/\/)|(\/.*){1}/g, '');
   }
 
   handleSubmit(e) {
     e.preventDefault();
     const formData = new FormData();
-    const baseURL = this.toBaseURL(this.state.link_url)
+    const baseURL = this.toBaseURL(this.state.link_url);
     formData.append('binge[link_url]', this.state.link_url);
     formData.append('binge[url]', baseURL);
     formData.append('binge[description]', this.state.description);
@@ -49,14 +49,14 @@ class BingesCreateForm extends React.Component {
       url: '/api/binges',
       data: formData,
       contentType: false,
-      processData: false
+      processData: false,
     });
 
     this.props.cancel();
   }
 
   handleDrop(files) {
-    const file = files[0]
+    const file = files[0];
     const fileReader = new FileReader();
     fileReader.onloadend = () => {
       this.setState({ photoFile: file, photoUrl: fileReader.result });
@@ -67,8 +67,10 @@ class BingesCreateForm extends React.Component {
   }
 
   render() {
-    const preview = this.state.photoUrl ? <img className="binge-image" src={this.state.photoUrl} /> : <div className="upload-box"><img className="pic" src={window.images.camera} />
-    <h3>Drag and drop or click to upload</h3></div>;
+    const preview = this.state.photoUrl ? <img className="binge-image" src={this.state.photoUrl} /> : (
+<div className="upload-box"><img className="pic" src={window.images.camera} />
+    <h3>Drag and drop or click to upload</h3></div>
+);
 
     return (
       <div className="create-binge">
@@ -82,9 +84,9 @@ class BingesCreateForm extends React.Component {
             <div className="binge-upload-box">
               <Dropzone
                 className="binge-img"
-                onDrop={ this.handleDrop }
+                onDrop={this.handleDrop}
                 accept="image/jpeg,image/jpg,image/tiff,image/gif, image/png"
-                multiple={ false } >
+                multiple={false}>
 
                 {preview}
               </Dropzone>
@@ -98,7 +100,8 @@ class BingesCreateForm extends React.Component {
                   type="text"
                   value={this.state.link_url}
                   placeholder="Add the URL this Binge links to"
-                  onChange={this.handleInput('link_url')} />
+                  onChange={this.handleInput('link_url')}
+                />
               </div>
 
               <div className="binge-description">
@@ -106,18 +109,19 @@ class BingesCreateForm extends React.Component {
                 <textarea
                   value={this.state.description}
                   placeholder="Say more about this binge"
-                  onChange={this.handleInput('description')} />
+                  onChange={this.handleInput('description')}
+                />
               </div>
             </div>
           </div>
 
           <div className="binge-buttons">
-            <input className="binge-submit" type="submit" value="Done"/>
+            <input className="binge-submit" type="submit" value="Done" />
           </div>
         </form>
 
         <div className="u-error-list">
-          <ErrorsList errors={this.props.errors}/>
+          <ErrorsList errors={this.props.errors} />
         </div>
       </div>
     );

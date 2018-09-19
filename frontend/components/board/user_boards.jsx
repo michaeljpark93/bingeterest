@@ -1,7 +1,7 @@
-import React from "react";
-import { Link, withRouter } from "react-router-dom";
-import UserBoardItem from "./user_board_item";
-import Modal from "../modal/modal";
+import React from 'react';
+import { Link, withRouter } from 'react-router-dom';
+import UserBoardItem from './user_board_item';
+import Modal from '../modal/modal';
 
 class UserBoards extends React.Component {
   constructor(props) {
@@ -14,13 +14,14 @@ class UserBoards extends React.Component {
   }
 
   handleModal(type) {
-    return e => {
+    return (e) => {
       e.preventDefault();
       this.props.openModal(type);
     };
   }
 
   render() {
+    const { openModal } = this.props;
     return (
       <div>
         <Modal />
@@ -28,7 +29,7 @@ class UserBoards extends React.Component {
         <div className="user-boards">
           <div
             className="modal-toggle"
-            onClick={this.handleModal("createBoard")}
+            onClick={this.handleModal('createBoard')}
           >
             <div className="modal-box">
               <h3>+</h3>
@@ -36,15 +37,13 @@ class UserBoards extends React.Component {
             <h3 className="create-title">Create Board</h3>
           </div>
 
-          {this.props.boards.map(board => {
-            return (
-              <UserBoardItem
-                board={board}
-                key={board.id}
-                edit={this.props.openModal}
-              />
-            );
-          })}
+          {this.props.boards.map(board => (
+            <UserBoardItem
+              board={board}
+              key={board.id}
+              edit={openModal}
+            />
+          ))}
         </div>
       </div>
     );

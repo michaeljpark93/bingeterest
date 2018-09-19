@@ -1,9 +1,9 @@
-import React from "react";
-import { withRouter } from "react-router-dom";
-import ErrorsList from "../errors/error_list";
-import BingeItemShow from "../binge/binge_item_show";
-import NavBarContainer from "../nav_bar/nav_bar_container";
-import Modal from "../modal/modal";
+import React from 'react';
+import { withRouter } from 'react-router-dom';
+import ErrorsList from '../errors/error_list';
+import BingeItemShow from '../binge/binge_item_show';
+import NavBarContainer from '../nav_bar/nav_bar_container';
+import Modal from '../modal/modal';
 
 class BoardShow extends React.Component {
   constructor(props) {
@@ -19,11 +19,11 @@ class BoardShow extends React.Component {
 
   handleModal(e) {
     e.preventDefault();
-    this.props.openModal("editBoard");
+    this.props.openModal('editBoard');
   }
 
   render() {
-    const currentUser = this.props.currentUser;
+    const { currentUser, binges, errors } = this.props;
     const board = this.props.board;
     const profilePic = currentUser.photoUrl ? (
       <img className="user-pf" src={currentUser.photoUrl} />
@@ -59,15 +59,13 @@ class BoardShow extends React.Component {
         <div className="discover">
           <div className="discover-box">
             <ul className="masonry">
-              {this.props.binges.map(binge => {
-                return <BingeItemShow binge={binge} key={binge.id} />;
-              })}
+              {binges.map(binge => <BingeItemShow binge={binge} key={binge.id} />)}
             </ul>
           </div>
         </div>
 
         <div className="board-error-list">
-          <ErrorsList errors={this.props.errors} />
+          <ErrorsList errors={errors} />
         </div>
       </div>
     );
