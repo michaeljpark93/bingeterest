@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import BingeIndex from './binge_index';
+import BingeIndex from './binge_index.jsx';
 import { fetchBoards } from '../../actions/board_actions';
 import { fetchBinges } from '../../actions/binge_actions';
 import { fetchUsers } from '../../actions/user_actions';

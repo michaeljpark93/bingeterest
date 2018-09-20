@@ -1,6 +1,6 @@
-import { RECEIVE_FOLLOWERS } from '../actions/follow_actions';
-import { RECEIVE_USER } from '../actions/user_actions';
 import merge from 'lodash/merge';
+import { RECEIVE_FOLLOWERS } from '../../actions/follow_actions';
+import { RECEIVE_USER } from '../../actions/user_actions';
 
 const followingReducer = (state = {}, action) => {
   Object.freeze(state);

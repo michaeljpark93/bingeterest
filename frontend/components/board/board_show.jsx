@@ -1,9 +1,8 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-import ErrorsList from '../errors/error_list';
-import BingeItemShow from '../binge/binge_item_show';
-import NavBarContainer from '../nav_bar/nav_bar_container';
-import Modal from '../modal/modal';
+import BingeItemShow from '../binge/binge_item_show.jsx';
+import NavBarContainer from '../navbar/nav_bar_container';
+import Modal from '../modal/modal.jsx';
 
 class BoardShow extends React.Component {
   constructor(props) {
@@ -13,8 +12,9 @@ class BoardShow extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchBoard(this.props.board.id);
-    this.props.fetchBinges();
+    const { board, fetchBoard, fetchBinges } = this.props;
+    fetchBoard(board.id);
+    fetchBinges();
   }
 
   handleModal(e) {
@@ -23,14 +23,15 @@ class BoardShow extends React.Component {
   }
 
   render() {
-    const { currentUser, binges, errors } = this.props;
-    const board = this.props.board;
+    const {
+      currentUser, binges, errors, board,
+    } = this.props;
     const profilePic = currentUser.photoUrl ? (
-      <img className="user-pf" src={currentUser.photoUrl} />
+      <img className="user-pf" src={currentUser.photoUrl} alt="" />
     ) : (
-      <img className="standard-pf" src={window.images.profpic} />
+      <img className="standard-pf" src={window.images.profpic} alt="" />
     );
-    const count = this.props.binges.length;
+    const count = binges.length;
 
     return (
       <div>
@@ -43,12 +44,16 @@ class BoardShow extends React.Component {
               <h2>{board.name}</h2>
 
               <div className="edit-icon-box" onClick={this.handleModal}>
-                <img className="edit-icon" src={window.images.pen} />
+                <img className="edit-icon" src={window.images.pen} alt="" />
               </div>
             </div>
 
             <div className="follow-box">
-              <h2>{count} binges</h2>
+              <h2>
+                {count}
+                {' '}
+                binges
+              </h2>
               <h2 />
             </div>
           </div>
@@ -62,10 +67,6 @@ class BoardShow extends React.Component {
               {binges.map(binge => <BingeItemShow binge={binge} key={binge.id} />)}
             </ul>
           </div>
-        </div>
-
-        <div className="board-error-list">
-          <ErrorsList errors={errors} />
         </div>
       </div>
     );

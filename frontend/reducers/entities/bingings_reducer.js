@@ -1,5 +1,5 @@
 import merge from 'lodash/merge';
-import { RECEIVE_BINGINGS, REMOVE_BINGING } from '../actions/binging_actions';
+import { RECEIVE_BINGINGS, REMOVE_BINGING } from '../../actions/binging_actions';
 
 const bingingsReducer = (state = {}, action) => {
   Object.freeze(state);
@@ -13,7 +13,7 @@ const bingingsReducer = (state = {}, action) => {
       return newState;
     default:
       return state;
-  };
+  }
 };
 
 export default bingingsReducer;

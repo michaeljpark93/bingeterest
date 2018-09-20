@@ -6,12 +6,12 @@ import {
   deleteFollow,
   fetchFollowers,
 } from '../../actions/follow_actions';
-import UserShow from './user_show';
+import UserShow from './user_show.jsx';
 
 const mapStateToProps = ({ entities, session }, ownProps) => ({
-  user: selectUser(entities, ownProps.match.params.userId),
-  panes: [{ title: 'Boards' }, { title: 'Binges' }, { title: 'Topics' }],
-  ownProps,
+  userId: ownProps.match.params.userId,
+  user: Object.values(entities.users),
+  panes: [{ title: 'Boards' }, { title: 'Binges' }],
   // follows: selectFollows({ entities }, session.id),
   // followers: selectFollowers({ entities }, session.id),
 });

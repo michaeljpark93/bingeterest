@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { createBoard } from '../../actions/board_actions';
 import { removeErrors } from '../../actions/error_actions';
-import BoardCreateForm from './board_create_form';
+import BoardCreateForm from './board_create_form.jsx';
 
 const mapStateToProps = ({ errors, session, entities: { users } }) => ({
   currentUser: users[session.id],

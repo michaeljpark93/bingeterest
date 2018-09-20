@@ -1,13 +1,13 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-import ErrorsList from '../errors/error_list';
+import ErrorsList from '../errors/error_list.jsx';
 
 class SessionForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       username: '',
-      password: ''
+      password: '',
     };
     this.handleInput = this.handleInput.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -31,23 +31,24 @@ class SessionForm extends React.Component {
 
   demoLogin(e) {
     e.preventDefault();
-    this.props.login({username: 'Guest', password: 'password'});
+    this.props.login({ username: 'Guest', password: 'password' });
   }
 
   render() {
-    const { errors, fields, fieldType, linkTo } = this.props;
+    const {
+      errors, fields, fieldType, linkTo,
+    } = this.props;
 
-    const forms = fields.map((field, idx) => {
-      return (
-        <div className="l-field" key={idx}>
-            <input
-              type={fieldType[field]}
-              value={this.state[field]}
-              onChange={this.handleInput(field)}
-              placeholder={field.charAt(0).toUpperCase() + field.slice(1)} />
-        </div>
-      );
-    });
+    const forms = fields.map((field, idx) => (
+      <div className="l-field" key={idx}>
+        <input
+          type={fieldType[field]}
+          value={this.state[field]}
+          onChange={this.handleInput(field)}
+          placeholder={field.charAt(0).toUpperCase() + field.slice(1)}
+        />
+      </div>
+    ));
 
     return (
       <div className="l-session">
@@ -66,11 +67,11 @@ class SessionForm extends React.Component {
 
           <div className="l-input-form">
             <form onSubmit={this.handleSubmit}>
-              { forms }
+              {forms}
               <div className="l-error-list">
-                <ErrorsList errors={errors}/>
+                <ErrorsList errors={errors} />
               </div>
-              <input className="l-submit" type="submit" value="Log in"/>
+              <input className="l-submit" type="submit" value="Log in" />
             </form>
 
             <p>OR</p>

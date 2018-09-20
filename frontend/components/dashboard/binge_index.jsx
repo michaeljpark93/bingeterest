@@ -1,14 +1,12 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-import BingeItemShow from '../binge/binge_item_show';
-import NavBarContainer from '../nav_bar/nav_bar_container';
+import BingeItemShow from '../binge/binge_item_show.jsx';
+import NavBarContainer from '../navbar/nav_bar_container';
 
 class BingeIndex extends React.Component {
   componentDidMount() {
-    const { fetchBinges, fetchBoards, fetchUsers } = this.props;
+    const { fetchBinges } = this.props;
     fetchBinges();
-    fetchBoards();
-    fetchUsers();
   }
 
   render() {

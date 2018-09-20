@@ -1,11 +1,9 @@
 import React from 'react';
-import { Provider } from 'react-redux';
-import { Route, Redirect, Switch, Link } from 'react-router-dom';
-import { AuthRoute, ProtectedRoute } from '../util/route_util';
+import { Switch } from 'react-router-dom';
+import { AuthRoute, ProtectedRoute } from '../util/route_util.jsx';
 
-import NavBarContainer from './nav_bar/nav_bar_container';
-import LoginFormContainer from './session/login_form_container';
-import SignupFormContainer from './session/signup_form_container';
+import LoginFormContainer from './session/login_form_container.jsx';
+import SignupFormContainer from './session/signup_form_container.jsx';
 import SplashFormContainer from './session/splash_form_container';
 import Dashboard from './dashboard/binge_index_container';
 import UserShowContainer from './profile/user_show_container';

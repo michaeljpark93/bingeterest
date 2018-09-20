@@ -1,34 +1,36 @@
 export const selectUser = (entities, userId) => {
-  const user = Object.values(entities.users).filter(
-    user => user.id === parseInt(userId)
+  const userData = Object.values(entities.users).filter(
+    user => user.id === parseInt(userId),
   );
-  return user;
+  return userData;
 };
 
 export const selectUserBoards = (entities, userId) => {
   const userBoards = Object.values(entities.boards).filter(
-    board => board.user_id === userId
+    board => board.user_id === userId,
   );
   return userBoards;
 };
 
 export const selectUserBinges = (entities, userId) => {
   const userBinges = Object.values(entities.binges).filter(
-    binge => binge.author_id === userId
+    binge => binge.author_id === userId,
   );
   return userBinges;
 };
 
 export const selectBoardBinges = (entities, boardId) => {
   const bingings = Object.values(entities.bingings).filter(
-    binging => binging.board_id === parseInt(boardId)
+    binging => binging.board_id === parseInt(boardId),
   );
   const binges = bingings.map(binging => entities.binges[binging.binge_id]);
   return binges;
 };
 
-export const selectFollows = (entities, userId) =>
+export const selectFollows = (entities, userId) => {
   Object.values(entities.followed).filter(follow => follow.userId === userId);
+};
 
-export const selectFollowers = (entities, userId) =>
+export const selectFollowers = (entities, userId) => {
   Object.values(entities.following).filter(follow => follow.userId === userId);
+};

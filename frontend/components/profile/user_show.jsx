@@ -1,15 +1,14 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-import ErrorsList from '../errors/error_list';
-import NavBarContainer from '../nav_bar/nav_bar_container';
+import NavBarContainer from '../navbar/nav_bar_container';
 import UserBoardsContainer from '../board/user_boards_container';
 import UserBingesContainer from '../binge/user_binges_container';
 
 const Headers = (props) => {
-  const selected = props.selectedPane;
-  const headers = props.panes.map((pane, idx) => {
-    const title = pane.title;
-    const klass = idx === selected ? 'active' : '';
+  const { selectedPane, panes } = props;
+  const headers = panes.map((pane, idx) => {
+    const { title } = pane;
+    const klass = idx === selectedPane ? 'active' : '';
 
     return (
       <li
@@ -29,27 +28,18 @@ class UserShow extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      user: { id: null, photoUrl: window.images.profpic, username: '' },
       selectedPane: 0,
       paneContent: '',
+      profilePic: window.images.profpic,
+      username: '',
     };
     this.selectTab = this.selectTab.bind(this);
     this.selectPaneContent = this.selectPaneContent.bind(this);
   }
 
   componentDidMount() {
-    const { fetchUser, ownProps } = this.props;
-    fetchUser(ownProps.match.params.userId);
-    this.selectPaneContent(this.state.selectedPane);
-    // this.props.fetchFollowers(this.props.user.id);
-    // this.props.fetchBingings();
-    // this.props.fetchBinges();
-  }
-
-  componentDidUpdate() {
-    if (this.state.user.id !== this.props.user[0].id) {
-      this.setState({ user: this.props.user[0] });
-    }
+    const { fetchUser, user, userId } = this.props;
+    fetchUser(user.id).then(this.setState({ profilePic: user.photoUrl, username: user.username }));
   }
 
   selectTab(num) {
@@ -67,10 +57,6 @@ class UserShow extends React.Component {
         return this.setState({
           paneContent: <UserBingesContainer user={user} />,
         });
-      // case 2:
-      //   return this.setState({
-      //     paneContent: <UserBoardsContainer user={user} />,
-      //   });
       default:
         return this.setState({
           paneContent: <UserBoardsContainer user={user} />,
@@ -79,15 +65,10 @@ class UserShow extends React.Component {
   }
 
   render() {
-    const { user, panes, username } = this.props;
-    const { selectPane, paneContent } = this.state;
-    const pane = panes[this.state.selectedPane];
-    const selectedPane = pane.title.slice(0, -1);
-    // const profilePic = user.photoUrl ? (
-    //   <img className="user-pf" src={user.photoUrl} />
-    // ) : (
-    //   <img className="standard-pf" src={window.images.profpic} />
-    // );
+    const {
+      selectedPane, paneContent, profilePic, username,
+    } = this.state;
+    const { panes } = this.props;
 
     return (
       <div>
@@ -100,13 +81,13 @@ class UserShow extends React.Component {
                 <h2>{username}</h2>
 
                 <div className="follow-box">
-                  <h2>{this.props.followers}</h2>
-                  <h2>{this.props.follows}</h2>
+                  <h2>FOLLOWERS</h2>
+                  <h2>FOLLOWS</h2>
                 </div>
               </div>
 
               <div className="pf-picture">
-                <img className="user-pf" src={user.photoUrl} />
+                <img className="user-pf" src={profilePic} alt="" />
               </div>
             </div>
           </div>
