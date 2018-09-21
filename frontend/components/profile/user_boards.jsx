@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
-import UserBoardItem from '../board/user_board_item';
-import Modal from '../modal/modal';
+import UserBoardItem from './user_board_item.jsx';
+import Modal from '../modal/modal.jsx';
 
 class UserBoards extends React.Component {
   constructor(props) {

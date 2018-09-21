@@ -7,14 +7,19 @@ import Modal from '../modal/modal.jsx';
 class BoardShow extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      board: null,
+      currentUser: this.props.currentUser,
+    };
 
     this.handleModal = this.handleModal.bind(this);
   }
 
   componentDidMount() {
-    const { board, fetchBoard, fetchBinges } = this.props;
-    fetchBoard(board.id);
-    fetchBinges();
+    const { fetchBoard, ownProps } = this.props;
+    fetchBoard(ownProps.match.params.boardId).then((boardData) => {
+      this.setState({ board: boardData.board });
+    });
   }
 
   handleModal(e) {
@@ -23,53 +28,51 @@ class BoardShow extends React.Component {
   }
 
   render() {
-    const {
-      currentUser, binges, errors, board,
-    } = this.props;
-    const profilePic = currentUser.photoUrl ? (
-      <img className="user-pf" src={currentUser.photoUrl} alt="" />
-    ) : (
-      <img className="standard-pf" src={window.images.profpic} alt="" />
-    );
-    const count = binges.length;
+    const { board, currentUser } = this.state;
 
-    return (
-      <div>
-        <NavBarContainer />
-        <Modal />
+    if (board !== null) {
+      const binges = Object.values(board.bingings);
+      return (
+        <div>
+          <NavBarContainer />
+          <Modal />
 
-        <div className="board-show">
-          <div className="bs-left">
-            <div className="board-name">
-              <h2>{board.name}</h2>
+          <div className="board-show">
+            <div className="bs-left">
+              <div className="board-name">
+                <h2>{board.name}</h2>
 
-              <div className="edit-icon-box" onClick={this.handleModal}>
-                <img className="edit-icon" src={window.images.pen} alt="" />
+                <div className="edit-icon-box" onClick={this.handleModal}>
+                  <img className="edit-icon" src={window.images.pen} alt="" />
+                </div>
+              </div>
+
+              <div className="follow-box">
+                <h2>
+                  {binges.length}
+                  {' '}
+                  binges
+                </h2>
+                <h2 />
               </div>
             </div>
 
-            <div className="follow-box">
-              <h2>
-                {count}
-                {' '}
-                binges
-              </h2>
-              <h2 />
+            <div className="pf-picture">
+              <img className="user-pf" src={currentUser.photoUrl ? currentUser.photoUrl : window.images.profpic} alt="" />
             </div>
           </div>
 
-          <div className="pf-picture">{profilePic}</div>
-        </div>
-
-        <div className="discover">
-          <div className="discover-box">
-            <ul className="masonry">
-              {binges.map(binge => <BingeItemShow binge={binge} key={binge.id} />)}
-            </ul>
+          <div className="discover">
+            <div className="discover-box">
+              <ul className="masonry">
+                {binges.map(binge => <BingeItemShow binge={binge} key={binge.id} />)}
+              </ul>
+            </div>
           </div>
         </div>
-      </div>
-    );
+      );
+    }
+    return false;
   }
 }
 

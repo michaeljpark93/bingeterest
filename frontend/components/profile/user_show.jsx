@@ -121,8 +121,8 @@ class UserShow extends React.Component {
           <div className="tabs">
             <div className="tabs-box">
               <div className="tab-header">
-                <button type="button" className={boardTab ? 'active' : ''} onClick={() => this.handleTab('board')}>Boards</button>
-                <button type="button" className={bingeTab ? 'active' : ''} onClick={() => this.handleTab('binge')}>Binges</button>
+                <button type="button" className={boardTab ? 'active' : 'not-active'} onClick={() => this.handleTab('board')}>Boards</button>
+                <button type="button" className={bingeTab ? 'active' : 'not-active'} onClick={() => this.handleTab('binge')}>Binges</button>
               </div>
             </div>
           </div>
