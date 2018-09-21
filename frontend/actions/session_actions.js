@@ -6,11 +6,11 @@ export const LOGOUT_CURRENT_USER = 'LOGOUT_CURRENT_USER';
 
 export const receiveCurrentUser = currentUser => ({
   type: RECEIVE_CURRENT_USER,
-  currentUser
+  currentUser,
 });
 
 export const logoutCurrentUser = () => ({
-  type: LOGOUT_CURRENT_USER
+  type: LOGOUT_CURRENT_USER,
 });
 
 export const signup = formUser => dispatch => (
@@ -22,8 +22,8 @@ export const signup = formUser => dispatch => (
 );
 
 export const login = formUser => dispatch => (
-  SessionAPIUtil.login(formUser).then(user => (
-    dispatch(receiveCurrentUser(user))
+  SessionAPIUtil.login(formUser).then(currentUser => (
+    dispatch(receiveCurrentUser(currentUser))
   ), err => (
     dispatch(receiveErrors(err.responseJSON))
   ))

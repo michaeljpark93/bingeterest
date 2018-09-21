@@ -1,25 +1,21 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Root from './components/root';
+import Root from './components/root.jsx';
 import configureStore from './store/store';
-import { logout } from './actions/session_actions'
 
 document.addEventListener('DOMContentLoaded', () => {
-  const root = document.getElementById('root')
+  const root = document.getElementById('root');
   const store = createStore();
 
-  ReactDOM.render(<Root store={store}/>, root);
+  ReactDOM.render(<Root store={store} />, root);
 });
 
 const createStore = () => {
   let store;
 
   if (window.currentUser) {
-    const currentUser = window.currentUser;
-    const preloadedState = {
-      session: { id: currentUser.id },
-      entities: { users: { [currentUser.id]: currentUser }}
-    };
+    const { currentUser } = window;
+    const preloadedState = { session: { currentUser } };
     store = configureStore(preloadedState);
     delete window.currentUser;
   } else {
@@ -27,4 +23,4 @@ const createStore = () => {
   }
 
   return store;
-}
+};

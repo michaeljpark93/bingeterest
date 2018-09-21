@@ -4,8 +4,8 @@ import { Link, withRouter } from 'react-router-dom';
 class NavBar extends React.Component {
   constructor(props) {
     super(props);
-    this.state ={
-      search: ''
+    this.state = {
+      search: '',
     };
     this.handleInput = this.handleInput.bind(this);
     this.handleLogout = this.handleLogout.bind(this);
@@ -22,22 +22,22 @@ class NavBar extends React.Component {
 
   render() {
     const { currentUser, logout } = this.props;
-
+    const { search } = this.state;
     return (
       <header>
         <nav className="nav-bar">
           <div className="nav-bar-box">
             <div className="n-logo">
               <Link to="/discover">
-                <img className="n-logo" src={window.images.logo} />
+                <img className="n-logo" src={window.images.logo} alt="" />
               </Link>
             </div>
 
             <div className="search-bar">
               <div className="search">
-                <img src={window.images.mg}/>
+                <img src={window.images.mg} alt="" />
               </div>
-              <input type="text" onChange={this.handleInput} placeholder="Search" />
+              <input type="text" onChange={this.handleInput} placeholder="Search" value={search} />
             </div>
 
             <div className="right-nav">
@@ -66,7 +66,8 @@ class NavBar extends React.Component {
                 </div>
               </Link>
 
-              <div tabIndex="0" className="nav-menu">...
+              <div tabIndex="0" className="nav-menu">
+                ...
                 <ul className="dropdown">
                   <a href="https://www.linkedin.com/in/michaeljpark93/">
                     <li>Linkedin</li>
@@ -75,7 +76,7 @@ class NavBar extends React.Component {
                   <a href="https://github.com/michaeljpark93">
                     <li>GitHub</li>
                   </a>
-                  
+
                   <li onClick={this.handleLogout}>Log out</li>
                 </ul>
               </div>

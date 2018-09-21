@@ -1,7 +1,7 @@
-import React from "react";
-import { Link, withRouter } from "react-router-dom";
-import BingeItemShow from "./binge_item_show";
-import Modal from "../modal/modal";
+import React from 'react';
+import { Link, withRouter } from 'react-router-dom';
+import BingeItemShow from '../binge/binge_item_show.jsx';
+import Modal from '../modal/modal.jsx';
 
 class UserBinges extends React.Component {
   constructor(props) {
@@ -9,18 +9,15 @@ class UserBinges extends React.Component {
     this.handleModal = this.handleModal.bind(this);
   }
 
-  componentDidMount() {
-    this.props.fetchBinges(this.props.user.id);
-  }
-
   handleModal(type) {
-    return e => {
+    return (e) => {
       e.preventDefault();
       this.props.openModal(type);
     };
   }
 
   render() {
+    const { openModal, binges } = this.props;
     return (
       <div>
         <Modal />
@@ -30,7 +27,7 @@ class UserBinges extends React.Component {
             <ul className="binge-masonry">
               <li
                 className="binge-modal-toggle"
-                onClick={this.handleModal("createBinge")}
+                onClick={this.handleModal('createBinge')}
               >
                 <div className="modal-box">
                   <h3>+</h3>
@@ -38,16 +35,14 @@ class UserBinges extends React.Component {
                 <h3 className="create-title">Create Binge</h3>
               </li>
 
-              {this.props.binges.reverse().map(binge => {
-                return (
-                  <BingeItemShow
-                    binge={binge}
-                    key={binge.id}
-                    user={this.props.user}
-                    edit={() => this.props.openModal("editBinge")}
-                  />
-                );
-              })}
+              {binges.reverse().map(binge => (
+                <BingeItemShow
+                  binge={binge}
+                  key={binge.id}
+                  user={this.props.user}
+                  edit={() => openModal('editBinge')}
+                />
+              ))}
             </ul>
           </div>
         </div>

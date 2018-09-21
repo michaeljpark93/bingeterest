@@ -5,7 +5,7 @@ import {
   RECEIVE_BINGE,
   REMOVE_BINGE,
 } from '../../actions/binge_actions';
-
+import { LOGOUT_CURRENT_USER } from '../../actions/session_actions';
 
 const bingesReducer = (state = {}, action) => {
   Object.freeze(state);
@@ -19,6 +19,8 @@ const bingesReducer = (state = {}, action) => {
       const newState = merge({}, state);
       delete newState[action.binge.id];
       return newState;
+    case LOGOUT_CURRENT_USER:
+      return {};
     default:
       return state;
   }

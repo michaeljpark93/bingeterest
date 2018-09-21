@@ -1,110 +1,133 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import NavBarContainer from '../navbar/nav_bar_container';
-import UserBoardsContainer from '../board/user_boards_container';
-import UserBingesContainer from '../binge/user_binges_container';
-
-const Headers = (props) => {
-  const { selectedPane, panes } = props;
-  const headers = panes.map((pane, idx) => {
-    const { title } = pane;
-    const klass = idx === selectedPane ? 'active' : '';
-
-    return (
-      <li
-        key={idx}
-        className={klass}
-        onClick={() => props.onTabChosen(idx)}
-      >
-        {title}
-      </li>
-    );
-  });
-
-  return <ul className="tab-header">{headers}</ul>;
-};
+import UserBoards from './user_boards.jsx';
+import UserBinges from './user_binges.jsx';
 
 class UserShow extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedPane: 0,
-      paneContent: '',
-      profilePic: window.images.profpic,
-      username: '',
+      boardTab: true,
+      bingeTab: false,
+      user: null,
     };
-    this.selectTab = this.selectTab.bind(this);
-    this.selectPaneContent = this.selectPaneContent.bind(this);
+    this.resetUser = this.resetUser.bind(this);
+    this.handleTab = this.handleTab.bind(this);
+    this.renderUserContent = this.renderUserContent.bind(this);
+    this.renderTabContent = this.renderTabContent.bind(this);
   }
 
   componentDidMount() {
-    const { fetchUser, user, userId } = this.props;
-    fetchUser(user.id).then(this.setState({ profilePic: user.photoUrl, username: user.username }));
+    const { fetchUser, ownProps } = this.props;
+    fetchUser(ownProps.match.params.userId).then((userData) => {
+      this.setState({ user: userData.user });
+    });
   }
 
-  selectTab(num) {
-    this.setState({ selectedPane: num }, () => this.selectPaneContent(num));
+  componentWillUnmount() {
+    this.resetUser();
   }
 
-  selectPaneContent(num) {
-    const { user } = this.state;
-    switch (num) {
-      case 0:
-        return this.setState({
-          paneContent: <UserBoardsContainer user={user} />,
-        });
-      case 1:
-        return this.setState({
-          paneContent: <UserBingesContainer user={user} />,
-        });
-      default:
-        return this.setState({
-          paneContent: <UserBoardsContainer user={user} />,
-        });
+  resetUser() {
+    this.setState({
+      boardTab: true,
+      bingeTab: false,
+      user: null,
+    });
+  }
+
+  handleTab(tab) {
+    if (tab === 'board') {
+      return this.setState({ boardTab: true, bingeTab: false });
     }
+    return this.setState({ boardTab: false, bingeTab: true });
+  }
+
+  renderUserContent() {
+    const { user } = this.state;
+    if (user !== null) {
+      return (
+        <div className="user-info">
+          <div className="user-info-box">
+            <div className="username">
+              <h2>{user.username}</h2>
+
+              <div className="follow-box">
+                <h2>FOLLOWERS</h2>
+                <h2>FOLLOWS</h2>
+              </div>
+            </div>
+
+            <div className="pf-picture">
+              <img className="user-pf" src={user.photoUrl} alt="" />
+            </div>
+          </div>
+        </div>
+      );
+    }
+    return (
+      <div className="user-info">
+        <div className="user-info-box">
+          <div className="username">
+            <div />
+
+            <div className="follow-box">
+              <div />
+              <div />
+            </div>
+          </div>
+
+          <div className="pf-picture">
+            <img className="user-pf" src={window.images.profpic} alt="" />
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  renderTabContent() {
+    const { user, boardTab, bingeTab } = this.state;
+    const { openModal, closeModal } = this.props;
+    if (user !== null && boardTab) {
+      return (
+        <div className="user-profile-content">
+          <div className="public-content">
+            <UserBoards boards={Object.values(user.user_boards)} openModal={openModal} closeModal={closeModal} />
+          </div>
+        </div>
+      );
+    } if (user !== null && bingeTab) {
+      return (
+        <div className="user-profile-content">
+          <div className="public-content">
+            <UserBinges binges={Object.values(user.user_binges)} openModal={openModal} closeModal={closeModal} />
+          </div>
+        </div>
+      );
+    }
+    return <div />;
   }
 
   render() {
-    const {
-      selectedPane, paneContent, profilePic, username,
-    } = this.state;
-    const { panes } = this.props;
-
+    const { boardTab, bingeTab } = this.state;
     return (
       <div>
         <NavBarContainer />
 
         <div className="profile">
-          <div className="user-info">
-            <div className="user-info-box">
-              <div className="username">
-                <h2>{username}</h2>
-
-                <div className="follow-box">
-                  <h2>FOLLOWERS</h2>
-                  <h2>FOLLOWS</h2>
-                </div>
-              </div>
-
-              <div className="pf-picture">
-                <img className="user-pf" src={profilePic} alt="" />
-              </div>
-            </div>
-          </div>
+          {this.renderUserContent()}
 
           <div className="tabs">
             <div className="tabs-box">
-              <Headers
-                selectedPane={selectedPane}
-                onTabChosen={this.selectTab}
-                panes={panes}
-              />
+              <div className="tab-header">
+                <button type="button" className={boardTab ? 'active' : ''} onClick={() => this.handleTab('board')}>Boards</button>
+                <button type="button" className={bingeTab ? 'active' : ''} onClick={() => this.handleTab('binge')}>Binges</button>
+              </div>
             </div>
           </div>
 
-          <div className="user-profile-content">
-            <div className="public-content">{paneContent}</div>
-          </div>
+          {this.renderTabContent()}
         </div>
       </div>
     );

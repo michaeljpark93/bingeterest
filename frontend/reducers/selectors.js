@@ -1,8 +1,6 @@
 export const selectUser = (entities, userId) => {
-  const userData = Object.values(entities.users).filter(
-    user => user.id === parseInt(userId),
-  );
-  return userData;
+  const userData = Object.values(entities.users).filter(user => user.id === parseInt(userId));
+  return (userData);
 };
 
 export const selectUserBoards = (entities, userId) => {
