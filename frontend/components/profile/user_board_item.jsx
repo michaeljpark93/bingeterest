@@ -4,8 +4,10 @@ import { Link } from 'react-router-dom';
 class UserBoardItem extends React.Component {
   constructor(props) {
     super(props);
+
     this.handleSubmit = this.handleSubmit.bind(this);
     this.renderBingesDisplay = this.renderBingesDisplay.bind(this);
+    this.renderBingeCount = this.renderBingeCount.bind(this);
   }
 
   handleSubmit(e) {
@@ -14,18 +16,34 @@ class UserBoardItem extends React.Component {
   }
 
   renderBingesDisplay() {
-    const { bingings } = this.props.board;
-    const binges = Object.values(bingings);
-    return (
-      <div className="board-box">
-        {binges.map(binge => (<img key={binge.id} className="masonry" src={binge.photoUrl} alt="" />))}
-      </div>
-    );
+    const { board } = this.props;
+    if (board && board.bingings) {
+      const binges = Object.values(board.bingings);
+      return (
+        <div className="board-box">
+          {binges.map(binge => (<img key={binge.id} className="masonry" src={binge.photoUrl} alt="" />))}
+        </div>
+      );
+    }
+    return <div className="board-box" />;
+  }
+
+  renderBingeCount() {
+    const { board } = this.props;
+    if (board && board.bingings) {
+      const binges = Object.values(board.bingings);
+      return (
+        <h3 className="board-pins">
+          {binges.length}
+          {' '}
+          binges
+        </h3>
+      );
+    }
   }
 
   render() {
     const { board } = this.props;
-    const binges = Object.values(board.bingings);
 
     return (
       <Link to={`/boards/${board.id}`}>
@@ -34,11 +52,7 @@ class UserBoardItem extends React.Component {
           <div className="board-content">
             <div className="board-text">
               <h3 className="title">{board.name}</h3>
-              <h3 className="board-pins">
-                {binges.length}
-                {' '}
-                binges
-              </h3>
+              {this.renderBingeCount()}
             </div>
             <div onClick={this.handleSubmit}>
               <div className="icon-box">

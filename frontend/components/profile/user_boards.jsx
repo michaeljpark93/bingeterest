@@ -6,7 +6,9 @@ import Modal from '../modal/modal.jsx';
 class UserBoards extends React.Component {
   constructor(props) {
     super(props);
+
     this.handleModal = this.handleModal.bind(this);
+    this.renderBoards = this.renderBoards.bind(this);
   }
 
   handleModal(type) {
@@ -16,8 +18,23 @@ class UserBoards extends React.Component {
     };
   }
 
+  renderBoards() {
+    const { boards, openModal } = this.props;
+
+    if (boards.length > 0) {
+      return (
+        boards.map(board => (
+          <UserBoardItem
+            board={board}
+            key={board.id}
+            edit={openModal}
+          />
+        ))
+      );
+    }
+  }
+
   render() {
-    const { openModal, boards } = this.props;
     return (
       <div>
         <Modal />
@@ -32,14 +49,7 @@ class UserBoards extends React.Component {
             </div>
             <h3 className="create-title">Create Board</h3>
           </div>
-
-          {boards.map(board => (
-            <UserBoardItem
-              board={board}
-              key={board.id}
-              edit={openModal}
-            />
-          ))}
+          {this.renderBoards()}
         </div>
       </div>
     );

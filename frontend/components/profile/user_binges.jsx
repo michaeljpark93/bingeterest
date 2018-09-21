@@ -6,7 +6,9 @@ import Modal from '../modal/modal.jsx';
 class UserBinges extends React.Component {
   constructor(props) {
     super(props);
+
     this.handleModal = this.handleModal.bind(this);
+    this.renderUserBinges = this.renderUserBinges.bind(this);
   }
 
   handleModal(type) {
@@ -16,8 +18,23 @@ class UserBinges extends React.Component {
     };
   }
 
-  render() {
+  renderUserBinges() {
     const { openModal, binges } = this.props;
+    if (binges.length > 0) {
+      return (
+        binges.reverse().map(binge => (
+          <BingeItemShow
+            binge={binge}
+            key={binge.id}
+            user={this.props.user}
+            edit={() => openModal('editBinge')}
+          />
+        ))
+      );
+    }
+  }
+
+  render() {
     return (
       <div>
         <Modal />
@@ -34,15 +51,7 @@ class UserBinges extends React.Component {
                 </div>
                 <h3 className="create-title">Create Binge</h3>
               </li>
-
-              {binges.reverse().map(binge => (
-                <BingeItemShow
-                  binge={binge}
-                  key={binge.id}
-                  user={this.props.user}
-                  edit={() => openModal('editBinge')}
-                />
-              ))}
+              {this.renderUserBinges()}
             </ul>
           </div>
         </div>

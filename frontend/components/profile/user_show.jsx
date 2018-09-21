@@ -14,6 +14,8 @@ class UserShow extends React.Component {
     };
     this.resetUser = this.resetUser.bind(this);
     this.handleTab = this.handleTab.bind(this);
+    this.handleFollow = this.handleFollow.bind(this);
+    this.handleUnfollow = this.handleUnfollow.bind(this);
     this.renderUserContent = this.renderUserContent.bind(this);
     this.renderTabContent = this.renderTabContent.bind(this);
   }
@@ -44,6 +46,30 @@ class UserShow extends React.Component {
     return this.setState({ boardTab: false, bingeTab: true });
   }
 
+  handleFollow() {
+    const { currentUser, createFollow } = this.props;
+    const { user } = this.state;
+    const follow = {
+      user_id: user.id,
+      follower_id: currentUser.id,
+    };
+    createFollow({ follow }).then((userData) => {
+      this.setState({ user: userData.user });
+    });
+  }
+
+  handleUnfollow() {
+    const { currentUser, deleteFollow } = this.props;
+    const { user } = this.state;
+    const follow = {
+      user_id: user.id,
+      follower_id: currentUser.id,
+    };
+    deleteFollow({ follow }).then((userData) => {
+      this.setState({ user: userData.user });
+    });
+  }
+
   renderUserContent() {
     const { user } = this.state;
     if (user !== null) {
@@ -56,6 +82,7 @@ class UserShow extends React.Component {
               <div className="follow-box">
                 <h2>FOLLOWERS</h2>
                 <h2>FOLLOWS</h2>
+                {this.renderFollow()}
               </div>
             </div>
 
@@ -90,23 +117,61 @@ class UserShow extends React.Component {
     const { user, boardTab, bingeTab } = this.state;
     const { openModal, closeModal } = this.props;
     if (user !== null && boardTab) {
+      if (user && user.user_boards) {
+        const boards = Object.values(user.user_boards);
+        return (
+          <div className="user-profile-content">
+            <div className="public-content">
+              <UserBoards boards={boards} openModal={openModal} closeModal={closeModal} />
+            </div>
+          </div>
+        );
+      }
+      const boards = [];
       return (
         <div className="user-profile-content">
           <div className="public-content">
-            <UserBoards boards={Object.values(user.user_boards)} openModal={openModal} closeModal={closeModal} />
+            <UserBoards boards={boards} openModal={openModal} closeModal={closeModal} />
           </div>
         </div>
       );
     } if (user !== null && bingeTab) {
+      if (user && user.user_binges) {
+        const binges = Object.values(user.user_binges);
+        return (
+          <div className="user-profile-content">
+            <div className="public-content">
+              <UserBinges binges={binges} openModal={openModal} closeModal={closeModal} />
+            </div>
+          </div>
+        );
+      }
+      const binges = [];
       return (
         <div className="user-profile-content">
           <div className="public-content">
-            <UserBinges binges={Object.values(user.user_binges)} openModal={openModal} closeModal={closeModal} />
+            <UserBinges binges={binges} openModal={openModal} closeModal={closeModal} />
           </div>
         </div>
       );
     }
-    return <div />;
+    return null;
+  }
+
+  renderFollow() {
+    const { user } = this.state;
+    const { currentUser } = this.props;
+    if (user !== null && currentUser.id !== user.id) {
+      if (user.followed) {
+        return (
+          <button className="follow-button" type="button" onClick={this.handleUnfollow}>Unfollow</button>
+        );
+      }
+      return (
+        <button className="follow-button" type="button" onClick={this.handleFollow}>Follow</button>
+      );
+    }
+    return null;
   }
 
   render() {

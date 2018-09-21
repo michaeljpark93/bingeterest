@@ -16,3 +16,27 @@ json.user_boards do
     end
   end
 end
+
+json.followers do
+  user.followers.each do |follower|
+    json.set! follower.id do
+      json.extract! follower, :id
+    end
+  end
+end
+
+json.followees do
+  user.followees.each do |followee|
+    json.set! followee.id do
+      json.extract! followee, :id
+    end
+  end
+end
+
+if current_user
+  if user.followers.exists?(id: current_user.id)
+    json.followed true
+  else
+    json.followed false
+  end
+end

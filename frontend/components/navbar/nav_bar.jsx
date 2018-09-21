@@ -47,7 +47,7 @@ class NavBar extends React.Component {
               </div>
 
               <div className="following">
-                <Link to="/">Following</Link>
+                <Link to="/following">Following</Link>
               </div>
 
               <div className="explore">
