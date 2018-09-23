@@ -11,6 +11,8 @@ class UserShow extends React.Component {
       boardTab: true,
       bingeTab: false,
       user: null,
+      followers: 0,
+      followees: 0,
     };
     this.resetUser = this.resetUser.bind(this);
     this.handleTab = this.handleTab.bind(this);
@@ -18,6 +20,7 @@ class UserShow extends React.Component {
     this.handleUnfollow = this.handleUnfollow.bind(this);
     this.renderUserContent = this.renderUserContent.bind(this);
     this.renderTabContent = this.renderTabContent.bind(this);
+    this.renderFollowCount = this.renderFollowCount.bind(this);
   }
 
   componentDidMount() {
@@ -27,8 +30,13 @@ class UserShow extends React.Component {
     });
   }
 
-  componentWillUnmount() {
-    this.resetUser();
+  componentDidUpdate(prevProps) {
+    const { fetchUser, ownProps } = this.props;
+    if (prevProps.match.params.userId !== ownProps.match.params.userId) {
+      fetchUser(ownProps.match.params.userId).then((userData) => {
+        this.setState({ user: userData.user });
+      });
+    }
   }
 
   resetUser() {
@@ -70,25 +78,62 @@ class UserShow extends React.Component {
     });
   }
 
+  renderFollow() {
+    const { user } = this.state;
+    const { currentUser } = this.props;
+    if (user !== null && currentUser.id !== user.id) {
+      if (user.followed) {
+        return (
+          <button className="follow-button" type="button" onClick={this.handleUnfollow}>Unfollow</button>
+        );
+      }
+      return (
+        <button className="follow-button" type="button" onClick={this.handleFollow}>Follow</button>
+      );
+    }
+    return null;
+  }
+
+  renderFollowCount(user) {
+    let followers = 0;
+    let followees = 0;
+    if (user && user.followers) {
+      followers = Object.values(user.followers).length;
+    }
+    if (user && user.followees) {
+      followees = Object.values(user.followees).length;
+    }
+
+    return (
+      <div className="follow-box">
+        <div className="follow-details">
+          <h2>
+            {`${followers} followers`}
+          </h2>
+          <h2>
+            {`${followees} following`}
+          </h2>
+        </div>
+      </div>
+    );
+  }
+
   renderUserContent() {
     const { user } = this.state;
     if (user !== null) {
       return (
         <div className="user-info">
           <div className="user-info-box">
-            <div className="username">
-              <h2>{user.username}</h2>
-
-              <div className="follow-box">
-                <h2>FOLLOWERS</h2>
-                <h2>FOLLOWS</h2>
+            <div className="user-details">
+              <div className="username">
+                <h2>{user.username}</h2>
                 {this.renderFollow()}
               </div>
+
+              {this.renderFollowCount(user)}
             </div>
 
-            <div className="pf-picture">
-              <img className="user-pf" src={user.photoUrl} alt="" />
-            </div>
+            <img className="user-pf" src={user.photoUrl} alt="" />
           </div>
         </div>
       );
@@ -96,18 +141,9 @@ class UserShow extends React.Component {
     return (
       <div className="user-info">
         <div className="user-info-box">
-          <div className="username">
-            <div />
+          <div className="user-details" />
 
-            <div className="follow-box">
-              <div />
-              <div />
-            </div>
-          </div>
-
-          <div className="pf-picture">
-            <img className="user-pf" src={window.images.profpic} alt="" />
-          </div>
+          <img className="user-pf" src={window.images.profpic} alt="" />
         </div>
       </div>
     );
@@ -153,22 +189,6 @@ class UserShow extends React.Component {
             <UserBinges binges={binges} openModal={openModal} closeModal={closeModal} />
           </div>
         </div>
-      );
-    }
-    return null;
-  }
-
-  renderFollow() {
-    const { user } = this.state;
-    const { currentUser } = this.props;
-    if (user !== null && currentUser.id !== user.id) {
-      if (user.followed) {
-        return (
-          <button className="follow-button" type="button" onClick={this.handleUnfollow}>Unfollow</button>
-        );
-      }
-      return (
-        <button className="follow-button" type="button" onClick={this.handleFollow}>Follow</button>
       );
     }
     return null;

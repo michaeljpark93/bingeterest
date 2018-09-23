@@ -11,8 +11,6 @@ import UserShow from './user_show.jsx';
 const mapStateToProps = ({ entities, session }, ownProps) => ({
   user: selectUser(entities, ownProps.match.params.userId),
   currentUser: session.currentUser,
-  followees: Object.values(session.currentUser.followees),
-  followers: Object.values(session.currentUser.followers),
   ownProps,
 });
 

@@ -61,7 +61,7 @@ class NavBar extends React.Component {
                     {currentUser.username[0]}
                   </div>
                   <div className="name">
-                    {currentUser.username}
+                    {currentUser.username.split(' ')[0]}
                   </div>
                 </div>
               </Link>

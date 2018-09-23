@@ -13,14 +13,24 @@
   align-items: center;
 
   .user-info-box {
-    width: 800px;
+    width: 60%;
     height: 130px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 0 15px;
+
+    .user-pf {
+      object-fit: cover;
+      width: 106px;
+      height: 106px;
+      border-radius: 50%;
+      margin: 24px 10px 0 0;
+      border: 1px solid $light-gray;
+    }
   }
 
-  .username {
+  .user-details {
     color: $black;
     line-height: 1.2;
     letter-spacing: -0.4px;
@@ -29,52 +39,68 @@
     font-weight: bold;
     display: flex;
     flex-flow: column;
-    align-items: center;
+    align-items: flex-start;
+    justify-content: flex-start;
+    margin: 10px;
 
-    h2 {
-      color: $black;
-      line-height: 1.2;
-      letter-spacing: -0.4px;
-      font-size: 36px;
-      width: 572px;
-      height: 43px;
-      padding: 0 12px;
-      margin-left: 4px;
-    }
-
-    .follow-box {
-      height: 36px;
-      width: 572px;
-      padding: 0 12px;
-      margin: 10px 0 0 4px;
+    .username {
       display: flex;
-      flex-flow: row;
-      align-items: center;
       justify-content: flex-start;
+      align-items: center;
+      flex-flow: row nowrap;
 
       h2 {
-        font-size: 14px;
         color: $black;
+        line-height: 1.2;
+        letter-spacing: -0.4px;
+        font-size: 40px;
+        margin: 0 25px 0 0;
+      }
+
+      .follow-button:focus {
+        outline: none;
+      }
+
+      .follow-button {
+        height: 18px;
+        width: 65px;
+        padding: 10px;
+        background-color: $red;
+        color: $white;
+        font-size: 14px;
         font-weight: bold;
+        line-height: 1.2;
+        letter-spacing: -0.4px;
+        -webkit-font-smoothing: antialiased;
+        box-sizing: content-box;
+        border-radius: 4px;
+        border: none;
       }
     }
   }
 }
 
-.pf-picture {
-  width: 200px;
-  height: 130px;
+.follow-box {
+  height: 36px;
+  width: 500px;
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  justify-content: space-between;
 
-  .user-pf {
-    object-fit: cover;
-    width: 106px;
-    height: 106px;
-    border-radius: 50%;
-    margin-top: 24px;
-    border: 1px solid $light-gray;
-    text-align: center;
-    justify-content: center;
-    line-height: 100px;
+  .follow-details {
+    display: flex;
+    flex-direction: row nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    width: 50%;
+
+    h2 {
+      font-size: 14px;
+      color: $black;
+      font-weight: bold;
+      margin: 0 10px 0 0;
+    }
   }
 }
 
