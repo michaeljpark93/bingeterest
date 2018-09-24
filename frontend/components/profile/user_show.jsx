@@ -3,6 +3,7 @@ import { withRouter } from 'react-router-dom';
 import NavBarContainer from '../navbar/nav_bar_container';
 import UserBoards from './user_boards.jsx';
 import UserBinges from './user_binges.jsx';
+import FollowShow from '../follow/follow_show.jsx';
 
 class UserShow extends React.Component {
   constructor(props) {
@@ -11,6 +12,7 @@ class UserShow extends React.Component {
       boardTab: true,
       bingeTab: false,
       user: null,
+      users: null,
       followers: 0,
       followees: 0,
     };
@@ -24,17 +26,24 @@ class UserShow extends React.Component {
   }
 
   componentDidMount() {
-    const { fetchUser, ownProps } = this.props;
-    fetchUser(ownProps.match.params.userId).then((userData) => {
-      this.setState({ user: userData.user });
+    const { fetchUsers, ownProps } = this.props;
+    const { userId } = ownProps.match.params;
+    fetchUsers().then((userData) => {
+      const user = Object.values(userData.users).filter(person => person.id === parseInt(userId, 10))[0];
+      this.setState({ users: userData.users, user });
+      if (userId && ownProps.match.params.following) {
+        this.handleTab('follow');
+      }
     });
   }
 
   componentDidUpdate(prevProps) {
-    const { fetchUser, ownProps } = this.props;
-    if (prevProps.match.params.userId !== ownProps.match.params.userId) {
-      fetchUser(ownProps.match.params.userId).then((userData) => {
-        this.setState({ user: userData.user });
+    const { fetchUsers, ownProps } = this.props;
+    const { userId } = ownProps.match.params;
+    if (prevProps.match.params.userId !== userId) {
+      fetchUsers(userId).then((userData) => {
+        const user = Object.values(userData.users).filter(person => person.id === parseInt(userId, 10));
+        this.setState({ users: userData.users, user });
       });
     }
   }
@@ -43,15 +52,22 @@ class UserShow extends React.Component {
     this.setState({
       boardTab: true,
       bingeTab: false,
+      followTab: false,
       user: null,
     });
   }
 
   handleTab(tab) {
-    if (tab === 'board') {
-      return this.setState({ boardTab: true, bingeTab: false });
+    switch (tab) {
+      case 'board':
+        return this.setState({ boardTab: true, bingeTab: false, followTab: false });
+      case 'binge':
+        return this.setState({ boardTab: false, bingeTab: true, followTab: false });
+      case 'follow':
+        return this.setState({ boardTab: false, bingeTab: false, followTab: true });
+      default:
+        return this.setState({ boardTab: true, bingeTab: false, followTab: false });
     }
-    return this.setState({ boardTab: false, bingeTab: true });
   }
 
   handleFollow() {
@@ -150,8 +166,12 @@ class UserShow extends React.Component {
   }
 
   renderTabContent() {
-    const { user, boardTab, bingeTab } = this.state;
-    const { openModal, closeModal } = this.props;
+    const {
+      user, users, boardTab, bingeTab, followTab,
+    } = this.state;
+    const {
+      currentUser, openModal, closeModal, createFollow, deleteFollow,
+    } = this.props;
     if (user !== null && boardTab) {
       if (user && user.user_boards) {
         const boards = Object.values(user.user_boards);
@@ -190,12 +210,22 @@ class UserShow extends React.Component {
           </div>
         </div>
       );
+    } if (user !== null && followTab) {
+      return (
+        <FollowShow
+          user={user}
+          users={users}
+          currentUser={currentUser}
+          handleFollow={createFollow}
+          handleUnfollow={deleteFollow}
+        />
+      );
     }
     return null;
   }
 
   render() {
-    const { boardTab, bingeTab } = this.state;
+    const { boardTab, bingeTab, followTab } = this.state;
     return (
       <div>
         <NavBarContainer />
@@ -208,6 +238,7 @@ class UserShow extends React.Component {
               <div className="tab-header">
                 <button type="button" className={boardTab ? 'active' : 'not-active'} onClick={() => this.handleTab('board')}>Boards</button>
                 <button type="button" className={bingeTab ? 'active' : 'not-active'} onClick={() => this.handleTab('binge')}>Binges</button>
+                <button type="button" className={followTab ? 'active' : 'not-active'} onClick={() => this.handleTab('follow')}>Follows</button>
               </div>
             </div>
           </div>

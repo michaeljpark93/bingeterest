@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { fetchUser } from '../../actions/user_actions';
+import { fetchUsers } from '../../actions/user_actions';
 import { selectUser } from '../../reducers/selectors';
 import {
   createFollow,
@@ -15,7 +15,7 @@ const mapStateToProps = ({ entities, session }, ownProps) => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetchUser: id => dispatch(fetchUser(id)),
+  fetchUsers: () => dispatch(fetchUsers()),
   createFollow: id => dispatch(createFollow(id)),
   deleteFollow: id => dispatch(deleteFollow(id)),
   openModal: type => dispatch(openModal(type)),
