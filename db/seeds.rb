@@ -236,8 +236,8 @@ binge5 = Binge.new(
   url: 'tumblr.com',
   link_url: 'https://letslovefood.tumblr.com/image/176539977358',
   author_id: 1)
-file = dustin_money('https://s3-us-west-1.amazonaws.com/bingeterest-dev/binges/binge55.jpg')
-binge5.photo.attach(io: file, filename: 'binge55.gif')
+file = dustin_money('https://s3-us-west-1.amazonaws.com/bingeterest-dev/binges/binge5.jpg')
+binge5.photo.attach(io: file, filename: 'binge5.jpg')
 binge5.save!
 
 binge6 = Binge.new(
@@ -402,15 +402,6 @@ file = dustin_money('https://s3-us-west-1.amazonaws.com/bingeterest-dev/binges/b
 binge25.photo.attach(io: file, filename: 'binge25.jpg')
 binge25.save!
 
-binge26 = Binge.new(
-  description: "finger lickin good",
-  url: 'unsplash.com',
-  link_url: 'https://unsplash.com/photos/GG1FJwV67PA',
-  author_id: rand(0..33))
-file = dustin_money('https://s3-us-west-1.amazonaws.com/bingeterest-dev/binges/binge6.jpg')
-binge26.photo.attach(io: file, filename: 'binge6.jpg')
-binge26.save!
-
 binge27 = Binge.new(
   description: "wow",
   url: 'unsplash.com',
@@ -421,12 +412,12 @@ binge27.photo.attach(io: file, filename: 'binge27.jpg')
 binge27.save!
 
 binge28 = Binge.new(
-  description: 'yummm',
+  description: 'pizza',
   url: 'unsplash.com',
   link_url: 'https://unsplash.com/photos/Fq54FqucgCE',
   author_id: rand(0..33))
-file = dustin_money('https://s3-us-west-1.amazonaws.com/bingeterest-dev/binges/binge1.jpg')
-binge1.photo.attach(io: file, filename: 'binge1.jpg')
+file = dustin_money('https://s3-us-west-1.amazonaws.com/bingeterest-dev/binges/binge1.gif')
+binge1.photo.attach(io: file, filename: 'binge1.gif')
 binge1.save!
 
 binge29 = Binge.new(
@@ -475,12 +466,12 @@ binge34.photo.attach(io: file, filename: 'binge34.jpg')
 binge34.save!
 
 binge35 = Binge.new(
-  description: "pasta",
+  description: "waffles",
   url: 'unsplash.com',
-  link_url: 'https://unsplash.com/photos/R18ecx07b3c',
+  link_url: 'https://unsplash.com/photos/6hxK5l-sHys',
   author_id: rand(0..33))
-file = dustin_money('https://s3-us-west-1.amazonaws.com/bingeterest-dev/binges/binge35.jpg')
-binge35.photo.attach(io: file, filename: 'binge35.jpg')
+file = dustin_money('https://s3-us-west-1.amazonaws.com/bingeterest-dev/binges/binge35.jpeg')
+binge35.photo.attach(io: file, filename: 'binge35.jpeg')
 binge35.save!
 
 binge36 = Binge.new(
@@ -502,9 +493,9 @@ binge37.photo.attach(io: file, filename: 'binge37.jpg')
 binge37.save!
 
 binge38 = Binge.new(
-  description: "the perfect dessert",
-  url: 'the11best.com',
-  link_url: 'https://www.the11best.com/party-food-recipes/',
+  description: "chocolate turtle apple",
+  url: 'gardenandtable.net',
+  link_url: 'http://www.gardenandtable.net/chocolate-turtle-apple-slices/',
   author_id: rand(0..33))
 file = dustin_money('https://s3-us-west-1.amazonaws.com/bingeterest-dev/binges/binge38.jpg')
 binge38.photo.attach(io: file, filename: 'binge38.jpg')
@@ -1103,6 +1094,15 @@ binge18 = Binge.new(
 file = dustin_money('https://s3-us-west-1.amazonaws.com/bingeterest-dev/binges/binge18.jpg')
 binge18.photo.attach(io: file, filename: 'binge18.jpg')
 binge18.save!
+
+binge26 = Binge.new(
+  description: "finger lickin good",
+  url: 'unsplash.com',
+  link_url: 'https://unsplash.com/photos/GG1FJwV67PA',
+  author_id: rand(0..33))
+file = dustin_money('https://s3-us-west-1.amazonaws.com/bingeterest-dev/binges/binge6.jpg')
+binge26.photo.attach(io: file, filename: 'binge6.jpg')
+binge26.save!
 
 
 Board.delete_all
