@@ -5,14 +5,13 @@ import { openModal, closeModal } from '../../actions/modal_actions';
 import BingeShow from './binge_show.jsx';
 
 const mapStateToProps = ({ entities, session, errors }, ownProps) => ({
-  currentUser: entities.users[session.id],
-  binge: entities.binges[ownProps.match.params.bingeId],
+  currentUser: session.currentUser,
+  binges: entities.binges,
   errors: errors.boards,
+  ownProps,
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetchBinge: id => dispatch(fetchBinge(id)),
-  fetchBoards: () => dispatch(fetchBoards()),
   openModal: type => dispatch(openModal(type)),
   closeModal: () => dispatch(closeModal()),
 });

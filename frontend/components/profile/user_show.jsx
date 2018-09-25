@@ -16,7 +16,7 @@ class UserShow extends React.Component {
       followers: 0,
       followees: 0,
     };
-    this.resetUser = this.resetUser.bind(this);
+    
     this.handleTab = this.handleTab.bind(this);
     this.handleFollow = this.handleFollow.bind(this);
     this.handleUnfollow = this.handleUnfollow.bind(this);
@@ -37,24 +37,24 @@ class UserShow extends React.Component {
     });
   }
 
-  componentDidUpdate(prevProps) {
-    const { fetchUsers, ownProps } = this.props;
+  componentDidUpdate() {
+    const { ownProps, fetchUsers } = this.props;
     const { userId } = ownProps.match.params;
-    if (prevProps.match.params.userId !== userId) {
-      fetchUsers(userId).then((userData) => {
-        const user = Object.values(userData.users).filter(person => person.id === parseInt(userId, 10));
-        this.setState({ users: userData.users, user });
+    const { user } = this.state;
+
+    if (user && user.id !== parseInt(userId, 10)) {
+      fetchUsers().then((userData) => {
+        const newUser = Object.values(userData.users)
+          .filter(person => person.id === parseInt(userId, 10))[0];
+        this.setState({
+          users: userData.users,
+          user: newUser,
+          boardTab: true,
+          bingeTab: false,
+          followTab: false,
+        });
       });
     }
-  }
-
-  resetUser() {
-    this.setState({
-      boardTab: true,
-      bingeTab: false,
-      followTab: false,
-      user: null,
-    });
   }
 
   handleTab(tab) {
@@ -216,8 +216,8 @@ class UserShow extends React.Component {
           user={user}
           users={users}
           currentUser={currentUser}
-          handleFollow={createFollow}
-          handleUnfollow={deleteFollow}
+          createFollow={createFollow}
+          deleteFollow={deleteFollow}
         />
       );
     }

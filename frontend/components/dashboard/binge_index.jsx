@@ -5,12 +5,13 @@ import NavBarContainer from '../navbar/nav_bar_container';
 
 class BingeIndex extends React.Component {
   componentDidMount() {
-    const { fetchBinges } = this.props;
+    const { fetchBinges, fetchBoards } = this.props;
     fetchBinges();
+    fetchBoards();
   }
 
   render() {
-    const { binges } = this.props;
+    const { binges, boards } = this.props;
     return (
       <div>
         <NavBarContainer />
@@ -18,7 +19,7 @@ class BingeIndex extends React.Component {
         <div className="discover">
           <div className="discover-box">
             <ul className="masonry">
-              {binges.map(binge => <BingeItemShow binge={binge} key={binge.id} />)}
+              {binges.map(binge => <BingeItemShow binge={binge} key={binge.id} boards={boards} />)}
             </ul>
           </div>
         </div>

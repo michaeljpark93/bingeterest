@@ -9,7 +9,6 @@ class BoardShow extends React.Component {
     super(props);
     this.state = {
       board: null,
-      currentUser: this.props.currentUser,
     };
 
     this.handleModal = this.handleModal.bind(this);
@@ -23,15 +22,18 @@ class BoardShow extends React.Component {
   }
 
   handleModal(e) {
+    const { openModal } = this.props;
     e.preventDefault();
-    this.props.openModal('editBoard');
+    openModal('editBoard');
   }
 
-  render() {
-    const { board, currentUser } = this.state;
 
-    if (board !== null) {
-      const binges = Object.values(board.bingings);
+  render() {
+    const { board } = this.state;
+
+    if (board && board.bingings) {
+      const binges = Object.values(board.bingings).filter(binging => binging.photoUrl);
+
       return (
         <div>
           <NavBarContainer />
@@ -46,6 +48,11 @@ class BoardShow extends React.Component {
                   <img className="edit-icon" src={window.images.pen} alt="" />
                 </div>
               </div>
+              <h3>
+                &quot;
+                {board.description}
+                &quot;
+              </h3>
 
               <div className="follow-box">
                 <h2>
@@ -53,13 +60,10 @@ class BoardShow extends React.Component {
                   {' '}
                   binges
                 </h2>
-                <h2 />
               </div>
             </div>
 
-            <div className="pf-picture">
-              <img className="user-pf" src={currentUser.photoUrl ? currentUser.photoUrl : window.images.profpic} alt="" />
-            </div>
+            <img className="user-pf" src={board.author_photo ? board.author_photo : window.images.profpic} alt="" />
           </div>
 
           <div className="discover">
@@ -72,7 +76,7 @@ class BoardShow extends React.Component {
         </div>
       );
     }
-    return false;
+    return null;
   }
 }
 

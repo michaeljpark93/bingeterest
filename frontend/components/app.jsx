@@ -9,7 +9,6 @@ import Dashboard from './dashboard/binge_index_container';
 import UserShowContainer from './profile/user_show_container';
 import BoardShowContainer from './board/board_show_container';
 import BingeShowContainer from './binge/binge_show_container';
-import FollowShowContainer from './follow/follow_show_container';
 
 const App = () => (
   <div>

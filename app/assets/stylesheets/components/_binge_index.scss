@@ -1,50 +1,50 @@
-.binge:hover {
-  background-color: $transparent;
-  border-radius: 8px;
-}
-
-.binge {
-  background-color: none;
-  display: inline-block;
-  width: 100%;
-  padding: 0.5em 0.5em 0.75em 0.5em;
-  height: auto;
-
-  img {
-    border-radius: 8px;
-    border: none;
-  }
-}
-
-.binge-dashboard:hover .binge-link {
-  display: flex;
-  z-index: 100;
-  margin-bottom: -40px;
-  height: 40px;
-}
-
-.binge-link {
-  display: none;
-  background-color: $lightestest-gray;
-  border-radius: 4px;
+.binge-show-wrapper {
   position: relative;
-  bottom: 60px;
-  left: 15px;
-  overflow: hidden;
-  height: 35px;
+  padding: 5px;
+  
+  .binge {
+    background-color: none;
+    display: inline-block;
+    width: 100%;
+    padding: 0.5em 0.5em 0.75em 0.5em;
+    height: auto;
+  
+    img {
+      border-radius: 8px;
+      border: none;
+    }
+  }
+
+  .binge:hover {
+    background-color: $transparent;
+    border-radius: 8px;
+  }
+
+  .binge-link {
+    display: none;
+    background-color: $lightestest-gray;
+    border-radius: 4px;
+
+    .a-logo {
+      width: 16px;
+      height: 16px;
+      margin: 0 3px;
+    }
+
+    h2 {
+      font-size: 16px;
+      color: $black;
+      font-weight: bold;
+      margin: 0 3px;
+    }
+  }
+}
+
+.binge-show-wrapper:hover .binge-link {
+  display: flex;
   flex-flow: row nowrap;
-  height: 0px;
-
-  .a-logo {
-    width: 16px;
-    height: 16px;
-    margin: 0 3px;
-  }
-
-  h2 {
-    font-size: 16px;
-    color: $black;
-    font-weight: bold;
-    margin: 0 3px;
-  }
+  position: absolute;
+  bottom: 25px;
+  left: 20px;
+  height: 35px;
 }

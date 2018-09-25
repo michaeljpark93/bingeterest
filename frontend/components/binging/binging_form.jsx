@@ -6,34 +6,32 @@ import BingingBoardItem from './binging_board_item';
 class BingingForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      board_id: '',
-      binge_id: this.props.binge.id
-    };
+
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  componentDidMount() {
-    this.props.fetchBinge(this.props.binge.id);
-    this.props.fetchBoards();
-  }
-
   handleSubmit(board) {
-    this.setState({ board_id: board.id }, () => this.props.createBinging(this.state), this.props.cancel());
+    const { createBinging, cancel, binge } = this.props;
+    const binging = {
+      board_id: board.id,
+      binge_id: binge.id,
+    };
+
+    createBinging(binging).then(() => cancel());
   }
 
   render() {
-
-    return(
+    const { boards, binge, cancel } = this.props;
+    return (
       <div className="binging-box">
         <div className="binge-title">
           <h2>Choose board</h2>
-          <div onClick={this.props.cancel}>X</div>
+          <div onClick={cancel}>X</div>
         </div>
 
         <div className="binge-details-box">
           <div className="binge-details">
-            <img className="binge-image" src={this.props.binge.photoUrl} />
+            <img className="binge-image" src={binge.photoUrl} alt="" />
           </div>
 
           <div className="board-details-box">
@@ -41,12 +39,13 @@ class BingingForm extends React.Component {
               <h3>All boards</h3>
             </div>
             <ul className="bingings">
-              {this.props.boards.map(board => {
-                return <BingingBoardItem
+              {boards.map(board => (
+                <BingingBoardItem
                   board={board}
                   key={board.id}
-                  handleSubmit={() => this.handleSubmit(board)} />
-              })}
+                  handleSubmit={() => this.handleSubmit(board)}
+                />
+              ))}
             </ul>
           </div>
         </div>
@@ -54,6 +53,6 @@ class BingingForm extends React.Component {
       </div>
     );
   }
-};
+}
 
 export default withRouter(BingingForm);

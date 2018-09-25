@@ -71,9 +71,13 @@
     }
   }
 
-  .pf-pic {
-    width: 100px;
-    height: 100px;
+  .user-pf {
+    object-fit: cover;
+    width: 125px;
+    height: 125px;
+    border-radius: 50%;
+    margin: 24px 10px 0 0;
+    border: 1px solid $light-gray;
   }
 }
 

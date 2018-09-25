@@ -12,7 +12,7 @@ class UserBoardItem extends React.Component {
 
   handleSubmit(e) {
     e.stopPropagation();
-    this.props.edit('createBoard');
+    this.props.edit('editBoard');
   }
 
   renderBingesDisplay() {

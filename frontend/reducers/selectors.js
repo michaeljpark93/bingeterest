@@ -1,11 +1,11 @@
 export const selectUser = (entities, userId) => {
-  const userData = Object.values(entities.users).filter(user => user.id === parseInt(userId));
+  const userData = Object.values(entities.users).filter(user => user.id === parseInt(userId, 10));
   return (userData);
 };
 
 export const selectUserBoards = (entities, userId) => {
   const userBoards = Object.values(entities.boards).filter(
-    board => board.user_id === userId,
+    board => board.user_id === parseInt(userId, 10),
   );
   return userBoards;
 };
@@ -19,7 +19,7 @@ export const selectUserBinges = (entities, userId) => {
 
 export const selectBoardBinges = (entities, boardId) => {
   const bingings = Object.values(entities.bingings).filter(
-    binging => binging.board_id === parseInt(boardId),
+    binging => binging.board_id === parseInt(boardId, 10),
   );
   const binges = bingings.map(binging => entities.binges[binging.binge_id]);
   return binges;

@@ -10,14 +10,15 @@ class BoardUpdateForm extends React.Component {
     this.handleInput = this.handleInput.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
-  }
-
-  componentWillUnmount() {
-    this.props.removeErrors();
+    debugger;
   }
 
   componentDidMount() {
     this.props.fetchBoard(this.props.board.id);
+  }
+
+  componentWillUnmount() {
+    this.props.removeErrors();
   }
 
   handleInput(field) {
@@ -54,7 +55,8 @@ class BoardUpdateForm extends React.Component {
               type="text"
               value={this.state.name}
               placeholder="Like &quot;Places to Go&quot; or &quot;Recipes to Make&quot;"
-              onChange={this.handleInput('name')} />
+              onChange={this.handleInput('name')}
+            />
           </div>
 
           <div className="board-name">
@@ -64,7 +66,8 @@ class BoardUpdateForm extends React.Component {
               className="board-description"
               value={this.state.description}
               placeholder="What's your board about?"
-              onChange={this.handleInput('description')} />
+              onChange={this.handleInput('description')}
+            />
           </div>
 
           <div className="board-edit-buttons">
@@ -72,13 +75,13 @@ class BoardUpdateForm extends React.Component {
 
             <div className="board-buttons">
               <button onClick={this.props.cancel}>Cancel</button>
-              <input className="b-submit" type="submit" value="Save"/>
+              <input className="b-submit" type="submit" value="Save" />
             </div>
           </div>
         </form>
 
         <div className="u-error-list">
-          <ErrorsList errors={this.props.errors}/>
+          <ErrorsList errors={this.props.errors} />
         </div>
       </div>
     );

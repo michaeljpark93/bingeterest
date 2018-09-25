@@ -11,35 +11,9 @@ class FollowShow extends React.Component {
       others: [],
     };
 
-    // this.handleFollow = this.handleFollow.bind(this);
-    // this.handleUnfollow = this.handleUnfollow.bind(this);
     this.handleFollows = this.handleFollows.bind(this);
     this.renderUserDetails = this.renderUserDetails.bind(this);
   }
-
-  // handleFollow() {
-  //   const { currentUser, createFollow } = this.props;
-  //   const { user } = this.state;
-  //   const follow = {
-  //     user_id: user.id,
-  //     follower_id: currentUser.id,
-  //   };
-  //   createFollow({ follow }).then((userData) => {
-  //     this.setState({ user: userData.user });
-  //   });
-  // }
-
-  // handleUnfollow() {
-  //   const { currentUser, deleteFollow } = this.props;
-  //   const { user } = this.state;
-  //   const follow = {
-  //     user_id: user.id,
-  //     follower_id: currentUser.id,
-  //   };
-  //   deleteFollow({ follow }).then((userData) => {
-  //     this.setState({ user: userData.user });
-  //   });
-  // }
 
   handleFollows() {
     const { user, currentUser, users } = this.props;
@@ -58,7 +32,9 @@ class FollowShow extends React.Component {
         if (userFollowees.includes(allUsers[i].id)) {
           followees.push(allUsers[i]);
         }
-        if (!followers.includes(allUsers[i]) || !followees.includes(allUsers[i])) {
+        if (followers.includes(allUsers[i]) || followees.includes(allUsers[i])) {
+          continue;
+        } else {
           if (currentUser.id === allUsers[i].id) { continue; }
           others.push(allUsers[i]);
         }
@@ -68,16 +44,16 @@ class FollowShow extends React.Component {
   }
 
   renderUserDetails(type) {
-    const { currentUser } = this.props;
+    const { currentUser, createFollow, deleteFollow } = this.props;
     if (type.length > 0) {
       return (
         type.map(user => (
           <FollowItemShow
-            key={user.id}
+            key={`${currentUser.id}${user.id}`}
             user={user}
             currentUser={currentUser}
-            createFollow={this.handleFollow}
-            deleteFollow={this.handleUnfollow}
+            createFollow={createFollow}
+            deleteFollow={deleteFollow}
           />
         ))
       );
@@ -91,23 +67,17 @@ class FollowShow extends React.Component {
 
     return (
       <div className="follow-container">
-        <div className="follow-box">
-          <h2>Following</h2>
-          <div className="user-follows">
-            {this.renderUserDetails(followees)}
-          </div>
+        <h2>Following</h2>
+        <div className="following-box">
+          {this.renderUserDetails(followees)}
         </div>
-        <div className="follow-box">
-          <h2>Followers</h2>
-          <div className="user-follows">
-            {this.renderUserDetails(followers)}
-          </div>
+        <h2>Followers</h2>
+        <div className="following-box">
+          {this.renderUserDetails(followers)}
         </div>
-        <div className="follow-box">
-          <h2>Recommended</h2>
-          <div className="user-follows">
-            {this.renderUserDetails(others)}
-          </div>
+        <h2>Recommended</h2>
+        <div className="following-box">
+          {this.renderUserDetails(others)}
         </div>
       </div>
     );
