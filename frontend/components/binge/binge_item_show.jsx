@@ -5,7 +5,7 @@ const BingeItemShow = (props) => {
   const { binge } = props;
 
   return (
-    <div className="binge-show-wrapper">
+    <div className="binge-show-wrapper fadeIn">
       <Link to={`/binges/${binge.id}`}>
         <li className="binge">
           <img src={binge.photoUrl} alt="" />

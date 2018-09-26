@@ -20,8 +20,8 @@ class UserBoardItem extends React.Component {
     if (board && board.bingings) {
       const binges = Object.values(board.bingings);
       return (
-        <div className="board-box">
-          {binges.map(binge => (<img key={binge.id} className="masonry" src={binge.photoUrl} alt="" />))}
+        <div className="masonry-board-box">
+          {binges.map(binge => (<img key={binge.id} className="board-masonry" src={binge.photoUrl} alt="" />))}
         </div>
       );
     }
@@ -40,6 +40,9 @@ class UserBoardItem extends React.Component {
         </h3>
       );
     }
+    return (
+      <h3 className="board-pins">0 Binges</h3>
+    );
   }
 
   render() {

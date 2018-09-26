@@ -43,7 +43,8 @@ class FollowItemShow extends React.Component {
       return <Redirect to={`/users/${userShow.id}`} />;
     }
     const followers = (user && user.followers) ? Object.values(user.followers).length : 0;
-    const binges = (user && user.binges) ? Object.values(user.user_binges) : [];
+    const binges = (user && user.user_binges) ? Object.values(user.user_binges) : [];
+
     return (
       <div className="user-follows">
         <Link to={`/users/${user.id}`}>

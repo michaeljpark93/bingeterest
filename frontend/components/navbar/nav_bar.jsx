@@ -54,7 +54,6 @@ class NavBar extends React.Component {
                 <Link to="/">Explore</Link>
               </div>
 
-
               <Link to={`/users/${currentUser.id}`}>
                 <div className="name-holder">
                   <div className="name-tag">

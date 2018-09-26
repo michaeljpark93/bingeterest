@@ -12,6 +12,7 @@ const mapStateToProps = ({ entities, session, errors }, ownProps) => ({
 });
 
 const mapDispatchToProps = dispatch => ({
+  fetchBinge: bingeId => dispatch(fetchBinge(bingeId)),
   openModal: type => dispatch(openModal(type)),
   closeModal: () => dispatch(closeModal()),
 });

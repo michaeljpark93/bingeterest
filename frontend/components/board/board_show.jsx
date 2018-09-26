@@ -12,6 +12,8 @@ class BoardShow extends React.Component {
     };
 
     this.handleModal = this.handleModal.bind(this);
+    this.renderBingeCount = this.renderBingeCount.bind(this);
+    this.renderBinges = this.renderBinges.bind(this);
   }
 
   componentDidMount() {
@@ -27,13 +29,48 @@ class BoardShow extends React.Component {
     openModal('editBoard');
   }
 
-
-  render() {
+  renderBingeCount() {
     const { board } = this.state;
 
     if (board && board.bingings) {
       const binges = Object.values(board.bingings).filter(binging => binging.photoUrl);
+      return (
+        <div className="follow-box">
+          <h2>
+            {binges.length}
+            {' '}
+            binges
+          </h2>
+        </div>
+      );
+    }
+    return (
+      <div className="follow-box">
+        <h2>0 Binges</h2>
+      </div>
+    );
+  }
 
+  renderBinges() {
+    const { board } = this.state;
+
+    if (board && board.bingings) {
+      const binges = Object.values(board.bingings).filter(binging => binging.photoUrl);
+      return (
+        <div className="discover">
+          <div className="discover-box">
+            <ul className="masonry">
+              {binges.map(binge => <BingeItemShow binge={binge} key={binge.id} />)}
+            </ul>
+          </div>
+        </div>
+      );
+    }
+  }
+
+  render() {
+    const { board } = this.state;
+    if (board) {
       return (
         <div>
           <NavBarContainer />
@@ -41,8 +78,8 @@ class BoardShow extends React.Component {
 
           <div className="board-show">
             <div className="bs-left">
-              <div className="board-name">
-                <h2>{board.name}</h2>
+              <div className="board-details">
+                <h2 className="board-name">{board.name}</h2>
 
                 <div className="edit-icon-box" onClick={this.handleModal}>
                   <img className="edit-icon" src={window.images.pen} alt="" />
@@ -53,26 +90,12 @@ class BoardShow extends React.Component {
                 {board.description}
                 &quot;
               </h3>
-
-              <div className="follow-box">
-                <h2>
-                  {binges.length}
-                  {' '}
-                  binges
-                </h2>
-              </div>
+              {this.renderBingeCount()}
             </div>
 
             <img className="user-pf" src={board.author_photo ? board.author_photo : window.images.profpic} alt="" />
           </div>
-
-          <div className="discover">
-            <div className="discover-box">
-              <ul className="masonry">
-                {binges.map(binge => <BingeItemShow binge={binge} key={binge.id} />)}
-              </ul>
-            </div>
-          </div>
+          {this.renderBinges()}
         </div>
       );
     }

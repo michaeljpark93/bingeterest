@@ -13,14 +13,14 @@ import BingeShowContainer from './binge/binge_show_container';
 const App = () => (
   <div>
     <Switch>
-      <AuthRoute exact path="/login" component={LoginFormContainer} />
-      <AuthRoute exact path="/signup" component={SignupFormContainer} />
-      <ProtectedRoute exact path="/users/:userId" component={UserShowContainer} />
-      <ProtectedRoute exact path="/discover" component={Dashboard} />
-      <ProtectedRoute exact path="/users/:userId/:following" component={UserShowContainer} />
-      <ProtectedRoute exact path="/boards/:boardId" component={BoardShowContainer} />
-      <ProtectedRoute exact path="/binges/:bingeId" component={BingeShowContainer} />
-      <AuthRoute path="/" component={SplashFormContainer} />
+      <ProtectedRoute exact path="/" component={Dashboard} />
+      <AuthRoute path="/splash" component={SplashFormContainer} />
+      <AuthRoute path="/login" component={LoginFormContainer} />
+      <AuthRoute path="/signup" component={SignupFormContainer} />
+      <ProtectedRoute path="/users/:userId" component={UserShowContainer} />
+      <ProtectedRoute path="/users/:userId/:following" component={UserShowContainer} />
+      <ProtectedRoute path="/boards/:boardId" component={BoardShowContainer} />
+      <ProtectedRoute path="/binges/:bingeId" component={BingeShowContainer} />
     </Switch>
   </div>
 );

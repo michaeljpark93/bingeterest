@@ -5,13 +5,14 @@
 }
 
 .discover-box {
-  margin: 0 auto;
+  margin: auto;
   margin-top: 80px;
+  overflow: hidden;
   width: 90%;
 }
 
 .masonry {
-  overflow: hidden;
+  float: left;
   column-gap: 0.5em;
   vertical-align: top;
   line-height: 0;

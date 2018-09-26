@@ -12,15 +12,14 @@
     align-content: center;
     flex-flow: column;
 
-    .board-name {
+    .board-details {
       display: flex;
       justify-content: space-between;
       align-content: center;
       flex-flow: row;
-      width: 250px;
-      height: 60px;
+      flex: 1 1 auto;
 
-      h2 {
+      .board-name {
         color: $black;
         font-weight: bold;
         font-size: 50px;

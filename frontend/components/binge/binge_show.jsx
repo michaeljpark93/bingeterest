@@ -14,10 +14,10 @@ class BingeShow extends React.Component {
   }
 
   componentDidMount() {
-    const { binges, ownProps } = this.props;
-    const binge = Object.values(binges)
-      .filter(bingeItem => bingeItem.id === parseInt(ownProps.match.params.bingeId, 10))[0];
-    this.setState({ binge });
+    const { fetchBinge, ownProps } = this.props;
+    fetchBinge(ownProps.match.params.bingeId).then((bingeData) => {
+      this.setState({ binge: bingeData.binge });
+    });
   }
 
   renderBingeEdit() {

@@ -1,13 +1,17 @@
 .binge-show-wrapper {
   position: relative;
   padding: 5px;
+  overflow: hidden;
+  transition: height 0.66s ease-out;
+  -webkit-animation-duration: 3s;
+  animation-duration: 3s;
   
   .binge {
     background-color: none;
     display: inline-block;
     width: 100%;
-    padding: 0.5em 0.5em 0.75em 0.5em;
     height: auto;
+    padding: 0.5em 0.5em 0.75em 0.5em;
   
     img {
       border-radius: 8px;
@@ -47,4 +51,19 @@
   bottom: 25px;
   left: 20px;
   height: 35px;
+}
+
+@-webkit-keyframes fadeIn {
+  0% {opacity: 0;}
+  100% {opacity: 1;}
+}
+
+@keyframes fadeIn {
+  0% {opacity: 0;}
+  100% {opacity: 1;}
+}
+
+.fadeIn {
+  -webkit-animation-name: fadeIn;
+  animation-name: fadeIn;
 }
