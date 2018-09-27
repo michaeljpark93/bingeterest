@@ -13,10 +13,8 @@ class UserShow extends React.Component {
       bingeTab: false,
       user: null,
       users: null,
-      followers: 0,
-      followees: 0,
     };
-    
+
     this.handleTab = this.handleTab.bind(this);
     this.handleFollow = this.handleFollow.bind(this);
     this.handleUnfollow = this.handleUnfollow.bind(this);
@@ -29,7 +27,8 @@ class UserShow extends React.Component {
     const { fetchUsers, ownProps } = this.props;
     const { userId } = ownProps.match.params;
     fetchUsers().then((userData) => {
-      const user = Object.values(userData.users).filter(person => person.id === parseInt(userId, 10))[0];
+      const user = Object.values(userData.users)
+        .filter(person => person.id === parseInt(userId, 10))[0];
       this.setState({ users: userData.users, user });
       if (userId && ownProps.match.params.following) {
         this.handleTab('follow');

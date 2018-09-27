@@ -11,11 +11,10 @@ class UserBoards extends React.Component {
     this.renderBoards = this.renderBoards.bind(this);
   }
 
-  handleModal(type) {
-    return (e) => {
-      e.preventDefault();
-      this.props.openModal(type);
-    };
+  handleModal() {
+    const { openModal } = this.props;
+    const modal = { type: 'createBoard' };
+    openModal(modal);
   }
 
   renderBoards() {
@@ -42,7 +41,7 @@ class UserBoards extends React.Component {
         <div className="user-boards">
           <div
             className="modal-toggle"
-            onClick={this.handleModal('createBoard')}
+            onClick={() => this.handleModal()}
           >
             <div className="modal-box">
               <h3>+</h3>

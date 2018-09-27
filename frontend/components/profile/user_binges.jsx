@@ -11,11 +11,10 @@ class UserBinges extends React.Component {
     this.renderUserBinges = this.renderUserBinges.bind(this);
   }
 
-  handleModal(type) {
-    return (e) => {
-      e.preventDefault();
-      this.props.openModal(type);
-    };
+  handleModal() {
+    const { openModal } = this.props;
+    const modal = { type: 'createBinge', data: null };
+    openModal(modal);
   }
 
   renderUserBinges() {
@@ -23,12 +22,20 @@ class UserBinges extends React.Component {
     if (binges.length > 0) {
       return (
         binges.reverse().map(binge => (
-          <BingeItemShow
-            binge={binge}
-            key={binge.id}
-            user={this.props.user}
-            edit={() => openModal('editBinge')}
-          />
+          <div className="binge-show-wrapper fadeIn">
+            <Link to={`/binges/${binge.id}`}>
+              <li className="binge">
+                <img src={binge.photoUrl} alt="" />
+              </li>
+            </Link>
+
+            <a href={binge.link_url} target="_blank">
+              <button type="button" className="binge-link">
+                <img className="a-logo" src={window.images.arrow} alt="" />
+                <h2>{binge.url}</h2>
+              </button>
+            </a>
+          </div>
         ))
       );
     }
@@ -44,7 +51,7 @@ class UserBinges extends React.Component {
             <ul className="binge-masonry">
               <li
                 className="binge-modal-toggle"
-                onClick={this.handleModal('createBinge')}
+                onClick={() => this.handleModal()}
               >
                 <div className="modal-box">
                   <h3>+</h3>

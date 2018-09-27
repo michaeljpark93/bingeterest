@@ -27,8 +27,9 @@ class BingeShow extends React.Component {
     // show edit button if current user is the author of the binge
     if (binge !== null) {
       if (binge.author_id === currentUser.id) {
+        const modal = { type: 'editBinge', data: binge };
         return (
-          <button type="button" className="binge-edit" onClick={() => openModal('editBinge')}>
+          <button type="button" className="binge-edit" onClick={() => openModal(modal)}>
             <img className="edit-icon" src={window.images.pen} alt="" />
           </button>
         );

@@ -1,13 +1,15 @@
 import React from 'react';
 
-class ErrorsList extends React.Component {
-  render() {
+const ErrorsList = (props) => {
+  const { errors } = props;
+  if (errors) {
     return (
       <ul className="errors">
-        {this.props.errors.map((error, idx) => <li key={idx}>{error}</li>)}
+        {errors.map((error, idx) => <li key={idx}>{error}</li>)}
       </ul>
     );
   }
+  return null;
 };
 
 export default ErrorsList;

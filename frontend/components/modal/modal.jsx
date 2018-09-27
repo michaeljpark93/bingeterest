@@ -2,31 +2,30 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { closeModal } from '../../actions/modal_actions';
 import BoardFormContainer from '../board/board_form_container';
-import BoardUpdateContainer from '../board/board_update_container';
 import BingeFormContainer from '../binge/binge_form_container';
 import BingeUpdateContainer from '../binge/binge_update_container';
 import BingingFormContainer from '../binging/binging_form_container';
 
-function Modal({modal, closeModal}) {
+function Modal({ modal, closeModal }) {
   if (!modal) {
     return null;
   }
   let component;
-  switch (modal) {
+  switch (modal.type) {
     case 'createBoard':
-      component = <BoardFormContainer cancel={closeModal}/>;
+      component = <BoardFormContainer />;
       break;
     case 'editBoard':
-      component = <BoardUpdateContainer cancel={closeModal}/>;
+      component = <BoardFormContainer data={modal.data} />;
       break;
     case 'createBinge':
-      component = <BingeFormContainer cancel={closeModal}/>;
+      component = <BingeFormContainer cancel={closeModal} />;
       break;
     case 'editBinge':
-      component = <BingeUpdateContainer cancel={closeModal}/>;
+      component = <BingeUpdateContainer cancel={closeModal} data={modal.data} />;
       break;
     case 'createBinging':
-      component = <BingingFormContainer cancel={closeModal}/>;
+      component = <BingingFormContainer cancel={closeModal} />;
       break;
     default:
       return null;
@@ -34,22 +33,18 @@ function Modal({modal, closeModal}) {
   return (
     <div className="modal-background" onClick={closeModal}>
       <div className="modal-child" onClick={e => e.stopPropagation()}>
-        { component }
+        {component}
       </div>
     </div>
   );
 }
 
-const mapStateToProps = (state) => {
-  return {
-    modal: state.ui.modal
-  };
-};
+const mapStateToProps = state => ({
+  modal: state.ui.modal,
+});
 
-const mapDispatchToProps = dispatch => {
-  return {
-    closeModal: () => dispatch(closeModal())
-  };
-};
+const mapDispatchToProps = dispatch => ({
+  closeModal: () => dispatch(closeModal()),
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(Modal);

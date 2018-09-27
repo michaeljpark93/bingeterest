@@ -5,14 +5,15 @@ class UserBoardItem extends React.Component {
   constructor(props) {
     super(props);
 
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleModal = this.handleModal.bind(this);
     this.renderBingesDisplay = this.renderBingesDisplay.bind(this);
     this.renderBingeCount = this.renderBingeCount.bind(this);
   }
 
-  handleSubmit(e) {
-    e.stopPropagation();
-    this.props.edit('editBoard');
+  handleModal() {
+    const { edit, board } = this.props;
+    const modal = { type: 'editBoard', data: board };
+    edit(modal);
   }
 
   renderBingesDisplay() {
@@ -57,9 +58,9 @@ class UserBoardItem extends React.Component {
               <h3 className="title">{board.name}</h3>
               {this.renderBingeCount()}
             </div>
-            <div onClick={this.handleSubmit}>
+            <div onClick={() => this.handleModal()}>
               <div className="icon-box">
-                <img className="edit-icon" src={window.images.pen} />
+                <img className="edit-icon" src={window.images.pen} alt="" />
               </div>
             </div>
           </div>

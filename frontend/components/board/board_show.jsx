@@ -23,10 +23,11 @@ class BoardShow extends React.Component {
     });
   }
 
-  handleModal(e) {
+  handleModal() {
     const { openModal } = this.props;
-    e.preventDefault();
-    openModal('editBoard');
+    const { board } = this.state;
+    const modal = { type: 'editBoard', data: board };
+    openModal(modal);
   }
 
   renderBingeCount() {
@@ -66,6 +67,7 @@ class BoardShow extends React.Component {
         </div>
       );
     }
+    return null;
   }
 
   render() {
@@ -81,7 +83,7 @@ class BoardShow extends React.Component {
               <div className="board-details">
                 <h2 className="board-name">{board.name}</h2>
 
-                <div className="edit-icon-box" onClick={this.handleModal}>
+                <div className="edit-icon-box" onClick={() => this.handleModal()}>
                   <img className="edit-icon" src={window.images.pen} alt="" />
                 </div>
               </div>
