@@ -28,7 +28,7 @@ class NavBar extends React.Component {
         <nav className="nav-bar">
           <div className="nav-bar-box">
             <div className="n-logo">
-              <Link to="/discover">
+              <Link to="/">
                 <img className="n-logo" src={window.images.logo} alt="" />
               </Link>
             </div>
@@ -43,7 +43,7 @@ class NavBar extends React.Component {
             <div className="right-nav">
 
               <div className="home">
-                <Link to="/discover">Home</Link>
+                <Link to="/">Home</Link>
               </div>
 
               <div className="following">

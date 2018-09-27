@@ -11,9 +11,9 @@ class UserBoardItem extends React.Component {
   }
 
   handleModal() {
-    const { edit, board } = this.props;
+    const { board, openModal } = this.props;
     const modal = { type: 'editBoard', data: board };
-    edit(modal);
+    openModal(modal);
   }
 
   renderBingesDisplay() {

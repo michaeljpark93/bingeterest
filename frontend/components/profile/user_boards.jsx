@@ -26,7 +26,7 @@ class UserBoards extends React.Component {
           <UserBoardItem
             board={board}
             key={board.id}
-            edit={openModal}
+            openModal={openModal}
           />
         ))
       );

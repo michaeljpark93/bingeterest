@@ -11,6 +11,7 @@ class UserShow extends React.Component {
     this.state = {
       boardTab: true,
       bingeTab: false,
+      followTab: false,
       user: null,
       users: null,
     };
@@ -26,6 +27,7 @@ class UserShow extends React.Component {
   componentDidMount() {
     const { fetchUsers, ownProps } = this.props;
     const { userId } = ownProps.match.params;
+
     fetchUsers().then((userData) => {
       const user = Object.values(userData.users)
         .filter(person => person.id === parseInt(userId, 10))[0];
@@ -40,7 +42,6 @@ class UserShow extends React.Component {
     const { ownProps, fetchUsers } = this.props;
     const { userId } = ownProps.match.params;
     const { user } = this.state;
-
     if (user && user.id !== parseInt(userId, 10)) {
       fetchUsers().then((userData) => {
         const newUser = Object.values(userData.users)
@@ -166,7 +167,7 @@ class UserShow extends React.Component {
 
   renderTabContent() {
     const {
-      user, users, boardTab, bingeTab, followTab,
+      user, users, boardTab, bingeTab, followTab, modalOpen
     } = this.state;
     const {
       currentUser, openModal, closeModal, createFollow, deleteFollow,
