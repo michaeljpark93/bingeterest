@@ -18,6 +18,7 @@ class BingesForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
     this.handleDrop = this.handleDrop.bind(this);
+    this.renderDropZone = this.renderDropZone.bind(this);
   }
 
   componentDidMount() {
@@ -107,15 +108,32 @@ class BingesForm extends React.Component {
     }
   }
 
-  render() {
-    const preview = this.state.photoUrl ? <img className="binge-image" src={this.state.photoUrl} /> : (
-      <div className="upload-box">
-        <img className="pic" src={window.images.camera} />
-        <h3>Drag and drop or click to upload</h3>
+  renderDropZone() {
+    const { photoUrl } = this.state;
+
+    return (
+      <div className="binge-upload-box">
+        <Dropzone
+          className="binge-img"
+          onDrop={this.handleDrop}
+          accept="image/jpeg,image/jpg,image/tiff,image/gif, image/png"
+          multiple={false}
+        >
+
+          {photoUrl ? <img className="binge-image" src={this.state.photoUrl} /> : (
+            <div className="upload-box">
+              <img className="pic" src={window.images.camera} />
+              <h3>Drag and drop or click to upload</h3>
+
+            </div>
+          )}
+        </Dropzone>
 
       </div>
     );
+  }
 
+  render() {
     const { closeModal, errors } = this.props;
     const { description, link_url } = this.state;
 
@@ -128,18 +146,7 @@ class BingesForm extends React.Component {
 
         <form className="binge-form" onSubmit={this.handleSubmit}>
           <div className="binge-form-box">
-            <div className="binge-upload-box">
-              <Dropzone
-                className="binge-img"
-                onDrop={this.handleDrop}
-                accept="image/jpeg,image/jpg,image/tiff,image/gif, image/png"
-                multiple={false}
-              >
-
-                {preview}
-              </Dropzone>
-
-            </div>
+            {this.renderDropZone()}
 
             <div className="binge-input">
               <div className="binge-website">
