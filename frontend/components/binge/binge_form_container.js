@@ -1,16 +1,20 @@
 import { connect } from 'react-redux';
-import { createBinge } from '../../actions/binge_actions';
+import { updateBinge, deleteBinge } from '../../actions/binge_actions';
 import { removeErrors } from '../../actions/error_actions';
-import BingeCreateForm from './binge_create_form';
+import { closeModal } from '../../actions/modal_actions';
+import BingeForm from './binge_form.jsx';
 
-const mapStateToProps = ({ errors, session, entities: { users } }) => ({
-  currentUser: users[session.id],
-  errors: errors.binges
+const mapStateToProps = ({ errors, session, ui }) => ({
+  currentUser: session.currentUser,
+  modal: ui.modal,
+  errors: errors.binges,
 });
 
 const mapDispatchToProps = dispatch => ({
-  processForm: binge => dispatch(createBinge(binge)),
-  removeErrors: () => dispatch(removeErrors())
+  updateBinge: binge => dispatch(updateBinge(binge)),
+  deleteBinge: bingeId => dispatch(deleteBinge(bingeId)),
+  closeModal: () => dispatch(closeModal()),
+  removeErrors: () => dispatch(removeErrors()),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(BingeCreateForm);
+export default connect(mapStateToProps, mapDispatchToProps)(BingeForm);
