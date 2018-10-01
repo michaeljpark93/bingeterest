@@ -3,9 +3,9 @@ export const REMOVE_ERRORS = 'REMOVE_ERRORS';
 
 export const receiveErrors = errors => ({
   type: RECEIVE_ERRORS,
-  errors
+  errors,
 });
 
 export const removeErrors = () => ({
-  type: REMOVE_ERRORS
+  type: REMOVE_ERRORS,
 });

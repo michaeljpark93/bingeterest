@@ -6,12 +6,12 @@ export const RECEIVE_USER = 'RECEIVE_USER';
 
 export const receiveUsers = users => ({
   type: RECEIVE_USERS,
-  users
+  users,
 });
 
 export const receiveUser = user => ({
   type: RECEIVE_USER,
-  user
+  user,
 });
 
 export const fetchUsers = () => dispatch => (
@@ -30,8 +30,8 @@ export const fetchUser = id => dispatch => (
   ))
 );
 
-export const updateUser = user => dispatch => (
-  UserAPIUtil.updateUser(user).then(user => (
+export const updateUser = userData => dispatch => (
+  UserAPIUtil.updateUser(userData).then(user => (
     dispatch(receiveUser(user))
   ), err => (
     dispatch(receiveErrors(err.responseJSON))

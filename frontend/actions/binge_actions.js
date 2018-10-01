@@ -7,17 +7,17 @@ export const REMOVE_BINGE = 'REMOVE_BINGE';
 
 export const receiveBinges = binges => ({
   type: RECEIVE_BINGES,
-  binges
+  binges,
 });
 
 export const receiveBinge = binge => ({
   type: RECEIVE_BINGE,
-  binge
+  binge,
 });
 
 export const removeBinge = binge => ({
   type: REMOVE_BINGE,
-  binge
+  binge,
 });
 
 export const fetchBinges = () => dispatch => (
@@ -28,7 +28,7 @@ export const fetchBinges = () => dispatch => (
   ))
 );
 
-export const fetchUserBinges = (userId) => dispatch => (
+export const fetchUserBinges = userId => dispatch => (
   BingeAPIUtil.fetchBinges(userId).then(binges => (
     dispatch(receiveBinges(binges))
   ), err => (
@@ -44,24 +44,24 @@ export const fetchBinge = id => dispatch => (
   ))
 );
 
-export const createBinge = binge => dispatch => (
-  BingeAPIUtil.createBinge(binge).then(binge => (
+export const createBinge = bingeData => dispatch => (
+  BingeAPIUtil.createBinge(bingeData).then(binge => (
     dispatch(receiveBinge(binge))
   ), err => (
     dispatch(receiveErrors(err.responseJSON))
   ))
 );
 
-export const updateBinge = binge => dispatch => (
-  BingeAPIUtil.updateBinge(binge).then(binge => (
+export const updateBinge = bingeData => dispatch => (
+  BingeAPIUtil.updateBinge(bingeData).then(binge => (
     dispatch(receiveBinge(binge))
   ), err => (
     dispatch(receiveErrors(err.responseJSON))
   ))
 );
 
-export const deleteBinge = binge => dispatch => (
-  BingeAPIUtil.deleteBinge(binge).then(binge => (
+export const deleteBinge = bingeData => dispatch => (
+  BingeAPIUtil.deleteBinge(bingeData).then(binge => (
     dispatch(removeBinge(binge))
   ), err => (
     dispatch(receiveErrors(err.responseJSON))
