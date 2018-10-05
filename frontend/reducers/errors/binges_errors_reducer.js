@@ -1,7 +1,7 @@
 import merge from 'lodash/merge';
-import { RECEIVE_ERRORS, REMOVE_ERRORS } from '../actions/error_actions';
+import { RECEIVE_ERRORS, REMOVE_ERRORS } from '../../actions/error_actions';
 
-const SessionErrorsReducer = (state = [], action) => {
+const BingesErrorsReducer = (state = [], action) => {
   Object.freeze(state);
 
   switch (action.type) {
@@ -12,6 +12,6 @@ const SessionErrorsReducer = (state = [], action) => {
     default:
       return state;
   }
-}
+};
 
-export default SessionErrorsReducer;
+export default BingesErrorsReducer;

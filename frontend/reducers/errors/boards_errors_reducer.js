@@ -1,5 +1,5 @@
 import merge from 'lodash/merge';
-import { RECEIVE_ERRORS, REMOVE_ERRORS } from '../actions/error_actions';
+import { RECEIVE_ERRORS, REMOVE_ERRORS } from '../../actions/error_actions';
 
 const BoardsErrorsReducer = (state = [], action) => {
   Object.freeze(state);
