@@ -1,4 +1,8 @@
 class Binge < ApplicationRecord
+
+  include PgSearch
+  multisearchable :against => [:description]
+
   validates :url, :link_url, :author, presence: true
 
   validate :ensure_photo

@@ -7,6 +7,8 @@ end
 
 ruby '2.5.0'
 
+gem 'pg_search'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.1bi'
 # Use postgresql as the database for Active Record
@@ -31,7 +33,6 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'jquery-rails'
 
 gem "aws-sdk-s3", require: false
-# gem 'ez_download'
 # gem 'rails_12factor'
 
 # Use Capistrano for deployment

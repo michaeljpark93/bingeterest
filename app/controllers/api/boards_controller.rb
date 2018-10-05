@@ -5,6 +5,7 @@ class Api::BoardsController < ApplicationController
 
   def show
     @board = Board.find_by_id(params[:id])
+    render 'api/boards/show'
   end
 
   def create
@@ -12,7 +13,7 @@ class Api::BoardsController < ApplicationController
     @board.user_id = current_user.id
 
     if @board.save
-      render :show
+      render 'api/boards/show'
     else
       render json: @board.errors.full_messages, status: 422
     end
@@ -23,7 +24,7 @@ class Api::BoardsController < ApplicationController
 
     if @board.user_id == current_user.id
       if @board.update_attributes(board_params)
-        render :show
+        render 'api/boards/show'
       else
         render json: @board.errors.full_messages, status: 422
       end
@@ -37,7 +38,7 @@ class Api::BoardsController < ApplicationController
 
     if @board.user_id == current_user.id
       @board.destroy
-      render :show
+      render 'api/boards/show'
     else
       render json: ["You do not have permission to delete this board."], status: 403
     end

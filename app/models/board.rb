@@ -1,4 +1,8 @@
 class Board < ApplicationRecord
+
+  include PgSearch
+  multisearchable :against => [:name, :description, :category]
+
   validates :user, presence: true
 
   belongs_to :user,
