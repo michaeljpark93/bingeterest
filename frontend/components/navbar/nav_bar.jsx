@@ -1,18 +1,12 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
+import SearchBarContainer from './search_bar_container';
 
 class NavBar extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      search: '',
-    };
-    this.handleInput = this.handleInput.bind(this);
-    this.handleLogout = this.handleLogout.bind(this);
-  }
 
-  handleInput(e) {
-    this.setState({ search: e.currentTarget.value });
+    this.handleLogout = this.handleLogout.bind(this);
   }
 
   handleLogout(e) {
@@ -22,7 +16,7 @@ class NavBar extends React.Component {
 
   render() {
     const { currentUser, logout } = this.props;
-    const { search } = this.state;
+
     return (
       <header>
         <nav className="nav-bar">
@@ -33,12 +27,7 @@ class NavBar extends React.Component {
               </Link>
             </div>
 
-            <div className="search-bar">
-              <div className="search">
-                <img src={window.images.mg} alt="" />
-              </div>
-              <input type="text" onChange={this.handleInput} placeholder="Search" value={search} />
-            </div>
+            <SearchBarContainer />
 
             <div className="right-nav">
 
