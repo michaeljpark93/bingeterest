@@ -11,6 +11,7 @@ class SearchBar extends React.Component {
 
     this.handleInput = this.handleInput.bind(this);
     this.handleReset = this.handleReset.bind(this);
+    this.renderSearchResults = this.renderSearchResults.bind(this);
   }
 
   // componentWillMount() {
@@ -30,6 +31,41 @@ class SearchBar extends React.Component {
     this.setState({ searchQuery: '' });
   }
 
+  createList(items, type) {
+    const { resetSearchResults } = this.props;
+    const listItems = items.map((item, idx) => (
+      <li key={idx} onClick={this.handleReset}>
+        <Link to={`/${type}/${item.id}`}>
+          <span className="search-item">{item.name}</span>
+        </Link>
+      </li>
+    ));
+  }
+
+  renderSearchResults() {
+    const { searchResults } = this.props;
+    const binges = searchResults.binges || [];
+    const boards = searchResults.boards || [];
+    const users = searchResults.users || [];
+
+    let bingesList;
+    let boardsList;
+    let usersList;
+    if (Object.keys(searchResults).length > 0) {
+      bingesList = binges.length > 0 ? this.createList(binges, 'binges') : null;
+      boardsList = boards.length > 0 ? this.createList(boards, 'boards') : null;
+      usersList = users.length > 0 ? this.createList(users, 'users') : null;
+    }
+
+    return (
+      <div className="dropdown-container">
+        {bingesList || null}
+        {boardsList || null}
+        {usersList || null}
+      </div>
+    );
+  }
+
   render() {
     const { searchQuery } = this.state;
     return (
@@ -38,7 +74,10 @@ class SearchBar extends React.Component {
           <img src={window.images.mg} alt="" />
         </div>
         <input type="text" onChange={this.handleInput} placeholder="Search" value={searchQuery} />
+        {this.renderSearchResults()}
       </div>
     );
   }
 }
+
+export default SearchBar;
