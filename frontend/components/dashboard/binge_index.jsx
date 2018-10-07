@@ -1,5 +1,6 @@
 import React from 'react';
 import { withRouter, Link } from 'react-router-dom';
+import InfiniteScroll from 'react-infinite-scroller';
 // import BingeItemShow from '../binge/binge_item_show.jsx';
 import NavBarContainer from '../navbar/nav_bar_container';
 

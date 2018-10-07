@@ -8,5 +8,6 @@ Rails.application.routes.draw do
     resources :boards, except: [:new, :edit]
     resources :bingings, only: [:index, :create, :destroy]
     resources :follows, only: [:create, :destroy]
+    resources :searches, only: [:index]
   end
 end
