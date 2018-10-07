@@ -3,12 +3,18 @@ import ReactDOM from 'react-dom';
 import Root from './components/root.jsx';
 import configureStore from './store/store';
 
+document.addEventListener('DOMContentLoaded', () => {
+  const root = document.getElementById('root');
+  const store = createStore();
+
+  ReactDOM.render(<Root store={store} />, root);
+});
+
 const createStore = () => {
   let store;
 
   if (window.currentUser) {
-    const { currentUser } = window;
-    const preloadedState = { session: { currentUser } };
+    const preloadedState = { session: { currentUser: window.currentUser } };
     store = configureStore(preloadedState);
     delete window.currentUser;
   } else {
@@ -17,10 +23,3 @@ const createStore = () => {
 
   return store;
 };
-
-document.addEventListener('DOMContentLoaded', () => {
-  const root = document.getElementById('root');
-  const store = createStore();
-
-  ReactDOM.render(<Root store={store} />, root);
-});

@@ -11,12 +11,12 @@ class SearchBar extends React.Component {
 
     this.handleInput = this.handleInput.bind(this);
     this.handleReset = this.handleReset.bind(this);
-    // this.renderSearchResults = this.renderSearchResults.bind(this);
+    this.renderSearchResults = this.renderSearchResults.bind(this);
   }
 
-  // componentWillMount() {
-  //   this.props.resetSearchResults();
-  // }
+  componentWillMount() {
+    this.props.resetSearchResults();
+  }
 
   handleInput(e) {
     e.preventDefault();
@@ -31,40 +31,58 @@ class SearchBar extends React.Component {
     this.setState({ searchQuery: '' });
   }
 
-  // createList(items, type) {
-  //   const { resetSearchResults } = this.props;
-  //   const listItems = items.map((item, idx) => (
-  //     <li key={idx} onClick={this.handleReset}>
-  //       <Link to={`/${type}/${item.id}`}>
-  //         <span className="search-item">{item.name}</span>
-  //       </Link>
-  //     </li>
-  //   ));
-  // }
+  createList(items, type) {
+    const { resetSearchResults } = this.props;
+    const listItems = items.map((item, idx) => {
+      if (type === 'users') {
+        return (
+          <li key={idx} onClick={this.handleReset}>
+            <Link to={`/${type}/${item.id}`}>
+              <span className="search-item">{item.name}</span>
+            </Link>
+          </li>
+        );
+      }
+      return (
+        <li key={idx} onClick={this.handleReset}>
+          <Link to={`/${type}/${item.id}`}>
+            <span className="search-item">{item.description}</span>
+          </Link>
+        </li>
+      );
+    });
 
-  // renderSearchResults() {
-  //   const { searchResults } = this.props;
-  //   const binges = searchResults.binges || [];
-  //   const boards = searchResults.boards || [];
-  //   const users = searchResults.users || [];
+    return (
+      <div>
+        <h3>{type}</h3>
+        <ul>{listItems}</ul>
+      </div>
+    );
+  }
 
-  //   let bingesList;
-  //   let boardsList;
-  //   let usersList;
-  //   if (Object.keys(searchResults).length > 0) {
-  //     bingesList = binges.length > 0 ? this.createList(binges, 'binges') : null;
-  //     boardsList = boards.length > 0 ? this.createList(boards, 'boards') : null;
-  //     usersList = users.length > 0 ? this.createList(users, 'users') : null;
-  //   }
+  renderSearchResults() {
+    const { searchResults } = this.props;
+    let bingesList;
+    let boardsList;
+    let usersList;
 
-  //   return (
-  //     <div className="dropdown-container">
-  //       {bingesList || null}
-  //       {boardsList || null}
-  //       {usersList || null}
-  //     </div>
-  //   );
-  // }
+    if (searchResults && searchResults.binges) {
+      bingesList = this.createList(searchResults.binges, 'binges');
+    }
+    if (searchResults && searchResults.boards) {
+      boardsList = this.createList(searchResults.boards, 'boards');
+    }
+    if (searchResults && searchResults.users) {
+      usersList = this.createList(searchResults.users, 'users');
+    }
+    return (
+      <div className="dropdown-container">
+        {bingesList || null}
+        {boardsList || null}
+        {usersList || null}
+      </div>
+    );
+  }
 
   render() {
     const { searchQuery } = this.state;
@@ -74,7 +92,7 @@ class SearchBar extends React.Component {
           <img src={window.images.mg} alt="" />
         </div>
         <input type="text" onChange={this.handleInput} placeholder="Search" value={searchQuery} />
-        
+        {this.renderSearchResults()}
       </div>
     );
   }

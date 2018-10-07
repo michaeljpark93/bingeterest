@@ -5,7 +5,7 @@ import SearchBar from './search_bar.jsx';
 
 const mapStateToProps = ({ session, entities }) => ({
   currentUser: session.currentUser,
-  searchResults: entities.searchResults,
+  searchResults: entities.search,
 });
 
 const mapDispatchToProps = dispatch => ({
