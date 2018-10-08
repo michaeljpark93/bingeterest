@@ -53,7 +53,7 @@ class SearchBar extends React.Component {
     });
 
     return (
-      <div>
+      <div className="dropdown-categories">
         <h3>{type}</h3>
         <ul>{listItems}</ul>
       </div>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { withRouter, Link } from 'react-router-dom';
-import InfiniteScroll from 'react-infinite-scroller';
+import Masonry from 'react-masonry-component';
 // import BingeItemShow from '../binge/binge_item_show.jsx';
 import NavBarContainer from '../navbar/nav_bar_container';
 
@@ -8,7 +8,8 @@ class BingeIndex extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      binges: null,
+      binges: [],
+      hasMore: true,
       loaded: false,
     };
     this.renderBinges = this.renderBinges.bind(this);
