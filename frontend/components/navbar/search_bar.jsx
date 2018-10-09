@@ -7,6 +7,7 @@ class SearchBar extends React.Component {
 
     this.state = {
       searchQuery: '',
+      searchResults: null,
     };
 
     this.handleInput = this.handleInput.bind(this);
@@ -23,7 +24,10 @@ class SearchBar extends React.Component {
     const { requestSearchResults } = this.props;
     const { searchQuery } = this.state;
     this.setState({ searchQuery: e.currentTarget.value },
-      () => requestSearchResults(searchQuery));
+      () => requestSearchResults(searchQuery)
+        .then((data) => {
+          this.setState({ searchResults: data.searchResults });
+        }));
   }
 
   handleReset(e) {
@@ -32,39 +36,50 @@ class SearchBar extends React.Component {
   }
 
   createList(items, type) {
-    const { resetSearchResults } = this.props;
     const listItems = items.map((item, idx) => {
-      if (type === 'users') {
+      if (type === 'binges') {
         return (
           <li key={idx} onClick={this.handleReset}>
-            <Link to={`/${type}/${item.id}`}>
+            <Link className="dropdown-item" to={`/${type}/${item.id}`}>
+              <img className="photo-icon" src={item.photoUrl} alt="" />
+              <span className="search-item">{item.description}</span>
+            </Link>
+          </li>
+        );
+      } if (type === 'boards') {
+        return (
+          <li key={idx} onClick={this.handleReset}>
+            <Link className="dropdown-item" to={`/${type}/${item.id}`}>
               <span className="search-item">{item.name}</span>
+              <span className="search-item">{item.description}</span>
+            </Link>
+          </li>
+        );
+      } if (type === 'users') {
+        return (
+          <li key={idx} onClick={this.handleReset}>
+            <Link className="dropdown-item" to={`/${type}/${item.id}`}>
+              <img className="photo-icon" src={item.photoUrl} alt="" />
+              <span className="search-item">{item.username}</span>
             </Link>
           </li>
         );
       }
-      return (
-        <li key={idx} onClick={this.handleReset}>
-          <Link to={`/${type}/${item.id}`}>
-            <span className="search-item">{item.description}</span>
-          </Link>
-        </li>
-      );
     });
 
     return (
       <div className="dropdown-categories">
-        <h3>{type}</h3>
+        <h3 className="dropdown-type">{type}</h3>
         <ul>{listItems}</ul>
       </div>
     );
   }
 
   renderSearchResults() {
-    const { searchResults } = this.props;
+    const { searchResults } = this.state;
     let bingesList;
-    let boardsList;
     let usersList;
+    let boardsList;
 
     if (searchResults && searchResults.binges) {
       bingesList = this.createList(searchResults.binges, 'binges');
@@ -78,8 +93,8 @@ class SearchBar extends React.Component {
     return (
       <div className="dropdown-container">
         {bingesList || null}
-        {boardsList || null}
         {usersList || null}
+        {boardsList || null}
       </div>
     );
   }

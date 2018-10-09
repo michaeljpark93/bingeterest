@@ -1,6 +1,5 @@
 import React from 'react';
 import { withRouter, Link } from 'react-router-dom';
-import Masonry from 'react-masonry-component';
 // import BingeItemShow from '../binge/binge_item_show.jsx';
 import NavBarContainer from '../navbar/nav_bar_container';
 
@@ -8,28 +7,61 @@ class BingeIndex extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      binges: [],
+      binges: null,
+      renderBinges: null,
       hasMore: true,
       loaded: false,
     };
+    const background = document.getElementsByClassName('discover-box')[0];
     this.renderBinges = this.renderBinges.bind(this);
+    this.onScroll = this.onScroll.bind(this);
   }
 
   componentDidMount() {
     const { fetchBinges, fetchBoards } = this.props;
     fetchBinges().then((bingeData) => {
       const binges = Object.values(bingeData.binges);
-      this.setState({ binges });
+      const renderBinges = binges.slice(0, 15);
+      this.setState({ binges, renderBinges });
     });
     fetchBoards();
+    window.addEventListener('scroll', this.onScroll, false);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.onScroll, false);
+  }
+
+  onScroll() {
+    const { binges, renderBinges, hasMore } = this.state;
+    if ((window.innerHeight + window.scrollY) >= (document.body.offsetHeight - 200)
+      && binges.length) {
+      if (hasMore) {
+        this.addBinges();
+      }
+    }
+  }
+
+  addBinges() {
+    const { binges, renderBinges } = this.state;
+    const { length } = binges;
+    const idx = renderBinges.length;
+    if (renderBinges.length >= length) {
+      this.setState({ hasMore: false });
+    } else {
+      const newBinges = binges.slice(idx, idx + 15);
+      this.setState({
+        renderBinges: [...renderBinges, ...newBinges],
+      });
+    }
   }
 
   renderBinges() {
-    const { binges } = this.state;
+    const { renderBinges } = this.state;
 
-    if (binges !== null) {
+    if (renderBinges !== null) {
       return (
-        binges.map(binge => (
+        renderBinges.map(binge => (
           <div key={binge.id} className="binge-show-wrapper fadeIn">
             <Link to={`/binges/${binge.id}`}>
               <li className="binge">
@@ -56,9 +88,9 @@ class BingeIndex extends React.Component {
         <NavBarContainer />
         <div className="discover">
           <div className="discover-box">
-            <ul className="masonry">
+            <div className="masonry">
               {this.renderBinges()}
-            </ul>
+            </div>
           </div>
         </div>
       </div>
