@@ -1,7 +1,6 @@
 import React from 'react';
 import { withRouter, Link } from 'react-router-dom';
 // import BingeItemShow from '../binge/binge_item_show.jsx';
-import NavBarContainer from '../navbar/nav_bar_container';
 
 class BingeIndex extends React.Component {
   constructor(props) {
@@ -85,7 +84,7 @@ class BingeIndex extends React.Component {
   render() {
     return (
       <div>
-        <NavBarContainer />
+
         <div className="discover">
           <div className="discover-box">
             <div className="masonry">

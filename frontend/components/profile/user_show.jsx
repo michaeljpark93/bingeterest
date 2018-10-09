@@ -1,6 +1,5 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-import NavBarContainer from '../navbar/nav_bar_container';
 import UserBoards from './user_boards.jsx';
 import UserBinges from './user_binges.jsx';
 import FollowShow from '../follow/follow_show.jsx';
@@ -167,7 +166,7 @@ class UserShow extends React.Component {
 
   renderTabContent() {
     const {
-      user, users, boardTab, bingeTab, followTab, modalOpen
+      user, users, boardTab, bingeTab, followTab, modalOpen,
     } = this.state;
     const {
       currentUser, openModal, closeModal, createFollow, deleteFollow,
@@ -228,8 +227,6 @@ class UserShow extends React.Component {
     const { boardTab, bingeTab, followTab } = this.state;
     return (
       <div>
-        <NavBarContainer />
-
         <div className="profile">
           {this.renderUserContent()}
 

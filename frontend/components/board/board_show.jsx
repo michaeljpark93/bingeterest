@@ -1,7 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import BingeItemShow from '../binge/binge_item_show.jsx';
-import NavBarContainer from '../navbar/nav_bar_container';
 import Modal from '../modal/modal.jsx';
 
 class BoardShow extends React.Component {
@@ -75,7 +74,6 @@ class BoardShow extends React.Component {
     if (board) {
       return (
         <div>
-          <NavBarContainer />
           <Modal />
 
           <div className="board-show">
