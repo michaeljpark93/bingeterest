@@ -74,7 +74,7 @@ class BingeShow extends React.Component {
       <div className="binge-showpage">
         <Modal />
 
-        <div>
+        <div className="binge-showbox">
           <button type="button" className="binge-back" onClick={() => window.history.back()}>
             <img src={window.images.back} alt="" />
             <h3>Back</h3>

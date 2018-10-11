@@ -83,7 +83,7 @@ class BingeIndex extends React.Component {
       return (
         renderBinges.map(binge => (
           <div key={binge.id} className="binge-show-wrapper fadeIn">
-            {this.renderBinging()}
+
             <Link to={`/binges/${binge.id}`}>
               <li className="binge">
                 <img src={binge.photoUrl} alt="" />
