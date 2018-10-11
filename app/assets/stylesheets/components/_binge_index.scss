@@ -5,6 +5,13 @@
   transition: height 0.66s ease-out;
   -webkit-animation-duration: 3s;
   animation-duration: 3s;
+
+  .binging-buttons {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    align-items: center;
+  }
   
   .binge {
     background-color: none;

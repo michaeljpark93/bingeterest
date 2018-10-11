@@ -12,18 +12,19 @@ class BingeIndex extends React.Component {
       loaded: false,
     };
     const background = document.getElementsByClassName('discover-box')[0];
+    this.handleBinging = this.handleBinging.bind(this);
+    this.renderBinging = this.renderBinging.bind(this);
     this.renderBinges = this.renderBinges.bind(this);
     this.onScroll = this.onScroll.bind(this);
   }
 
   componentDidMount() {
-    const { fetchBinges, fetchBoards } = this.props;
+    const { fetchBinges } = this.props;
     fetchBinges().then((bingeData) => {
       const binges = Object.values(bingeData.binges);
       const renderBinges = binges.slice(0, 15);
       this.setState({ binges, renderBinges });
     });
-    fetchBoards();
     window.addEventListener('scroll', this.onScroll, false);
   }
 
@@ -41,6 +42,11 @@ class BingeIndex extends React.Component {
     }
   }
 
+  handleBinging(e) {
+    e.preventDefault();
+    debugger;
+  }
+
   addBinges() {
     const { binges, renderBinges } = this.state;
     const { length } = binges;
@@ -55,6 +61,21 @@ class BingeIndex extends React.Component {
     }
   }
 
+  renderBinging() {
+    const { currentUser } = this.props;
+    const boards = Object.values(currentUser.user_boards);
+    const userBoards = boards.map(board => (
+      <button key={board.id} type="button" onClick={this.handleBinging}>{board.name}</button>
+    ));
+
+    return (
+      <div className="binging-buttons">
+        <ul>{userBoards}</ul>
+        <button type="button" onClick={this.handleBinging}>Binge</button>
+      </div>
+    );
+  }
+
   renderBinges() {
     const { renderBinges } = this.state;
 
@@ -62,6 +83,7 @@ class BingeIndex extends React.Component {
       return (
         renderBinges.map(binge => (
           <div key={binge.id} className="binge-show-wrapper fadeIn">
+            {this.renderBinging()}
             <Link to={`/binges/${binge.id}`}>
               <li className="binge">
                 <img src={binge.photoUrl} alt="" />
