@@ -25,7 +25,7 @@ function Modal({ modal, closeModal }) {
       component = <BingeUpdateContainer cancel={closeModal} data={modal.data} />;
       break;
     case 'createBinging':
-      component = <BingingFormContainer cancel={closeModal} />;
+      component = <BingingFormContainer cancel={closeModal} data={modal.data} />;
       break;
     default:
       return null;

@@ -4,10 +4,9 @@ import { createBinging, deleteBingingFromBoard } from '../../actions/binging_act
 import { selectUserBoards } from '../../reducers/selectors';
 import BingingForm from './binging_form.jsx';
 
-const mapStateToProps = ({ session, entities }, ownProps) => ({
+const mapStateToProps = ({ session, entities, ui }, ownProps) => ({
   currentUser: session.currentUser,
-  boards: selectUserBoards(entities, session.currentUser.id),
-  binge: entities.binges[ownProps.match.params.bingeId],
+  modal: ui.modal,
 });
 
 const mapDispatchToProps = dispatch => ({

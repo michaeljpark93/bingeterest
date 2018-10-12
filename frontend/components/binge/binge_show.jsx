@@ -8,7 +8,7 @@ class BingeShow extends React.Component {
     this.state = {
       binge: null,
     };
-
+    this.handleModal = this.handleModal.bind(this);
     this.renderBingeEdit = this.renderBingeEdit.bind(this);
     this.renderBingeDetails = this.renderBingeDetails.bind(this);
   }
@@ -20,6 +20,19 @@ class BingeShow extends React.Component {
     });
   }
 
+  handleModal(action) {
+    const { openModal } = this.props;
+    const { binge } = this.state;
+    let modal;
+    if (action === 'edit') {
+      modal = { type: 'editBinge', data: binge };
+    }
+    if (action === 'binging') {
+      modal = { type: 'createBinging', data: binge };
+    }
+    openModal(modal);
+  }
+
   renderBingeEdit() {
     const { currentUser, openModal } = this.props;
     const { binge } = this.state;
@@ -27,9 +40,8 @@ class BingeShow extends React.Component {
     // show edit button if current user is the author of the binge
     if (binge !== null) {
       if (binge.author_id === currentUser.id) {
-        const modal = { type: 'editBinge', data: binge };
         return (
-          <button type="button" className="binge-edit" onClick={() => openModal(modal)}>
+          <button type="button" className="binge-edit" onClick={() => this.handleModal('edit')}>
             <img className="edit-icon" src={window.images.pen} alt="" />
           </button>
         );
@@ -82,7 +94,7 @@ class BingeShow extends React.Component {
 
           <div className="binge-edit-box">
             {this.renderBingeEdit()}
-            <button type="button" className="save-binging" onClick={() => openModal('createBinging')}>
+            <button type="button" className="save-binging" onClick={() => this.handleModal('createBinging')}>
               <img src={window.images.binge} alt="" />
               <h3>Binge</h3>
             </button>

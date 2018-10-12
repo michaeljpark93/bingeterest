@@ -11,17 +11,17 @@ class BingingForm extends React.Component {
   }
 
   handleSubmit(board) {
-    const { createBinging, cancel, binge } = this.props;
+    const { createBinging, cancel, modal: { data } } = this.props;
     const binging = {
       board_id: board.id,
-      binge_id: binge.id,
+      binge_id: data.id,
     };
-
     createBinging(binging).then(() => cancel());
   }
 
   render() {
-    const { boards, binge, cancel } = this.props;
+    const { currentUser, cancel, modal: { data } } = this.props;
+    const boards = Object.values(currentUser.user_boards);
     return (
       <div className="binging-box">
         <div className="binge-title">
@@ -31,7 +31,7 @@ class BingingForm extends React.Component {
 
         <div className="binge-details-box">
           <div className="binge-details">
-            <img className="binge-image" src={binge.photoUrl} alt="" />
+            <img className="binge-image" src={data.photoUrl} alt="" />
           </div>
 
           <div className="board-details-box">

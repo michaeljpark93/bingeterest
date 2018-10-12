@@ -8,6 +8,7 @@ class SearchBar extends React.Component {
     this.state = {
       searchQuery: '',
       searchResults: null,
+      reset: false,
     };
 
     this.handleInput = this.handleInput.bind(this);
@@ -15,8 +16,15 @@ class SearchBar extends React.Component {
     this.renderSearchResults = this.renderSearchResults.bind(this);
   }
 
-  componentWillMount() {
+  componentWillUnmount() {
     this.props.resetSearchResults();
+  }
+
+  componentDidUpdate() {
+    const { searchQuery, reset } = this.state;
+    if (searchQuery === '' && reset) {
+      this.setState({ searchResults: null, reset: false });
+    }
   }
 
   handleInput(e) {
@@ -26,7 +34,7 @@ class SearchBar extends React.Component {
     this.setState({ searchQuery: e.currentTarget.value },
       () => requestSearchResults(searchQuery)
         .then((data) => {
-          this.setState({ searchResults: data.searchResults });
+          this.setState({ searchResults: data.searchResults, reset: true });
         }));
   }
 
@@ -77,26 +85,29 @@ class SearchBar extends React.Component {
 
   renderSearchResults() {
     const { searchResults } = this.state;
-    let bingesList;
-    let usersList;
-    let boardsList;
+    if (searchResults !== null) {
+      let bingesList;
+      let usersList;
+      let boardsList;
 
-    if (searchResults && searchResults.binges) {
-      bingesList = this.createList(searchResults.binges, 'binges');
+      if (searchResults && searchResults.binges) {
+        bingesList = this.createList(searchResults.binges, 'binges');
+      }
+      if (searchResults && searchResults.boards) {
+        boardsList = this.createList(searchResults.boards, 'boards');
+      }
+      if (searchResults && searchResults.users) {
+        usersList = this.createList(searchResults.users, 'users');
+      }
+      return (
+        <div className="dropdown-container">
+          {bingesList || null}
+          {usersList || null}
+          {boardsList || null}
+        </div>
+      );
     }
-    if (searchResults && searchResults.boards) {
-      boardsList = this.createList(searchResults.boards, 'boards');
-    }
-    if (searchResults && searchResults.users) {
-      usersList = this.createList(searchResults.users, 'users');
-    }
-    return (
-      <div className="dropdown-container">
-        {bingesList || null}
-        {usersList || null}
-        {boardsList || null}
-      </div>
-    );
+    return null;
   }
 
   render() {

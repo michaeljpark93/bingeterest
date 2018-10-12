@@ -1,12 +1,12 @@
 import React from 'react';
 import { withRouter, Link } from 'react-router-dom';
 import Masonry from 'react-masonry-component';
+import Modal from '../modal/modal';
 
 const masonryOptions = {
   transitionDuration: 1,
   gutter: 30,
   horizontalOrder: true,
-
 };
 
 class BingeIndex extends React.Component {
@@ -19,7 +19,7 @@ class BingeIndex extends React.Component {
       loaded: false,
     };
     const background = document.getElementsByClassName('discover-box')[0];
-    this.handleBinging = this.handleBinging.bind(this);
+    this.handleModal = this.handleModal.bind(this);
     this.renderBoards = this.renderBoards.bind(this);
     this.renderBinges = this.renderBinges.bind(this);
     this.onScroll = this.onScroll.bind(this);
@@ -49,14 +49,6 @@ class BingeIndex extends React.Component {
     }
   }
 
-  handleBinging(e) {
-    e.preventDefault();
-    const { createBinging } = this.props;
-    debugger;
-    // const binging = { board_id: , binge_id: }
-    // createBinging(binging).then(() => { });
-  }
-
   addBinges() {
     const { binges, renderBinges } = this.state;
     const { length } = binges;
@@ -69,6 +61,12 @@ class BingeIndex extends React.Component {
         renderBinges: [...renderBinges, ...newBinges],
       });
     }
+  }
+
+  handleModal(data) {
+    const { openModal } = this.props;
+    const modal = { type: 'createBinging', data };
+    openModal(modal);
   }
 
   renderBoards() {
@@ -91,9 +89,10 @@ class BingeIndex extends React.Component {
         renderBinges.map(binge => (
           <div key={binge.id} className="binge-show-wrapper fadeIn">
 
-            <div className="binging-buttons">
-              <button type="button" onClick={() => this.handleBinging()}>Binge</button>
-            </div>
+            <button type="button" className="save-binging" onClick={() => this.handleModal(binge)}>
+              <img src={window.images.binge} alt="" />
+              <h3>Binge</h3>
+            </button>
 
             <Link to={`/binges/${binge.id}`}>
               <li className="binge">
@@ -116,14 +115,12 @@ class BingeIndex extends React.Component {
 
   render() {
     return (
-      <div>
-
-        <div className="discover">
-          <div className="discover-box">
-            <div className="masonry">
-              {this.renderBinges()}
-            </div>
-          </div>
+      <div className="discover">
+        <div className="discover-box">
+          <Modal />
+          <Masonry>
+            {this.renderBinges()}
+          </Masonry>
         </div>
       </div>
     );
