@@ -1,6 +1,13 @@
 import React from 'react';
 import { withRouter, Link } from 'react-router-dom';
-// import BingeItemShow from '../binge/binge_item_show.jsx';
+import Masonry from 'react-masonry-component';
+
+const masonryOptions = {
+  transitionDuration: 1,
+  gutter: 30,
+  horizontalOrder: true,
+
+};
 
 class BingeIndex extends React.Component {
   constructor(props) {
@@ -13,7 +20,7 @@ class BingeIndex extends React.Component {
     };
     const background = document.getElementsByClassName('discover-box')[0];
     this.handleBinging = this.handleBinging.bind(this);
-    this.renderBinging = this.renderBinging.bind(this);
+    this.renderBoards = this.renderBoards.bind(this);
     this.renderBinges = this.renderBinges.bind(this);
     this.onScroll = this.onScroll.bind(this);
   }
@@ -44,7 +51,10 @@ class BingeIndex extends React.Component {
 
   handleBinging(e) {
     e.preventDefault();
+    const { createBinging } = this.props;
     debugger;
+    // const binging = { board_id: , binge_id: }
+    // createBinging(binging).then(() => { });
   }
 
   addBinges() {
@@ -61,7 +71,7 @@ class BingeIndex extends React.Component {
     }
   }
 
-  renderBinging() {
+  renderBoards() {
     const { currentUser } = this.props;
     const boards = Object.values(currentUser.user_boards);
     const userBoards = boards.map(board => (
@@ -69,10 +79,7 @@ class BingeIndex extends React.Component {
     ));
 
     return (
-      <div className="binging-buttons">
-        <ul>{userBoards}</ul>
-        <button type="button" onClick={this.handleBinging}>Binge</button>
-      </div>
+      <ul>{userBoards}</ul>
     );
   }
 
@@ -83,6 +90,10 @@ class BingeIndex extends React.Component {
       return (
         renderBinges.map(binge => (
           <div key={binge.id} className="binge-show-wrapper fadeIn">
+
+            <div className="binging-buttons">
+              <button type="button" onClick={() => this.handleBinging()}>Binge</button>
+            </div>
 
             <Link to={`/binges/${binge.id}`}>
               <li className="binge">
