@@ -11,22 +11,22 @@ class BingingForm extends React.Component {
   }
 
   handleSubmit(board) {
-    const { createBinging, cancel, modal: { data } } = this.props;
+    const { createBinging, closeModal, modal: { data } } = this.props;
     const binging = {
       board_id: board.id,
       binge_id: data.id,
     };
-    createBinging(binging).then(() => cancel());
+    createBinging(binging).then(() => closeModal());
   }
 
   render() {
-    const { currentUser, cancel, modal: { data } } = this.props;
+    const { currentUser, closeModal, modal: { data } } = this.props;
     const boards = Object.values(currentUser.user_boards);
     return (
       <div className="binging-box">
         <div className="binge-title">
           <h2>Choose board</h2>
-          <div className="x-close" onClick={cancel}>X</div>
+          <div className="x-close" onClick={() => closeModal()}>X</div>
         </div>
 
         <div className="binge-details-box">
