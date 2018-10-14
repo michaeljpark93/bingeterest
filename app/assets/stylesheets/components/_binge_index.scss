@@ -2,17 +2,15 @@
   position: relative;
   padding: 5px;
   overflow: hidden;
+  width: 260px;
   transition: height 0.66s ease-out;
   -webkit-animation-duration: 3s;
   animation-duration: 3s;
 
-  .binging-buttons {
-    display: flex;
-    flex-flow: column nowrap;
-    justify-content: flex-start;
-    align-items: center;
+  #binging {
+    display: none;
   }
-  
+
   .binge {
     background-color: none;
     display: inline-block;
@@ -43,7 +41,7 @@
     }
 
     h2 {
-      font-size: 16px;
+      font-size: 15px;
       color: $black;
       font-weight: bold;
       margin: 0 3px;
@@ -55,9 +53,17 @@
   display: flex;
   flex-flow: row nowrap;
   position: absolute;
-  bottom: 25px;
-  left: 20px;
+  bottom: 30px;
+  left: 25px;
   height: 35px;
+}
+
+.binge-show-wrapper:hover #binging {
+  display: flex;
+  flex-flow: row nowrap;
+  position: absolute;
+  top: 25px;
+  right: 25px;
 }
 
 @-webkit-keyframes fadeIn {

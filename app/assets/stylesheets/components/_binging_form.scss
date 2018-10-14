@@ -74,7 +74,7 @@
       width: 386px;
       height: 42px;
       border-bottom: 1px solid $lightest-gray;
-      padding: 12px 24px;
+      padding: 12px 10px;
       vertical-align: middle;
       box-sizing: border-box;
     }
@@ -100,7 +100,7 @@
         width: 339px;
         height: 36px;
         padding: 8px 24px;
-        border-top: 1px solid $lightest-gray;
+        margin: 5px 0 0 0;
         display: flex;
         justify-content: space-between;
         align-items: center;

@@ -2,14 +2,20 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const BingeItemShow = (props) => {
-  const { binge } = props;
+  const { binge, handleModal } = props;
 
   return (
-    <div className="binge-show-wrapper fadeIn">
+    <li className="binge-show-wrapper fadeIn">
+
+      <button type="button" className="save-binging" id="binging" onClick={() => handleModal(binge)}>
+        <img src={window.images.binge} alt="" />
+        <h3>Binge</h3>
+      </button>
+
       <Link to={`/binges/${binge.id}`}>
-        <li className="binge">
+        <div className="binge">
           <img src={binge.photoUrl} alt="" />
-        </li>
+        </div>
       </Link>
 
       <a href={binge.link_url} target="_blank">
@@ -18,7 +24,7 @@ const BingeItemShow = (props) => {
           <h2>{binge.url}</h2>
         </button>
       </a>
-    </div>
+    </li>
   );
 };
 

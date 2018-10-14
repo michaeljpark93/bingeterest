@@ -1,13 +1,18 @@
 import React from 'react';
 import { withRouter, Link } from 'react-router-dom';
 import Masonry from 'react-masonry-component';
-import Modal from '../modal/modal';
+import BingeItemShow from '../binge/binge_item_show.jsx';
+import Modal from '../modal/modal.jsx';
 
 const masonryOptions = {
   transitionDuration: 1,
   gutter: 30,
   horizontalOrder: true,
 };
+
+// const imagesLoadedOptions = {
+
+// }
 
 class BingeIndex extends React.Component {
   constructor(props) {
@@ -20,8 +25,7 @@ class BingeIndex extends React.Component {
     };
     const background = document.getElementsByClassName('discover-box')[0];
     this.handleModal = this.handleModal.bind(this);
-    this.renderBoards = this.renderBoards.bind(this);
-    this.renderBinges = this.renderBinges.bind(this);
+    // this.renderBinges = this.renderBinges.bind(this);
     this.onScroll = this.onScroll.bind(this);
   }
 
@@ -69,57 +73,22 @@ class BingeIndex extends React.Component {
     openModal(modal);
   }
 
-  renderBoards() {
-    const { currentUser } = this.props;
-    const boards = Object.values(currentUser.user_boards);
-    const userBoards = boards.map(board => (
-      <button key={board.id} type="button" onClick={this.handleBinging}>{board.name}</button>
-    ));
-
-    return (
-      <ul>{userBoards}</ul>
-    );
-  }
-
-  renderBinges() {
+  render() {
     const { renderBinges } = this.state;
 
-    if (renderBinges !== null) {
-      return (
-        renderBinges.map(binge => (
-          <div key={binge.id} className="binge-show-wrapper fadeIn">
-
-            <button type="button" className="save-binging" onClick={() => this.handleModal(binge)}>
-              <img src={window.images.binge} alt="" />
-              <h3>Binge</h3>
-            </button>
-
-            <Link to={`/binges/${binge.id}`}>
-              <li className="binge">
-                <img src={binge.photoUrl} alt="" />
-              </li>
-            </Link>
-
-            <a href={binge.link_url} target="_blank">
-              <button type="button" className="binge-link">
-                <img className="a-logo" src={window.images.arrow} alt="" />
-                <h2>{binge.url}</h2>
-              </button>
-            </a>
-          </div>
-        ))
-      );
-    }
-    return null;
-  }
-
-  render() {
     return (
       <div className="discover">
         <div className="discover-box">
           <Modal />
-          <Masonry>
-            {this.renderBinges()}
+          <Masonry
+            className='binge-index'
+            elementType='ul'
+            option={masonryOptions}
+            disableImagesLoaded={false}
+          >
+            {renderBinges ? renderBinges.map(binge => (
+              <BingeItemShow key={binge.id} binge={binge} handleModal={this.handleModal} />
+            )) : null}
           </Masonry>
         </div>
       </div>
