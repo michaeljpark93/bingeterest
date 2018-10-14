@@ -26,7 +26,7 @@ class BingingForm extends React.Component {
       <div className="binging-box">
         <div className="binge-title">
           <h2>Choose board</h2>
-          <div onClick={cancel}>X</div>
+          <div className="x-close" onClick={cancel}>X</div>
         </div>
 
         <div className="binge-details-box">
@@ -49,7 +49,6 @@ class BingingForm extends React.Component {
             </ul>
           </div>
         </div>
-
       </div>
     );
   }

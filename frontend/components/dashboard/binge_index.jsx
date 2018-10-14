@@ -10,9 +10,7 @@ const masonryOptions = {
   horizontalOrder: true,
 };
 
-// const imagesLoadedOptions = {
-
-// }
+const imagesLoadedOptions = { background: '.my-bg-image-el' };
 
 class BingeIndex extends React.Component {
   constructor(props) {
@@ -25,7 +23,6 @@ class BingeIndex extends React.Component {
     };
     const background = document.getElementsByClassName('discover-box')[0];
     this.handleModal = this.handleModal.bind(this);
-    // this.renderBinges = this.renderBinges.bind(this);
     this.onScroll = this.onScroll.bind(this);
   }
 
@@ -84,7 +81,9 @@ class BingeIndex extends React.Component {
             className='binge-index'
             elementType='ul'
             option={masonryOptions}
+            imagesLoadedOptions={imagesLoadedOptions}
             disableImagesLoaded={false}
+            updateOnEachImageLoad={false}
           >
             {renderBinges ? renderBinges.map(binge => (
               <BingeItemShow key={binge.id} binge={binge} handleModal={this.handleModal} />

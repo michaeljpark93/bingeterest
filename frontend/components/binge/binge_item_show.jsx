@@ -5,7 +5,7 @@ const BingeItemShow = (props) => {
   const { binge, handleModal } = props;
 
   return (
-    <li className="binge-show-wrapper fadeIn">
+    <li className="binge-show-wrapper">
 
       <button type="button" className="save-binging" id="binging" onClick={() => handleModal(binge)}>
         <img src={window.images.binge} alt="" />

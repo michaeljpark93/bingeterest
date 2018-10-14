@@ -22,7 +22,7 @@ class UserBinges extends React.Component {
     if (binges.length > 0) {
       return (
         binges.reverse().map(binge => (
-          <div className="binge-show-wrapper fadeIn">
+          <div key={binge.id} className="binge-show-wrapper fadeIn">
             <Link to={`/binges/${binge.id}`}>
               <li className="binge">
                 <img src={binge.photoUrl} alt="" />

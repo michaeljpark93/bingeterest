@@ -1,16 +1,14 @@
 .binging-box {
   background-color: $white;
-  width: 804px;
-  height: 523px;
+  width: 650px;
+  // height: 500px;
   border-radius: 8px;
   border: none;
 
   .binge-title {
-    width: 704px;
-    height: 28px;
-    padding: 20px 50px;
+    height: 45px;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     border-bottom: 1px solid $lightest-gray;
 
@@ -20,12 +18,10 @@
       font-weight: bold;
       letter-spacing: -0.4px;
       line-height: 28.8px;
-      width: 704px;
       text-align: center;
-      padding: 20px 50px;
     }
 
-    div {
+    .x-close {
       color: $gray;
       font-size: 24px;
       font-weight: bold;
@@ -36,26 +32,23 @@
       width: 40px;
       height: 40px;
       cursor: pointer;
-      padding: 8px;
-      margin: 10px 10px;
+      margin: 10px 10px 0 0;
     }
   }
 }
 
 .binge-details-box {
   display: flex;
-  justify-content: space-around;
-  align-items: center;
+  align-items: flex-start;
   flex-flow: row;
-  height: auto;
-  width: 804px;
 
   .binge-details {
-    width: 400px;
-    height: auto;
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 35px;
+    flex: 1 1 auto;
+    border-right: 1px solid $lightest-gray;
 
     .binge-image {
       height: 324px;
@@ -65,13 +58,9 @@
   }
 
   .board-details-box {
-    width: 402px;
-    height: 450px;
-    border-right: 1px solid $lightest-gray;
-    border-left: 1px solid $lightest-gray;
-
+    width: 50%;
+    
     .all-boards {
-      width: 386px;
       height: 42px;
       border-bottom: 1px solid $lightest-gray;
       padding: 12px 10px;
@@ -87,19 +76,16 @@
       font-weight: 400;
       line-height: 1.2;
       letter-spacing: -0.4px;
-      width: 339px;
     }
 
     .bingings {
       overflow: scroll;
-      height: 413px;
       margin-top: -1px;
       border-radius: 8px;
 
       .binging {
-        width: 339px;
         height: 36px;
-        padding: 8px 24px;
+        padding: 8px 15px;
         margin: 5px 0 0 0;
         display: flex;
         justify-content: space-between;
