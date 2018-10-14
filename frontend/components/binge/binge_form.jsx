@@ -2,17 +2,16 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 import Dropzone from 'react-dropzone';
 import ErrorsList from '../errors/error_list.jsx';
-import { closeModal } from '../../actions/modal_actions';
 
 class BingesForm extends React.Component {
   constructor(props) {
     super(props);
-    // this.state = {
-    //   description: '',
-    //   link_url: '',
-    //   photoFile: null,
-    //   photoUrl: null,
-    // };
+    this.state = {
+      description: '',
+      link_url: '',
+      photoFile: null,
+      photoUrl: null,
+    };
     this.toBaseURL = this.toBaseURL.bind(this);
     this.handleInput = this.handleInput.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -34,11 +33,7 @@ class BingesForm extends React.Component {
       });
     } else {
       this.setState({
-        description: '',
-        url: '',
-        link_url: '',
         author_id: currentUser.id,
-        photoUrl: null,
       });
     }
   }
@@ -116,7 +111,7 @@ class BingesForm extends React.Component {
         <Dropzone
           className="binge-img"
           onDrop={this.handleDrop}
-          accept="image/jpeg,image/jpg,image/tiff,image/gif, image/png"
+          accept="image/jpeg,image/jpg,image/tiff,image/gif,image/png"
           multiple={false}
         >
 
@@ -128,19 +123,18 @@ class BingesForm extends React.Component {
             </div>
           )}
         </Dropzone>
-
       </div>
     );
   }
 
   render() {
-    const { closeModal, errors } = this.props;
+    const { closeModal, errors, modal: { type } } = this.props;
     const { description, link_url } = this.state;
 
     return (
       <div className="create-binge">
         <div className="binge-title">
-          {type === 'create-binge' ? <h2>Create Binge</h2> : <h2>Edit this Binge</h2>}
+          {type === 'editBinge' ? <h2>Edit this Binge</h2> : <h2>Create Binge</h2>}
           <div onClick={() => closeModal()}>X</div>
         </div>
 
@@ -170,9 +164,12 @@ class BingesForm extends React.Component {
             </div>
           </div>
 
-          <div className="binge-buttons">
-            <button type="button" onClick={() => closeModal()}>Cancel</button>
-            <button type="submit" className="b-submit">Save</button>
+          <div className="binge-form-buttons">
+            {type === 'edit-binge' ? <button onClick={this.handleDelete}>Delete</button> : <div />}
+            <div className="binge-buttons">
+              <button type="button" onClick={() => closeModal()}>Cancel</button>
+              <button type="submit" className="b-submit">Save</button>
+            </div>
           </div>
         </form>
 
