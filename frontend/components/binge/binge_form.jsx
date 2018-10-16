@@ -60,7 +60,10 @@ class BingesForm extends React.Component {
     if (type === 'editBinge') {
       const { link_url } = this.state;
       const url = this.toBaseURL(link_url);
-      this.setState({ url }, () => updateBinge(this.state), closeModal());
+      this.setState({ url }, () => {
+        updateBinge(this.state);
+        closeModal();
+      });
     } else {
       const {
         description, link_url, author_id, photoFile,
@@ -165,7 +168,7 @@ class BingesForm extends React.Component {
           </div>
 
           <div className="binge-form-buttons">
-            {type === 'edit-binge' ? <button onClick={this.handleDelete}>Delete</button> : <div />}
+            {type === 'editBinge' ? <button onClick={this.handleDelete}>Delete</button> : <div />}
             <div className="binge-buttons">
               <button type="button" onClick={() => closeModal()}>Cancel</button>
               <button type="submit" className="b-submit">Save</button>

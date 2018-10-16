@@ -180,11 +180,12 @@
   }
 }
 
-.binge-edit-buttons {
+.binge-form-buttons {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  flex-flow: row;
+  flex-flow: row nowrap;
+  padding: 10px;
 
   button:hover {
     background-color: $lighter-gray;
@@ -203,50 +204,13 @@
     margin: 8px 0 0 10px;
     border-radius: 4px;
   }
-}
-
-.binge-buttons {
-  display: flex;
-  justify-content: flex-end;
-  align-content: center;
-  width: 568px;
-  height: 56px;
-  padding: 8px 16px;
-
-  button:hover {
-    background-color: $lighter-gray;
-  }
-
-  input:hover {
+  
+  .b-submit:hover {
     background-color: $dark-red;
   }
 
-  button {
-    border: none;
-    background-color: $lightest-gray;
-    font-size: 16px;
-    text-align: center;
-    font-weight: bold;
-    box-sizing: border-box;
-    width: 80px;
-    height: 40px;
-    padding: 0 8px;
-    margin: 8px 8px 0 0;
-    border-radius: 4px;
-  }
-
-  input {
-    border: none;
+  .b-submit {
     background-color: $red;
     color: $white;
-    font-size: 16px;
-    text-align: center;
-    font-weight: bold;
-    box-sizing: border-box;
-    width: 80px;
-    height: 40px;
-    padding: 0 10px;
-    margin: 8px 0 10px 0;
-    border-radius: 4px;
   }
 }
