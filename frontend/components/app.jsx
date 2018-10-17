@@ -25,19 +25,4 @@ const App = () => (
   </div>
 );
 
-// const App = () => (
-//   <div>
-//     <Switch>
-//       <ProtectedRoute exact path="/" component={Dashboard} />
-//       <AuthRoute path="/splash" component={SplashFormContainer} />
-//       <AuthRoute path="/login" component={LoginFormContainer} />
-//       <AuthRoute path="/signup" component={SignupFormContainer} />
-//       <ProtectedRoute path="/users/:userId" component={UserShowContainer} />
-//       <ProtectedRoute path="/users/:userId/:following" component={UserShowContainer} />
-//       <ProtectedRoute path="/boards/:boardId" component={BoardShowContainer} />
-//       <ProtectedRoute path="/binges/:bingeId" component={BingeShowContainer} />
-//     </Switch>
-//   </div>
-// );
-
 export default App;

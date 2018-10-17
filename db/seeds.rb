@@ -133,9 +133,9 @@ file = dustin_money('https://s3-us-west-1.amazonaws.com/bingeterest-dev/profile/
 user25.photo.attach(io: file, filename: 'kanye-west.jpg')
 user25.save!
 
-user26 = User.new(username: 'Kim Jong Un', description: "FUD", password: 'password', age: 100)
-file = dustin_money('https://s3-us-west-1.amazonaws.com/bingeterest-dev/profile/kim-jung-un.jpg')
-user26.photo.attach(io: file, filename: 'kim-jung-un.jpg')
+user26 = User.new(username: 'Kevin Durant', description: "FUD", password: 'password', age: 100)
+file = dustin_money('https://s3-us-west-1.amazonaws.com/bingeterest-dev/profile/kd.jpg')
+user26.photo.attach(io: file, filename: 'kd.jpg')
 user26.save!
 
 user27 = User.new(username: 'Masaharu Morimoto', description: "Master chef amateur binger", password: 'password', age: 63)
@@ -600,9 +600,9 @@ binge44.photo.attach(io: file, filename: 'binge44.jpg')
 binge44.save!
 
 binge45 = Binge.new(
-  description: "you didnt bring a tent",
+  description: "the office",
   url: 'giphy.com',
-  link_url: 'https://giphy.com/gifs/fave-tv-shows-qGcEL1AW6GjTi',
+  link_url: 'https://giphy.com/gifs/the-office-laughing-nbc-Z9OGuQyrfHAE8',
   author_id: user4.id)
 file = dustin_money('https://s3-us-west-1.amazonaws.com/bingeterest-dev/binges/binge45.gif')
 binge45.photo.attach(io: file, filename: 'binge45.gif')
