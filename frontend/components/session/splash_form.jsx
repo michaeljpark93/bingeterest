@@ -26,13 +26,15 @@ class SplashForm extends React.Component {
   }
 
   handleSubmit(e) {
+    const { signup } = this.props;
     e.preventDefault();
-    this.props.signup(this.state);
+    signup(this.state);
   }
 
   demoLogin(e) {
+    const { login, history } = this.props;
     e.preventDefault();
-    this.props.login({ username: 'Guest', password: 'password' });
+    login({ username: 'Guest', password: 'password' });
   }
 
   render() {
